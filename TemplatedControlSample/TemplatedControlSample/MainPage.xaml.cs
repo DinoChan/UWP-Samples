@@ -24,7 +24,7 @@ namespace TemplatedControlSample
     {
         public MainPage()
         {
-            this.InitializeComponent();  
+            this.InitializeComponent();
         }
     }
 }
