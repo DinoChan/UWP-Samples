@@ -15,6 +15,7 @@
                     <ContentPresenter Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                       Margin="{TemplateBinding Padding}"
+
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                 </ControlTemplate>
