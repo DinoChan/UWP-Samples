@@ -42,5 +42,11 @@
         <ContentControl>
             <local:ScoreModel Score="30" />
         </ContentControl>
+        <ContentControl>
+            <DashStyle />
+        </ContentControl>
+        <ContentControl>
+            <Rectangle Height="50"  Fill="Red"/>
+        </ContentControl>
     </StackPanel>
 </Window>
