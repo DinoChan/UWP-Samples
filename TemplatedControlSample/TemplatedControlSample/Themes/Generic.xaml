@@ -144,4 +144,19 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <Style TargetType="local:SimpleItemsControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:SimpleItemsControl">
+                    <StackPanel Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                        <StackPanel x:Name="ItemsPanel"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
