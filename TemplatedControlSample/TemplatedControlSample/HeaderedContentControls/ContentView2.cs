@@ -12,16 +12,18 @@ using Windows.UI.Xaml.Media;
 namespace TemplatedControlSample
 {
     [TemplateVisualState(Name = NormalState, GroupName = CommonStates)]
+    [TemplateVisualState(Name = PointerOverState, GroupName = CommonStates)]
+    [TemplateVisualState(Name = NoHeaderState, GroupName = HeaderStates)]
+    [TemplateVisualState(Name = HasHeaderState, GroupName = HeaderStates)]
     public class ContentView2 : HeaderedContentControl
     {
         public const string CommonStates = "CommonStates";
         public const string NormalState = "Normal";
-        public const string PointerEnteredState = "PointerEntered";
-
+        public const string PointerOverState = "PointerOver";
 
         public const string HeaderStates = "HeaderStates";
-        public const string HasHeaderState = "HasHeader";
         public const string NoHeaderState = "NoHeader";
+        public const string HasHeaderState = "HasHeader";
 
         public ContentView2()
         {
@@ -33,7 +35,7 @@ namespace TemplatedControlSample
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            UpdateVisualState();
+            UpdateVisualState(false);
         }
 
         protected override void OnPointerEntered(PointerRoutedEventArgs e)
@@ -56,10 +58,10 @@ namespace TemplatedControlSample
             UpdateVisualState();
         }
 
-        internal virtual void UpdateVisualState(bool useTransitions=true)
+        internal virtual void UpdateVisualState(bool useTransitions = true)
         {
             if (_isPointerEntered)
-                VisualStateManager.GoToState(this, PointerEnteredState, useTransitions);
+                VisualStateManager.GoToState(this, PointerOverState, useTransitions);
             else
                 VisualStateManager.GoToState(this, NormalState, useTransitions);
 

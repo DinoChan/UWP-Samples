@@ -25,6 +25,35 @@ namespace TemplatedControlSample
         public MainPage()
         {
             this.InitializeComponent();
+            TestModel model = new TestModel();
+            Button.DataContext = model;
+            Button.IsEnabled = true;
+
         }
+
+        private void OnCommandClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+
+    public class TestModel
+    {
+        public TestModel()
+        {
+            Command = new DelegateCommand(Click, CanExecute);
+        }
+
+        private void Click()
+        {
+
+        }
+
+        private bool CanExecute()
+        {
+            return false;
+        }
+
+        public DelegateCommand Command { get; private set; }
     }
 }

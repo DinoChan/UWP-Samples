@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Media;
 
 namespace TemplatedControlSample
 {
+   
     [TemplatePart(Name = HeaderPartName, Type = typeof(FrameworkElement))]
     public sealed class ContentView : HeaderedContentControl
     {

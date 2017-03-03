@@ -95,6 +95,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DateTimeSelectors\DateTimeSelector.cs" />
+    <Compile Include="DateTimeSelectors\DateTimeSelector2.cs" />
+    <Compile Include="DateTimeSelectors\DateTimeSelector3.xaml.cs">
+      <DependentUpon>DateTimeSelector3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DateTimeSelectors\DateTimeSelectorForCommand\DateTimeSelector.cs" />
+    <Compile Include="DateTimeSelectors\DelegateCommand.cs" />
     <Compile Include="HeaderedContentControls\ContentView.cs" />
     <Compile Include="HeaderedContentControls\ContentView2.cs" />
     <Compile Include="HeaderedContentControls\HeaderedContentControl.cs" />
@@ -129,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DateTimeSelectors\DateTimeSelector3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HeaderedContentControls\HeaderedContentControlQuestionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,7 +153,10 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="HeaderView\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
