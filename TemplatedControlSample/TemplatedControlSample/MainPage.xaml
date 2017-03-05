@@ -16,11 +16,20 @@
                 </local:MyContentControl.Content>
             </local:MyContentControl>
 
-            <local:MyContentControl>
+            <local:MyContentControl Margin="0,10,0,0">
                 <Rectangle Height="100"
                            Width="100"
                            Fill="Red" />
             </local:MyContentControl>
+            <ContentControl Margin="0,10,0,0">
+                <Rectangle Height="100"
+                           Width="100"
+                           Fill="Red" />
+            </ContentControl>
+            <local:MyContentControl Content="sdf">
+              
+            </local:MyContentControl>
+            <local:HeaderedContentControl Content="ss" Header="aaa"></local:HeaderedContentControl>
             <Button Command="{Binding Command}" x:Name="Button" Click="OnCommandClick"/>
         </StackPanel>
     </Grid>

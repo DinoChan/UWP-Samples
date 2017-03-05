@@ -8,10 +8,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:SimpleItemsControl>
-            <local:SimpleItemsControlItem Header="this is a header"
-                                          Content="this is SimpleItemsControlItem" />
-            <Rectangle />
-            <AccessKeyDisplayDismissedEventArgs />
+            <!--<local:SimpleItemsControlItem Header="this is a header"
+                                          Content="this is SimpleItemsControlItem" />-->
+            <Rectangle  Height="50" Width="200" Fill="Red"/>
+            <!--<local:ScoreModel/>-->
         </local:SimpleItemsControl>
     </Grid>
 </Page>
