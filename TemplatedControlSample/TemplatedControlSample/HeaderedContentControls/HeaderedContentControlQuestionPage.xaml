@@ -7,7 +7,7 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
+        <StackPanel Visibility="Collapsed">
             <TextBox Header="TextBox" />
             <ComboBox Header="ComboBox" />
             <Slider Header="Slider" />
@@ -20,7 +20,7 @@
             </ListBox>
         </StackPanel>
 
-        <StackPanel>
+        <StackPanel >
             <TextBox Header="TextBox" />
             <ComboBox Header="ComboBox" />
             <Slider Header="Slider" />

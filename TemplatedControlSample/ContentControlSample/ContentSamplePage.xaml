@@ -13,7 +13,8 @@
             </ContentControl>
             <ContentControl>
                 <Rectangle Height="50"
-                           Fill="Red" />
+                           Fill="Red"
+                           Width="100" />
             </ContentControl>
         </StackPanel>
     </Grid>

@@ -60,14 +60,14 @@ namespace TemplatedControlSample
                 _dateElement.DateChanged -= OnDateElementDateChanged;
 
             _dateElement = GetTemplateChild(DateElementPartName) as CalendarDatePicker;
-            if(_dateElement!=null)
+            if (_dateElement != null)
                 _dateElement.DateChanged += OnDateElementDateChanged;
 
             if (_timeElement != null)
                 _timeElement.TimeChanged -= OnTimeElementTimeChanged;
 
             _timeElement = GetTemplateChild(TimeElementPartName) as TimePicker;
-            if(_timeElement!=null)
+            if (_timeElement != null)
                 _timeElement.TimeChanged += OnTimeElementTimeChanged;
 
             UpdateElement();
@@ -116,7 +116,7 @@ namespace TemplatedControlSample
                 dateTime = _dateElement.Date.Value.Date;
 
             if (_timeElement != null)
-                dateTime.Add(_timeElement.Time);
+                dateTime = dateTime.Add(_timeElement.Time);
 
             SelectedDateTime = dateTime;
         }

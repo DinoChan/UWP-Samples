@@ -38,7 +38,7 @@
             <ContentControl x:Name="ContentControl">
                 <ContentControl.ContentTransitions>
                     <TransitionCollection>
-                        <ContentThemeTransition />
+                        <AddDeleteThemeTransition  />
                     </TransitionCollection>
                 </ContentControl.ContentTransitions>
             </ContentControl>

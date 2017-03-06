@@ -25,7 +25,7 @@ namespace TemplatedControlSample
                 target.OnDateChanged(oldValue, newValue);
         }
 
-       
+
 
         /// <summary>
         /// 标识 Time 依赖属性。

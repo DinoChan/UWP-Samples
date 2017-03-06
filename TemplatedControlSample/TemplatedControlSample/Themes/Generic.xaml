@@ -34,8 +34,6 @@
                 <ControlTemplate TargetType="local:HeaderedContentControl">
                     <StackPanel>
                         <ContentPresenter x:Name="HeaderContentPresenter"
-                                          x:DeferLoadStrategy="Lazy"
-                                          Visibility="Collapsed"
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="0,0,0,8"
                                           FontWeight="Normal"
@@ -64,8 +62,6 @@
                 <ControlTemplate TargetType="local:HeaderedContentControl2">
                     <StackPanel>
                         <ContentPresenter x:Name="HeaderContentPresenter"
-                                          x:DeferLoadStrategy="Lazy"
-                                          Visibility="Collapsed"
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="{Binding RelativeSource={RelativeSource TemplatedParent},Path=TemplateSettings.HeaderMargin}"
                                           FontWeight="{Binding RelativeSource={RelativeSource TemplatedParent},Path=TemplateSettings.HeaderFontWeight}"
@@ -94,8 +90,6 @@
                 <ControlTemplate TargetType="local:ContentView">
                     <StackPanel>
                         <ContentPresenter x:Name="HeaderContentPresenter"
-                                          x:DeferLoadStrategy="Lazy"
-                                          Visibility="Collapsed"
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="0,0,0,8"
                                           FontWeight="Normal"
@@ -123,8 +117,6 @@
                 <ControlTemplate TargetType="local:ContentView2">
                     <StackPanel>
                         <ContentPresenter x:Name="HeaderContentPresenter"
-                                          x:DeferLoadStrategy="Lazy"
-                                          Visibility="Collapsed"
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="0,0,0,8"
                                           FontWeight="Normal"

@@ -18,7 +18,7 @@
                 </Border>
             </DataTemplate>
         </Grid.Resources>
-        <ContentControl ContentTemplate="{StaticResource PassTemplate}">
+        <ContentControl ContentTemplate="{StaticResource PassTemplate}" FontFamily="{ThemeResource MTCMediaFontFamily}"> 
             <local:ScoreModel Score="30" />
         </ContentControl>
     </Grid>

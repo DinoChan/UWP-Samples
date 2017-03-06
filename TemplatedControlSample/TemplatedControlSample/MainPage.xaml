@@ -29,12 +29,20 @@
             <local:MyContentControl Content="sdf">
 
             </local:MyContentControl>
-            <local:HeaderedContentControl Content="ss"
-                                          Header="aaa"></local:HeaderedContentControl>
+
+            <local:MyContentControl x:Name="ContentControl1st">
+                <local:MyContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                                   Foreground="Red" />
+                    </DataTemplate>
+                </local:MyContentControl.ContentTemplate>
+            </local:MyContentControl>
+           
             <Button Command="{Binding Command}"
                     x:Name="Button"
                     Click="OnCommandClick" />
-            <ContentControl local:HeaderView.Header="Attached Header"
+            <!--<ContentControl local:HeaderView.Header="Attached Header"
                             Content="Content">
                 <ContentControl.Template>
                     <ControlTemplate TargetType="ContentControl">
@@ -44,7 +52,7 @@
                         </StackPanel>
                     </ControlTemplate>
                 </ContentControl.Template>
-            </ContentControl>
+            </ContentControl>-->
         </StackPanel>
     </Grid>
 </Page>

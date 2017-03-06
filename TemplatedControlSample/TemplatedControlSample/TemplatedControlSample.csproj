@@ -95,6 +95,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentViewSamplePage.xaml.cs">
+      <DependentUpon>ContentViewSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DateTimeSelectorSamplePage.xaml.cs">
+      <DependentUpon>DateTimeSelectorSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DateTimeSelectors\DateTimeSelector.cs" />
     <Compile Include="DateTimeSelectors\DateTimeSelector2.cs" />
     <Compile Include="DateTimeSelectors\DateTimeSelector3.xaml.cs">
@@ -102,6 +108,9 @@
     </Compile>
     <Compile Include="DateTimeSelectors\DateTimeSelectorForCommand\DateTimeSelector.cs" />
     <Compile Include="DateTimeSelectors\DelegateCommand.cs" />
+    <Compile Include="HeaderedContentControlSamplePage.xaml.cs">
+      <DependentUpon>HeaderedContentControlSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderedContentControls\ContentView.cs" />
     <Compile Include="HeaderedContentControls\ContentView2.cs" />
     <Compile Include="HeaderedContentControls\ControlIncludeHeader.cs" />
@@ -146,7 +155,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ContentViewSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DateTimeSelectorSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DateTimeSelectors\DateTimeSelector3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeaderedContentControlSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

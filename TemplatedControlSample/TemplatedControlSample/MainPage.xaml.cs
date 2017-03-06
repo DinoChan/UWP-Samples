@@ -28,7 +28,7 @@ namespace TemplatedControlSample
             TestModel model = new TestModel();
             Button.DataContext = model;
             Button.IsEnabled = true;
-
+            ContentControl1st.Content = DateTime.Now;
         }
 
         private void OnCommandClick(object sender, RoutedEventArgs e)

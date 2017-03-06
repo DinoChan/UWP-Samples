@@ -30,9 +30,9 @@ namespace ContentControlSample
 
         private void OnChangeContent(object sender, RoutedEventArgs e)
         {
-            
-               Random random = new Random();
-            ScoreModel model = new ScoreModel {Score = random.Next(100)};
+            ContentControl.Content = null;
+            Random random = new Random();
+            ScoreModel model = new ScoreModel { Score = random.Next(100) };
             ContentControl.Content = model;
         }
     }
