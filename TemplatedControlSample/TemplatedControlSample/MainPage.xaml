@@ -27,10 +27,24 @@
                            Fill="Red" />
             </ContentControl>
             <local:MyContentControl Content="sdf">
-              
+
             </local:MyContentControl>
-            <local:HeaderedContentControl Content="ss" Header="aaa"></local:HeaderedContentControl>
-            <Button Command="{Binding Command}" x:Name="Button" Click="OnCommandClick"/>
+            <local:HeaderedContentControl Content="ss"
+                                          Header="aaa"></local:HeaderedContentControl>
+            <Button Command="{Binding Command}"
+                    x:Name="Button"
+                    Click="OnCommandClick" />
+            <ContentControl local:HeaderView.Header="Attached Header"
+                            Content="Content">
+                <ContentControl.Template>
+                    <ControlTemplate TargetType="ContentControl">
+                        <StackPanel>
+                            <ContentPresenter Content="{TemplateBinding local:HeaderView.Header}" />
+                            <ContentPresenter />
+                        </StackPanel>
+                    </ControlTemplate>
+                </ContentControl.Template>
+            </ContentControl>
         </StackPanel>
     </Grid>
 </Page>

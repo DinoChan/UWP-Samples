@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -29,7 +30,8 @@ namespace ContentControlSample
 
         private void OnChangeContent(object sender, RoutedEventArgs e)
         {
-            Random random = new Random();
+            
+               Random random = new Random();
             ScoreModel model = new ScoreModel {Score = random.Next(100)};
             ContentControl.Content = model;
         }

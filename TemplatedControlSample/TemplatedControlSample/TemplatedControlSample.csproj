@@ -104,6 +104,7 @@
     <Compile Include="DateTimeSelectors\DelegateCommand.cs" />
     <Compile Include="HeaderedContentControls\ContentView.cs" />
     <Compile Include="HeaderedContentControls\ContentView2.cs" />
+    <Compile Include="HeaderedContentControls\ControlIncludeHeader.cs" />
     <Compile Include="HeaderedContentControls\HeaderedContentControl.cs" />
     <Compile Include="HeaderedContentControls\HeaderedContentControl2.cs" />
     <Compile Include="HeaderedContentControls\HeaderedContentControlQuestionPage.xaml.cs">

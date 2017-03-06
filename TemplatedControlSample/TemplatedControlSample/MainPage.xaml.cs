@@ -35,6 +35,11 @@ namespace TemplatedControlSample
         {
 
         }
+
+        private void ContentControl_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+
+        }
     }
 
     public class TestModel
