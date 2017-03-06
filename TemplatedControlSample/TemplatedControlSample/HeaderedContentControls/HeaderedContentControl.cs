@@ -13,15 +13,14 @@ using Windows.UI.Xaml.Media;
 
 namespace TemplatedControlSample
 {
+   
     public class HeaderedContentControl : ContentControl
     {
         public HeaderedContentControl()
         {
             this.DefaultStyleKey = typeof(HeaderedContentControl);
-            TemplateSettings = new HeaderedContentControlTemplateSettings();
         }
 
-        public HeaderedContentControlTemplateSettings TemplateSettings { get; }
 
         /// <summary>
         /// 获取或设置Header的值

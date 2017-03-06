@@ -105,6 +105,7 @@
     <Compile Include="HeaderedContentControls\ContentView.cs" />
     <Compile Include="HeaderedContentControls\ContentView2.cs" />
     <Compile Include="HeaderedContentControls\HeaderedContentControl.cs" />
+    <Compile Include="HeaderedContentControls\HeaderedContentControl2.cs" />
     <Compile Include="HeaderedContentControls\HeaderedContentControlQuestionPage.xaml.cs">
       <DependentUpon>HeaderedContentControlQuestionPage.xaml</DependentUpon>
     </Compile>
@@ -119,6 +120,7 @@
     <Compile Include="SimpleItemsControlSample.xaml.cs">
       <DependentUpon>SimpleItemsControlSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SimpleItemsControls\EventListView.cs" />
     <Compile Include="SimpleItemsControls\SimpleItemsControl.cs" />
     <Compile Include="SimpleItemsControls\SimpleItemsControlItem.cs" />
   </ItemGroup>

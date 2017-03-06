@@ -37,6 +37,36 @@
                                           x:DeferLoadStrategy="Lazy"
                                           Visibility="Collapsed"
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
+                                          Margin="0,0,0,8"
+                                          FontWeight="Normal"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Margin="{TemplateBinding Padding}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="local:HeaderedContentControl2">
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Top" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:HeaderedContentControl2">
+                    <StackPanel>
+                        <ContentPresenter x:Name="HeaderContentPresenter"
+                                          x:DeferLoadStrategy="Lazy"
+                                          Visibility="Collapsed"
+                                          Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="{Binding RelativeSource={RelativeSource TemplatedParent},Path=TemplateSettings.HeaderMargin}"
                                           FontWeight="{Binding RelativeSource={RelativeSource TemplatedParent},Path=TemplateSettings.HeaderFontWeight}"
                                           Content="{TemplateBinding Header}"
@@ -52,7 +82,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 
 
     <Style TargetType="local:ContentView">
@@ -145,6 +174,22 @@
         </Setter>
     </Style>
 
+    <Style x:Key="DateTimeSelector2CustomStyle"
+           TargetType="local:DateTimeSelector2">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DateTimeSelector2">
+                    <StackPanel Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                        <DatePicker Margin="0,0,0,5"
+                                    Date="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Date,Mode=TwoWay}" />
+                        <TimePicker Time="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Time,Mode=TwoWay}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style TargetType="local:SimpleItemsControl">
         <Setter Property="Template">
@@ -153,7 +198,7 @@
                     <StackPanel Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
-                        <StackPanel x:Name="ItemsPanel"/>
+                        <StackPanel x:Name="ItemsPanel" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
