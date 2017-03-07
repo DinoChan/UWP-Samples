@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Media;
 namespace TemplatedControlSample
 {
    
-    [TemplatePart(Name = HeaderPartName, Type = typeof(FrameworkElement))]
+    [TemplatePart(Name = HeaderPartName, Type = typeof(ContentPresenter))]
     public sealed class ContentView : HeaderedContentControl
     {
         public const string HeaderPartName = "HeaderContentPresenter";
@@ -24,13 +24,13 @@ namespace TemplatedControlSample
             this.DefaultStyleKey = typeof(ContentView);
         }
 
-        private FrameworkElement _headerPart;
+        private ContentPresenter _headerPart;
         private bool _isPointerEntered;
 
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _headerPart = GetTemplateChild(HeaderPartName) as FrameworkElement;
+            _headerPart = GetTemplateChild(HeaderPartName) as ContentPresenter;
             UpdateHeaderVisual();
         }
 

@@ -38,6 +38,7 @@ namespace TemplatedControlSample
         public DateTimeSelector3()
         {
             this.InitializeComponent();
+            DateTime = System.DateTime.Now;
             TimeElement.TimeChanged += OnTimeChanged;
             DateElement.DateChanged += OnDateChanged;
         }

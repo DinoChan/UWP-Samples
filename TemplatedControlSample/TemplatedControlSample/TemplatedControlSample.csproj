@@ -95,9 +95,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\DelegateCommand{T}.cs" />
     <Compile Include="ContentViewSamplePage.xaml.cs">
       <DependentUpon>ContentViewSamplePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DateTimeConverter.cs" />
+    <Compile Include="Converters\DateTimeOffsetConverter.cs" />
+    <Compile Include="Converters\TimeSpanConverter.cs" />
     <Compile Include="DateTimeSelectorSamplePage.xaml.cs">
       <DependentUpon>DateTimeSelectorSamplePage.xaml</DependentUpon>
     </Compile>
@@ -120,9 +124,15 @@
       <DependentUpon>HeaderedContentControlQuestionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="HeaderedContentControls\HeaderedContentControlTemplateSettings.cs" />
+    <Compile Include="HeaderViewSamplePage.xaml.cs">
+      <DependentUpon>HeaderViewSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderViews\HeaderView.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuItemSamplePage.xaml.cs">
+      <DependentUpon>MenuItemSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="MyContentControl.cs" />
@@ -149,6 +159,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -175,9 +186,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HeaderViewSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MenuItemSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SimpleItemsControlSample.xaml">
       <SubType>Designer</SubType>
@@ -188,8 +207,12 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Common\" />
+    <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.2\System.Windows.Forms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

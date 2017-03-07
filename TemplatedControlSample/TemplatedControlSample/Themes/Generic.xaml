@@ -1,7 +1,8 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="using:TemplatedControlSample">
-
+    <local:DateTimeOffsetConverter x:Key="DateTimeOffsetConverter" />
+    <local:TimeSpanConverter x:Key="TimeSpanConverter" />
 
 
     <Style TargetType="local:MyContentControl">
@@ -158,8 +159,8 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
                         <CalendarDatePicker Margin="0,0,0,5"
-                                            Date="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Date,Mode=TwoWay}" />
-                        <TimePicker Time="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Time,Mode=TwoWay}" />
+                                            Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
+                        <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource TimeSpanConverter}}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -175,8 +176,8 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
                         <DatePicker Margin="0,0,0,5"
-                                    Date="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Date,Mode=TwoWay}" />
-                        <TimePicker Time="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Time,Mode=TwoWay}" />
+                                    Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
+                        <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -196,4 +197,26 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="local:HeaderView">
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Top" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:HeaderView">
+                    <StackPanel>
+                        <ContentPresenter x:Name="HeaderContentPresenter"
+                                          Foreground="{ThemeResource TextControlHeaderForeground}"
+                                          Margin="0,0,0,8"
+                                          FontWeight="Normal"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>
