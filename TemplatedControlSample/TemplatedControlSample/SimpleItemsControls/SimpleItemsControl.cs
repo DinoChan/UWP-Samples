@@ -137,11 +137,15 @@ namespace TemplatedControlSample
             {
                 DependencyObject container;
                 if (IsItemItsOwnContainerOverride(item))
+                {
                     container = item as DependencyObject;
+                }
                 else
+                {
                     container = GetContainerForItemOverride();
-
-                PrepareContainerForItemOverride(container, item);
+                    PrepareContainerForItemOverride(container, item);
+                }
+               
                 if (container is UIElement)
                     _itemsPanel.Children.Add(container as UIElement);
             }

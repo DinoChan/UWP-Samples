@@ -9,8 +9,8 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <local:SimpleItemsControl>
-                <ContentPresenter Content="this is ContentPresenter" />
-                <Rectangle  Height="50"
+               <ContentPresenter Content="this is ContentPresenter" />
+                 <Rectangle  Height="50"
                             Width="200"
                             Fill="Red" />
                 <local:ScoreModel />

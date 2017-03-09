@@ -84,8 +84,8 @@
                 </Setter>
             </Style>-->
         </Grid.Resources>
-        <StackPanel>
-            <ListBox local:HeaderView.Header="ListBox Header">
+        <!-- <StackPanel>
+           <ListBox local:HeaderView.Header="ListBox Header">
                 <ListBox.Template>
                     <ControlTemplate TargetType="ListBox">
                         <Border x:Name="LayoutRoot"
@@ -121,6 +121,6 @@
             
             <TextBox local:HeaderView.Header="TextBox Header"
                      Text="Some Text" />
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </Page>
