@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Windows.Forms;
+
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -32,7 +32,7 @@ namespace TemplatedControlSample
 
         private void Click(object parameter)
         {
-            MessageBox.Show(parameter.ToString());
+           // MessageBox.Show(parameter.ToString());
         }
 
         private bool CanExecute(object parameter)
