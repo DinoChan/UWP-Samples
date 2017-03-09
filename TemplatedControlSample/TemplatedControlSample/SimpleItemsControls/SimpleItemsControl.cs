@@ -11,9 +11,11 @@ using Windows.UI.Xaml.Markup;
 
 namespace TemplatedControlSample
 {
-    [ContentProperty(Name ="Items")]
+    [TemplatePart(Name = ItemsPanelPartName, Type = typeof(Panel))]
+    [ContentProperty(Name = "Items")]
     public class SimpleItemsControl : Control
     {
+        private const string ItemsPanelPartName = "ItemsPanel";
         public SimpleItemsControl()
         {
             this.DefaultStyleKey = typeof(SimpleItemsControl);
@@ -56,12 +58,12 @@ namespace TemplatedControlSample
             get;
         }
 
-        private Panel _contentPanel;
+        private Panel _itemsPanel;
 
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _contentPanel = GetTemplateChild("ItemsPanel") as Panel;
+            _itemsPanel = GetTemplateChild(ItemsPanelPartName) as Panel;
             UpdateView();
         }
 
@@ -79,7 +81,7 @@ namespace TemplatedControlSample
         //     用于显示给定项的元素。
         protected virtual DependencyObject GetContainerForItemOverride()
         {
-            return new SimpleItemsControlItem();
+            return new ContentPresenter();
         }
 
 
@@ -95,7 +97,7 @@ namespace TemplatedControlSample
         //     如果项是其自己的容器（或可以作为自己的容器），则为 true；否则为 false。
         protected virtual System.Boolean IsItemItsOwnContainerOverride(System.Object item)
         {
-            return item is SimpleItemsControlItem;
+            return item is ContentPresenter;
         }
 
         //
@@ -127,10 +129,10 @@ namespace TemplatedControlSample
 
         private void UpdateView()
         {
-            if (_contentPanel == null)
+            if (_itemsPanel == null)
                 return;
 
-            _contentPanel.Children.Clear();
+            _itemsPanel.Children.Clear();
             foreach (var item in Items)
             {
                 DependencyObject container;
@@ -141,7 +143,7 @@ namespace TemplatedControlSample
 
                 PrepareContainerForItemOverride(container, item);
                 if (container is UIElement)
-                    _contentPanel.Children.Add(container as UIElement);
+                    _itemsPanel.Children.Add(container as UIElement);
             }
         }
     }

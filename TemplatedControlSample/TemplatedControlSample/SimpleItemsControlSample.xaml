@@ -7,11 +7,26 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:SimpleItemsControl>
-            <!--<local:SimpleItemsControlItem Header="this is a header"
-                                          Content="this is SimpleItemsControlItem" />-->
-            <Rectangle  Height="50" Width="200" Fill="Red"/>
-            <!--<local:ScoreModel/>-->
-        </local:SimpleItemsControl>
+        <StackPanel>
+            <local:SimpleItemsControl>
+                <ContentPresenter Content="this is ContentPresenter" />
+                <Rectangle  Height="50"
+                            Width="200"
+                            Fill="Red" />
+                <local:ScoreModel />
+            </local:SimpleItemsControl>
+            
+            <local:SimpleItemsControl>
+                <local:SimpleItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Score}" />
+                    </DataTemplate>
+                </local:SimpleItemsControl.ItemTemplate>
+                <local:ScoreModel Score="70" />
+                <local:ScoreModel Score="80" />
+                <local:ScoreModel Score="90" />
+                <local:ScoreModel Score="100" />
+            </local:SimpleItemsControl>
+        </StackPanel>
     </Grid>
 </Page>
