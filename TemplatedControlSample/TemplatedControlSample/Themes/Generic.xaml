@@ -144,7 +144,7 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                         <CalendarDatePicker x:Name="DateElement"
                                             Margin="0,0,0,5" />
-                        <TimePicker x:Name="TimeElement" />
+                        <TimePicker x:Name="TimeElement" Style="{TemplateBinding TimePickerStyle}"/>
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>

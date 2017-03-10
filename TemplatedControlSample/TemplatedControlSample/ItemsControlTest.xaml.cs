@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,25 +20,30 @@ namespace TemplatedControlSample
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class MenuItemSamplePage : Page
+    public sealed partial class ItemsControlTest : Page
     {
-        public MenuItemSamplePage()
+        public ItemsControlTest()
         {
             this.InitializeComponent();
-            var command = new DelegateCommand<object>(Click, CanExecute);
-            this.DataContext = command;
+            Loaded += OnLoaded;
         }
 
-        private void Click(object parameter)
+        private int _count;
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            MessageDialog dialog = new MessageDialog(parameter.ToString());
-            dialog.ShowAsync();
+            List<int> items = new List<int>();
+            for (int i = 0; i < 1000; i++)
+            {
+                items.Add(i);
+            }
+            ItemsControl.ItemsSource = items;
         }
 
-        private bool CanExecute(object parameter)
+        private void OnItemLoaded(object sender, RoutedEventArgs e)
         {
-            string text = parameter as string;
-            return string.IsNullOrWhiteSpace(text) == false;
+            _count++;
+            CountElement.Text = _count.ToString();
         }
     }
 }

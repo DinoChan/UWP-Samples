@@ -15,7 +15,6 @@ using Windows.UI.Xaml.Media;
 namespace TemplatedControlSample
 {
     [ContentProperty(Name = "Content")]
-    [StyleTypedProperty]
     public class MyContentControl : Control
     {
         public MyContentControl()
