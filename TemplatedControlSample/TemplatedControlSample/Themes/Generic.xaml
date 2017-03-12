@@ -117,12 +117,48 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:ContentView2">
                     <StackPanel>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.5">
+                                        <VisualTransition.GeneratedEasingFunction>
+                                            <CubicEase EasingMode="EaseInOut" />
+                                        </VisualTransition.GeneratedEasingFunction>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Target="HeaderContentPresenter.(UIElement.Opacity)"
+                                                Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="HeaderStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.5" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="NoHeader">
+                                    <VisualState.Setters>
+                                        <Setter Target="HeaderContentPresenter.(UIElement.Opacity)"
+                                                Value="0.3" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="HasHeader">
+                                    <VisualState.Setters>
+                                        <Setter Target="HeaderContentPresenter.(UIElement.Opacity)"
+                                                Value="0.3" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                         <ContentPresenter x:Name="HeaderContentPresenter"
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="0,0,0,8"
                                           FontWeight="Normal"
                                           Content="{TemplateBinding Header}"
-                                          ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          Opacity="0.7" />
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           Margin="{TemplateBinding Padding}"
@@ -136,6 +172,8 @@
     </Style>
 
     <Style TargetType="local:DateTimeSelector">
+        <Setter Property="IsTabStop"
+                Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:DateTimeSelector">
@@ -144,7 +182,8 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                         <CalendarDatePicker x:Name="DateElement"
                                             Margin="0,0,0,5" />
-                        <TimePicker x:Name="TimeElement" Style="{TemplateBinding TimePickerStyle}"/>
+                        <TimePicker x:Name="TimeElement"
+                                    Style="{TemplateBinding TimePickerStyle}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -177,7 +216,7 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                         <DatePicker Margin="0,0,0,5"
                                     Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
-                        <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}" />
+                        <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource TimeSpanConverter}}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -211,8 +250,7 @@
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="0,0,0,8"
                                           FontWeight="Normal"
-                                          Content="{TemplateBinding Header}"
-                                          />
+                                          Content="{TemplateBinding Header}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>

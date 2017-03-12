@@ -6,12 +6,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Visibility="Collapsed">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          Padding="20">
+        <StackPanel Width="300" Visibility="Collapsed">
             <TextBox Header="TextBox" />
-            <ComboBox Header="ComboBox" />
-            <Slider Header="Slider" />
-            <ToggleSwitch Header="ToggleSwitch" />
+            <ComboBox Header="ComboBox"
+                      HorizontalAlignment="Stretch" />
+            <AutoSuggestBox Header="AutoSuggestBox" />
             <TextBlock Text="ListBox" />
             <ListBox>
                 <ListBoxItem Content="ListBoxItem 1" />
@@ -22,10 +23,28 @@
 
         <StackPanel >
             <TextBox Header="TextBox" />
-            <ComboBox Header="ComboBox" />
-            <Slider Header="Slider" />
-            <ToggleSwitch Header="ToggleSwitch" />
+            <ComboBox Header="ComboBox"
+                      HorizontalAlignment="Stretch" />
+            <AutoSuggestBox Header="AutoSuggestBox" />
             <local:HeaderedContentControl Header="ListBox">
+                <local:HeaderedContentControl.Template>
+                    <ControlTemplate TargetType="local:HeaderedContentControl">
+                        <StackPanel>
+                            <ContentPresenter x:Name="HeaderContentPresenter"
+                                              Foreground="{ThemeResource TextControlHeaderForeground}"
+                                              Margin="0,0,0,8"
+                                              FontWeight="Normal"
+                                              Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                            <ContentPresenter Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </StackPanel>
+                    </ControlTemplate>
+                </local:HeaderedContentControl.Template>
                 <ListBox>
                     <ListBoxItem Content="ListBoxItem 1" />
                     <ListBoxItem Content="ListBoxItem 2" />

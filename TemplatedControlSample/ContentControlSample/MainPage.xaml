@@ -1,47 +1,48 @@
-﻿<Page
-    x:Class="ContentControlSample.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ContentControlSample"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+﻿<Page x:Class="ContentControlSample.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:ContentControlSample"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <StackPanel.Resources>
-                <DataTemplate x:Key="PassTemplate">
-                    <Border Background="Green">
-                        <TextBlock Text="{Binding Score}"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   Margin="20"
-                                   HorizontalAlignment="Center" />
-                    </Border>
-                </DataTemplate>
-                <DataTemplate x:Key="FailTemplate">
-                    <Border Background="Red">
-                        <TextBlock Text="{Binding Score}"
-                                   Foreground="White"
-                                   FontSize="20"
-                                   Margin="20"
-                                   HorizontalAlignment="Center" />
-                    </Border>
-                </DataTemplate>
-                <local:SimpleDataTemplateSelector PassTemplate="{StaticResource PassTemplate}"
-                                                  FailTemplate="{StaticResource FailTemplate}"
-                                                  x:Key="DataTemplateSelector" />
-                <Style TargetType="ContentControl">
-                    <Setter Property="ContentTemplateSelector"
-                            Value="{StaticResource DataTemplateSelector}" />
-                </Style>
-            </StackPanel.Resources>
-            <ContentControl>
-                <local:ScoreModel Score="60" />
-            </ContentControl>
-            <ContentControl>
-                <local:ScoreModel Score="30" />
-            </ContentControl>
-        </StackPanel>
+        <Viewbox>
+            <StackPanel Margin="20">
+                <StackPanel.Resources>
+                    <DataTemplate x:Key="PassTemplate">
+                        <Border Background="Green">
+                            <TextBlock Text="{Binding Score}"
+                                       Foreground="White"
+                                       FontSize="20"
+                                       Margin="20"
+                                       HorizontalAlignment="Center" />
+                        </Border>
+                    </DataTemplate>
+                    <DataTemplate x:Key="FailTemplate">
+                        <Border Background="Red">
+                            <TextBlock Text="{Binding Score}"
+                                       Foreground="White"
+                                       FontSize="20"
+                                       Margin="20"
+                                       HorizontalAlignment="Center" />
+                        </Border>
+                    </DataTemplate>
+                    <local:SimpleDataTemplateSelector PassTemplate="{StaticResource PassTemplate}"
+                                                      FailTemplate="{StaticResource FailTemplate}"
+                                                      x:Key="DataTemplateSelector" />
+                    <Style TargetType="ContentControl">
+                        <Setter Property="ContentTemplateSelector"
+                                Value="{StaticResource DataTemplateSelector}" />
+                    </Style>
+                </StackPanel.Resources>
+                <ContentControl>
+                    <local:ScoreModel Score="60" />
+                </ContentControl>
+                <ContentControl>
+                    <local:ScoreModel Score="30" />
+                </ContentControl>
+            </StackPanel>
+        </Viewbox>
     </Grid>
 </Page>

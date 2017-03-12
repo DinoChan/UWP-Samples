@@ -21,7 +21,7 @@ namespace TemplatedControlSample
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             TimeSpan from = (TimeSpan)value;
-            return from;
+            return from as TimeSpan?;
         }
     }
 }

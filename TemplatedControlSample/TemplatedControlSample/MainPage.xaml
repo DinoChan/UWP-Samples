@@ -8,7 +8,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <local:MyContentControl>
+            <local:MyContentControl >
                 <local:MyContentControl.Content>
                     <Rectangle Height="100"
                                Width="100"
@@ -42,6 +42,8 @@
             <Button Command="{Binding Command}"
                     x:Name="Button"
                     Click="OnCommandClick" />
+            <Button Style="{ThemeResource  DateTimePickerFlyoutButtonStyle}"/>
+            <TextBlock FontSize="{ThemeResource  ContentControlFontSize}" />
             <!--<ContentControl local:HeaderView.Header="Attached Header"
                             Content="Content">
                 <ContentControl.Template>

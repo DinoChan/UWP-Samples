@@ -96,6 +96,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\DelegateCommand{T}.cs" />
+    <Compile Include="ContentView2SamplePage.xaml.cs">
+      <DependentUpon>ContentView2SamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContentViewSamplePage.xaml.cs">
       <DependentUpon>ContentViewSamplePage.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,9 @@
     <Compile Include="SimpleItemsControls\EventListView.cs" />
     <Compile Include="SimpleItemsControls\SimpleItemsControl.cs" />
     <Compile Include="SimpleItemsControls\SimpleItemsControlItem.cs" />
+    <Compile Include="TabStopSamplePage.xaml.cs">
+      <DependentUpon>TabStopSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TextBoxPropertySamplePage.xaml.cs">
       <DependentUpon>TextBoxPropertySamplePage.xaml</DependentUpon>
     </Compile>
@@ -172,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ContentView2SamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ContentViewSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SimpleItemsControlSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabStopSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,19 +1,38 @@
-﻿<Page
-    x:Class="TemplatedControlSample.DateTimeSelectorSamplePage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TemplatedControlSample"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
+﻿<Page x:Class="TemplatedControlSample.DateTimeSelectorSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:TemplatedControlSample"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <local:DateTimeOffsetConverter x:Key="DateTimeOffsetConverter" />
+        <local:TimeSpanConverter x:Key="TimeSpanConverter" />
+        <Style x:Key="DateTimeSelector2CustomStyle"
+               TargetType="local:DateTimeSelector2">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:DateTimeSelector2">
+                        <StackPanel Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                            <DatePicker Margin="0,0,0,5"
+                                        Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
+                            <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource TimeSpanConverter}}" />
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <local:DateTimeSelector x:Name="DateTimeSelector" />
             <TextBlock Text="{Binding ElementName=DateTimeSelector,Path=SelectedDateTime}" />
 
 
-            <local:DateTimeSelector2 x:Name="DateTimeSelector2" Margin="0,20,0,0"/>
+            <local:DateTimeSelector2 x:Name="DateTimeSelector2"
+                                     Margin="0,20,0,0" />
             <TextBlock Text="{Binding ElementName=DateTimeSelector2,Path=DateTime}" />
 
 
@@ -21,8 +40,9 @@
                                      Margin="0,20,0,0" />
             <TextBlock Text="{Binding ElementName=DateTimeSelector3,Path=DateTime}" />
 
+            <local:DateTimeSelector2 x:Name="DateTimeSelector4" Style="{StaticResource DateTimeSelector2CustomStyle}" />
+            <TextBlock Text="{Binding ElementName=DateTimeSelector4,Path=DateTime}" />
 
-         
         </StackPanel>
     </Grid>
 </Page>
