@@ -115,6 +115,9 @@
     </Compile>
     <Compile Include="DateTimeSelectors\DateTimeSelectorForCommand\DateTimeSelector.cs" />
     <Compile Include="DateTimeSelectors\DelegateCommand.cs" />
+    <Compile Include="EventListViewSamplePage.xaml.cs">
+      <DependentUpon>EventListViewSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderedContentControlSamplePage.xaml.cs">
       <DependentUpon>HeaderedContentControlSamplePage.xaml</DependentUpon>
     </Compile>
@@ -194,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DateTimeSelectors\DateTimeSelector3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EventListViewSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
