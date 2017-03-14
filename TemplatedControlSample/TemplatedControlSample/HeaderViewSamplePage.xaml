@@ -8,6 +8,25 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.Resources>
+            <Style TargetType="local:HeaderView">
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Left" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Top" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="local:HeaderView">
+                            <StackPanel>
+                                <ContentPresenter x:Name="HeaderContentPresenter"
+                                                  Foreground="{ThemeResource TextControlHeaderForeground}"
+                                                  Margin="0,0,0,8"
+                                                  FontWeight="Normal"
+                                                  Content="{TemplateBinding Header}" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <!--<Style TargetType="ListBox">
                 <Setter Property="Foreground"
                         Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
@@ -85,17 +104,32 @@
             </Style>-->
         </Grid.Resources>
         <!-- <StackPanel>
-           <ListBox local:HeaderView.Header="ListBox Header">
+           
+            
+            <TextBox local:HeaderView.Header="TextBox Header"
+                     Text="Some Text" />
+        </StackPanel>-->
+        <Viewbox >
+        <StackPanel Margin="10" Width="500">
+            <local:HeaderView Header="Rectangle Header"
+                              AttachedElement="{Binding ElementName=Rectangle}" />
+            <Rectangle Height="50"
+                       Width="100"
+                       HorizontalAlignment="Left"
+                       Fill="Red"
+                       x:Name="Rectangle" />
+
+            <ListBox local:HeaderView.ExtendHeader="ListBox Header">
                 <ListBox.Template>
                     <ControlTemplate TargetType="ListBox">
                         <Border x:Name="LayoutRoot"
-                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
                             <StackPanel>
                                 <local:HeaderView AttachedElement="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                  Header="{TemplateBinding  local:HeaderView.Header}" />
+                                                  Header="{TemplateBinding  local:HeaderView.ExtendHeader}" />
                                 <ScrollViewer x:Name="ScrollViewer"
+                                              Background="{TemplateBinding Background}"
                                               Padding="{TemplateBinding Padding}"
                                               TabNavigation="{TemplateBinding TabNavigation}"
                                               HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
@@ -118,18 +152,14 @@
                 <ListBoxItem Content="ListBoxItem 2" />
                 <ListBoxItem Content="ListBoxItem 3" />
             </ListBox>
-            
-            <TextBox local:HeaderView.Header="TextBox Header"
-                     Text="Some Text" />
-        </StackPanel>-->
-        <StackPanel>
-            <local:HeaderView Header="sss"
-                              AttachedElement="{Binding ElementName=Rec}"/>
-            <Rectangle Height="50"
-                       Width="100"
-                       Fill="Red" 
-                       x:Name="Rec"/>
-            <TextBox  PlaceholderText="Input some text..."/>
+            <TextBox 
+                     PlaceholderText="Input some text...">
+                <local:HeaderView.ExtendHeader>
+                    <TextBlock Margin="0,0,0,-8"
+                               Text="TextBox Header" />
+                </local:HeaderView.ExtendHeader>
+            </TextBox>
         </StackPanel>
+        </Viewbox>
     </Grid>
 </Page>
