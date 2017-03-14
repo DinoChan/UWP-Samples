@@ -126,7 +126,12 @@
                                         </VisualTransition.GeneratedEasingFunction>
                                     </VisualTransition>
                                 </VisualStateGroup.Transitions>
-                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Target="HeaderContentPresenter.(UIElement.Opacity)"
+                                                Value="0.7" />
+                                    </VisualState.Setters>
+                                </VisualState>
                                 <VisualState x:Name="PointerOver">
                                     <VisualState.Setters>
                                         <Setter Target="HeaderContentPresenter.(UIElement.Opacity)"
@@ -135,21 +140,15 @@
                                 </VisualState>
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="HeaderStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0:0:0.5" />
-                                </VisualStateGroup.Transitions>
+
                                 <VisualState x:Name="NoHeader">
                                     <VisualState.Setters>
-                                        <Setter Target="HeaderContentPresenter.(UIElement.Opacity)"
-                                                Value="0.3" />
+
+                                        <Setter Target="HeaderContentPresenter.(UIElement.Visibility)"
+                                                Value="Collapsed" />
                                     </VisualState.Setters>
                                 </VisualState>
-                                <VisualState x:Name="HasHeader">
-                                    <VisualState.Setters>
-                                        <Setter Target="HeaderContentPresenter.(UIElement.Opacity)"
-                                                Value="0.3" />
-                                    </VisualState.Setters>
-                                </VisualState>
+                                <VisualState x:Name="HasHeader" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <ContentPresenter x:Name="HeaderContentPresenter"
@@ -157,8 +156,7 @@
                                           Margin="0,0,0,8"
                                           FontWeight="Normal"
                                           Content="{TemplateBinding Header}"
-                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                          Opacity="0.7" />
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}" />
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           Margin="{TemplateBinding Padding}"
@@ -257,4 +255,21 @@
         </Setter>
     </Style>
 
+
+    <Style TargetType="local:MenuItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MenuItem">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="{TemplateBinding Background}" />
+                        <Button Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Click"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

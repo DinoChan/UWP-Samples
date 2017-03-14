@@ -115,6 +115,9 @@
     </Compile>
     <Compile Include="DateTimeSelectors\DateTimeSelectorForCommand\DateTimeSelector.cs" />
     <Compile Include="DateTimeSelectors\DelegateCommand.cs" />
+    <Compile Include="EventListViewSamplePage.xaml.cs">
+      <DependentUpon>EventListViewSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderedContentControlSamplePage.xaml.cs">
       <DependentUpon>HeaderedContentControlSamplePage.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,9 @@
     <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="MyContentControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertySamplePage.xaml.cs">
+      <DependentUpon>PropertySamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SimpleItemsControlSample.xaml.cs">
       <DependentUpon>SimpleItemsControlSample.xaml</DependentUpon>
     </Compile>
@@ -194,6 +200,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EventListViewSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HeaderedContentControlSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,6 +225,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MenuItemSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PropertySamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

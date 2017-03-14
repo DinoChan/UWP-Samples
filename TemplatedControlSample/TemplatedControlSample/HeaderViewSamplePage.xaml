@@ -122,5 +122,14 @@
             <TextBox local:HeaderView.Header="TextBox Header"
                      Text="Some Text" />
         </StackPanel>-->
+        <StackPanel>
+            <local:HeaderView Header="sss"
+                              AttachedElement="{Binding ElementName=Rec}"/>
+            <Rectangle Height="50"
+                       Width="100"
+                       Fill="Red" 
+                       x:Name="Rec"/>
+            <TextBox  PlaceholderText="Input some text..."/>
+        </StackPanel>
     </Grid>
 </Page>
