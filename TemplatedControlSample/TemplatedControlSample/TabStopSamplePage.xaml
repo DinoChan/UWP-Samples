@@ -10,9 +10,6 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <TextBox />
-            <ContentControl HorizontalContentAlignment="Stretch" IsTabStop="False">
-                <TextBox />
-            </ContentControl>
             <local:DateTimeSelector />
         </StackPanel>
     </Grid>
