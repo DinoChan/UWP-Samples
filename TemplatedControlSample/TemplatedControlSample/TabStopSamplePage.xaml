@@ -10,10 +10,9 @@
           Padding="20">
         <StackPanel>
             <TextBox Width="300"
-                     HorizontalAlignment="Left" 
-                     />
-            <local:DateTimeSelector  HorizontalAlignment="Left" 
-                                     Margin="0,10"/>
+                     HorizontalAlignment="Left" />
+            <local:DateTimeSelector  HorizontalAlignment="Left"
+                                     Margin="0,10" />
             <ComboBox  Width="300"
                        HorizontalAlignment="Left" />
         </StackPanel>

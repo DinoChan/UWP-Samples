@@ -129,7 +129,7 @@
                                 <VisualState x:Name="Normal">
                                     <VisualState.Setters>
                                         <Setter Target="HeaderContentPresenter.(UIElement.Opacity)"
-                                                Value="0.7" />
+                                                Value="0.5" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="PointerOver">
@@ -140,10 +140,8 @@
                                 </VisualState>
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="HeaderStates">
-
                                 <VisualState x:Name="NoHeader">
                                     <VisualState.Setters>
-
                                         <Setter Target="HeaderContentPresenter.(UIElement.Visibility)"
                                                 Value="Collapsed" />
                                     </VisualState.Setters>
