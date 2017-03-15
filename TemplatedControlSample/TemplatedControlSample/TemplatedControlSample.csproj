@@ -153,6 +153,7 @@
       <DependentUpon>SimpleItemsControlSample.xaml</DependentUpon>
     </Compile>
     <Compile Include="SimpleItemsControls\EventListView.cs" />
+    <Compile Include="SimpleItemsControls\EventListViewItem.cs" />
     <Compile Include="SimpleItemsControls\SimpleItemsControl.cs" />
     <Compile Include="SimpleItemsControls\SimpleItemsControlItem.cs" />
     <Compile Include="TabStopSamplePage.xaml.cs">

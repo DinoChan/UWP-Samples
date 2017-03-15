@@ -270,4 +270,24 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <Style TargetType="local:EventListViewItem">
+        <Setter Property="Padding"
+                Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:EventListViewItem">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Content="{TemplateBinding Header}" />
+                            <ContentPresenter Margin="5,0,0,0" />
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
