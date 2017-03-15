@@ -30,7 +30,7 @@ namespace TemplatedControlSample
         protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
         {
             base.PrepareContainerForItemOverride(element, item);
-            var control = element as HeaderedContentControl;
+            var control = element as EventListViewItem;
             if (control == null)
                 return;
 

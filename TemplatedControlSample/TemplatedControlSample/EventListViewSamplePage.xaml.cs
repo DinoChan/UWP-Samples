@@ -29,12 +29,12 @@ namespace TemplatedControlSample
             Loaded += EventListViewSamplePage_Loaded;
         }
 
-        private  void EventListViewSamplePage_Loaded(object sender, RoutedEventArgs e)
+        private async void EventListViewSamplePage_Loaded(object sender, RoutedEventArgs e)
         {
 
             for (int i = 0; i < 10; i++)
             {
-              
+                await Task.Delay(1000);
                 List.Items.Add("aaaa");
             }
             //Task.Run(async() =>
