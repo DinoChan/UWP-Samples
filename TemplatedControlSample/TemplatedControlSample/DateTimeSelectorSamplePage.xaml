@@ -8,6 +8,21 @@
     <Page.Resources>
         <local:DateTimeOffsetConverter x:Key="DateTimeOffsetConverter" />
         <local:TimeSpanConverter x:Key="TimeSpanConverter" />
+        <Style TargetType="local:DateTimeSelector2">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:DateTimeSelector2">
+                        <StackPanel Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                            <CalendarDatePicker Margin="0,0,0,5"
+                                                Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
+                            <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource TimeSpanConverter}}" />
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="DateTimeSelector2CustomStyle"
                TargetType="local:DateTimeSelector2">
             <Setter Property="Template">
@@ -26,7 +41,7 @@
         </Style>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
+        <StackPanel Visibility="Collapsed">
             <local:DateTimeSelector x:Name="DateTimeSelector" />
             <TextBlock Text="{Binding ElementName=DateTimeSelector,Path=SelectedDateTime}" />
 
@@ -42,6 +57,20 @@
 
             <local:DateTimeSelector2 x:Name="DateTimeSelector4" Style="{StaticResource DateTimeSelector2CustomStyle}" />
             <TextBlock Text="{Binding ElementName=DateTimeSelector4,Path=DateTime}" />
+
+        </StackPanel>
+
+        <StackPanel  Margin="20">
+
+            <TextBlock Text="Orginal Style" />
+
+            <local:DateTimeSelector2 
+                                    />
+
+            <TextBlock Text="Custom Style"
+                       Margin="0,20,0,0" />
+            <local:DateTimeSelector2 
+                                     Style="{StaticResource DateTimeSelector2CustomStyle}" />
 
         </StackPanel>
     </Grid>

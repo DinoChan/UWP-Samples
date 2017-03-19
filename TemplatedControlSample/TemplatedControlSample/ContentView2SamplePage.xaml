@@ -7,10 +7,10 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <local:ContentView2 Header="Header"
                                 Content="Content"
-                                Visibility="Collapsed" />
+                               />
             <local:ContentView2 Header="header">
                 <Control.Template>
                     <ControlTemplate TargetType="local:ContentView2">

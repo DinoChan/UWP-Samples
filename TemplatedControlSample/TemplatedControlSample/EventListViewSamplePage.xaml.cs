@@ -35,7 +35,7 @@ namespace TemplatedControlSample
             for (int i = 0; i < 10; i++)
             {
                 await Task.Delay(1000);
-                List.Items.Add("aaaa");
+                List.Items.Add("Button clicked at "+DateTime.Now.ToString("mm:ss"));
             }
             //Task.Run(async() =>
             //{

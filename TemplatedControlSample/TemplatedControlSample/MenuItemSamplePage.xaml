@@ -8,9 +8,15 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <TextBox x:Name="TextElement"/>
-            <local:MenuItem Command="{Binding}" CommandParameter="{Binding ElementName=TextElement,Path=Text}" Height="100"
-                            Width="100" Background="Blue"/>
+            <TextBox x:Name="TextElement" />
+            <local:MenuItem Command="{Binding}"
+                            CommandParameter="{Binding ElementName=TextElement,Path=Text}"
+                            Height="100"
+                            Width="100"
+                            Background="Blue" />
+            <Button Command="{Binding}"
+                    CommandParameter="{Binding ElementName=TextElement,Path=Text}"
+                    Content="Click" />
         </StackPanel>
     </Grid>
 </Page>

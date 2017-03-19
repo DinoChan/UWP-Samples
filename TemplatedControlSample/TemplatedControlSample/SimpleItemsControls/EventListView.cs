@@ -38,7 +38,7 @@ namespace TemplatedControlSample
             if (_items.ContainsKey(item))
             {
                 var time = _items[item];
-                control.Header = time.ToString("HH:mm:ss ffff");
+                control.Header = time.ToString("HH:mm:ss")+": ";
             }
         }
 

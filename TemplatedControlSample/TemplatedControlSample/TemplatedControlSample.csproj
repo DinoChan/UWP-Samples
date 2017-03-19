@@ -102,6 +102,9 @@
     <Compile Include="ContentViewSamplePage.xaml.cs">
       <DependentUpon>ContentViewSamplePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlTemplateSample.xaml.cs">
+      <DependentUpon>ControlTemplateSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\DateTimeConverter.cs" />
     <Compile Include="Converters\DateTimeOffsetConverter.cs" />
     <Compile Include="Converters\TimeSpanConverter.cs" />
@@ -117,6 +120,9 @@
     <Compile Include="DateTimeSelectors\DelegateCommand.cs" />
     <Compile Include="EventListViewSamplePage.xaml.cs">
       <DependentUpon>EventListViewSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GuiSamplePage.xaml.cs">
+      <DependentUpon>GuiSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="HeaderedContentControlSamplePage.xaml.cs">
       <DependentUpon>HeaderedContentControlSamplePage.xaml</DependentUpon>
@@ -193,6 +199,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlTemplateSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DateTimeSelectorSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EventListViewSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GuiSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
