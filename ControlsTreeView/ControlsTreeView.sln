@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlsTreeView", "ControlsTreeView\ControlsTreeView.csproj", "{97732D3E-5A51-45D4-9EFD-A88A7AA30BCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyHelper", "AssemblyHelper\AssemblyHelper.csproj", "{68D9254B-1928-46E6-ACB7-0EFE4245F40C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97732D3E-5A51-45D4-9EFD-A88A7AA30BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97732D3E-5A51-45D4-9EFD-A88A7AA30BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97732D3E-5A51-45D4-9EFD-A88A7AA30BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97732D3E-5A51-45D4-9EFD-A88A7AA30BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D9254B-1928-46E6-ACB7-0EFE4245F40C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D9254B-1928-46E6-ACB7-0EFE4245F40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D9254B-1928-46E6-ACB7-0EFE4245F40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D9254B-1928-46E6-ACB7-0EFE4245F40C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
