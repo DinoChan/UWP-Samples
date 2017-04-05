@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControlsTreeView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        WindowState="Maximized"
+        Title="MainWindow"
+        Height="350"
+        Width="525">
     <Grid>
-        
+        <TreeView x:Name="TreeView">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding SubTypes}">
+                    <Grid>
+                        <TextBlock Text="{Binding Type.FullName}" />
+                        <TextBlock Text="{Binding Type.Namespace}"
+                                   Foreground="DarkGray" />
+                    </Grid>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
     </Grid>
 </Window>

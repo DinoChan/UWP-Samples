@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AssemblyHelper;
 
 namespace ControlsTreeView
 {
@@ -23,6 +24,8 @@ namespace ControlsTreeView
         public MainWindow()
         {
             InitializeComponent();
+            var type = TypeSeeker.SeekType(typeof(FrameworkElement));
+            TreeView.Items.Add(type);
         }
     }
 }
