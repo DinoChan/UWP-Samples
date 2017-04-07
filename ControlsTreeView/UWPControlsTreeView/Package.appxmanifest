@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="f8825691-121a-4763-a634-7a1c392827bb"
-    Publisher="CN=jchen"
+    Name="0c5f8fc1-6b04-497d-a1eb-c8253e9b363e"
+    Publisher="CN=dinoc"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="f8825691-121a-4763-a634-7a1c392827bb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="0c5f8fc1-6b04-497d-a1eb-c8253e9b363e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>UWPControlsTreeView</DisplayName>
-    <PublisherDisplayName>jchen</PublisherDisplayName>
+    <PublisherDisplayName>dinoc</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
