@@ -94,6 +94,7 @@
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="0,0,0,8"
                                           FontWeight="Normal"
+                                          x:DeferLoadStrategy="Lazy"
                                           Content="{TemplateBinding Header}"
                                           ContentTemplate="{TemplateBinding HeaderTemplate}" />
                         <ContentPresenter Content="{TemplateBinding Content}"
@@ -152,6 +153,7 @@
                         <ContentPresenter x:Name="HeaderContentPresenter"
                                           Foreground="{ThemeResource TextControlHeaderForeground}"
                                           Margin="0,0,0,8"
+                                          x:DeferLoadStrategy="Lazy"
                                           FontWeight="Normal"
                                           Content="{TemplateBinding Header}"
                                           ContentTemplate="{TemplateBinding HeaderTemplate}" />
