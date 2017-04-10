@@ -17,7 +17,7 @@
                                     BorderThickness="{TemplateBinding BorderThickness}">
                             <CalendarDatePicker Margin="0,0,0,5"
                                                 Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
-                            <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource TimeSpanConverter}}" />
+                            <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}" />
                         </StackPanel>
                     </ControlTemplate>
                 </Setter.Value>
@@ -33,7 +33,7 @@
                                     BorderThickness="{TemplateBinding BorderThickness}">
                             <DatePicker Margin="0,0,0,5"
                                         Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
-                            <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource TimeSpanConverter}}" />
+                            <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}" />
                         </StackPanel>
                     </ControlTemplate>
                 </Setter.Value>
@@ -41,9 +41,9 @@
         </Style>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Visibility="Collapsed">
-            <local:DateTimeSelector x:Name="DateTimeSelector" />
-            <TextBlock Text="{Binding ElementName=DateTimeSelector,Path=SelectedDateTime}" />
+        <StackPanel>
+            <!--<local:DateTimeSelector x:Name="DateTimeSelector" />
+            <TextBlock Text="{Binding ElementName=DateTimeSelector,Path=SelectedDateTime}" />-->
 
 
             <local:DateTimeSelector2 x:Name="DateTimeSelector2"
@@ -51,26 +51,28 @@
             <TextBlock Text="{Binding ElementName=DateTimeSelector2,Path=DateTime}" />
 
 
-            <local:DateTimeSelector3 x:Name="DateTimeSelector3"
+            <!--<local:DateTimeSelector3 x:Name="DateTimeSelector3"
                                      Margin="0,20,0,0" />
-            <TextBlock Text="{Binding ElementName=DateTimeSelector3,Path=DateTime}" />
+            <TextBlock Text="{Binding ElementName=DateTimeSelector3,Path=DateTime}" />-->
 
-            <local:DateTimeSelector2 x:Name="DateTimeSelector4" Style="{StaticResource DateTimeSelector2CustomStyle}" />
+            <local:DateTimeSelector2 x:Name="DateTimeSelector4"
+                                     Style="{StaticResource DateTimeSelector2CustomStyle}" />
             <TextBlock Text="{Binding ElementName=DateTimeSelector4,Path=DateTime}" />
 
+            <!--<local:DateTimeSelector4 x:Name="DateTimeSelector5" />
+            <TextBlock Text="{Binding ElementName=DateTimeSelector5,Path=DateTime}" />-->
         </StackPanel>
 
-        <StackPanel  Margin="20">
+        <StackPanel  Margin="20"
+                     Visibility="Collapsed">
 
             <TextBlock Text="Orginal Style" />
 
-            <local:DateTimeSelector2 
-                                    />
+            <local:DateTimeSelector2 />
 
             <TextBlock Text="Custom Style"
                        Margin="0,20,0,0" />
-            <local:DateTimeSelector2 
-                                     Style="{StaticResource DateTimeSelector2CustomStyle}" />
+            <local:DateTimeSelector2 Style="{StaticResource DateTimeSelector2CustomStyle}" />
 
         </StackPanel>
     </Grid>

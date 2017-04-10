@@ -116,6 +116,10 @@
     <Compile Include="DateTimeSelectors\DateTimeSelector3.xaml.cs">
       <DependentUpon>DateTimeSelector3.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DateTimeSelectors\DateTimeSelector4.xaml.cs">
+      <DependentUpon>DateTimeSelector4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DateTimeSelectors\DateTimeSelectorBase.cs" />
     <Compile Include="DateTimeSelectors\DateTimeSelectorForCommand\DateTimeSelector.cs" />
     <Compile Include="DateTimeSelectors\DelegateCommand.cs" />
     <Compile Include="EventListViewSamplePage.xaml.cs">
@@ -208,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DateTimeSelectors\DateTimeSelector3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DateTimeSelectors\DateTimeSelector4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

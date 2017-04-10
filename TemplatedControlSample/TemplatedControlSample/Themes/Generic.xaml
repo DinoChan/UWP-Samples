@@ -197,7 +197,7 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                         <CalendarDatePicker Margin="0,0,0,5"
                                             Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
-                        <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource TimeSpanConverter}}" />
+                        <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -214,7 +214,7 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                         <DatePicker Margin="0,0,0,5"
                                     Date="{Binding Date,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource DateTimeOffsetConverter}}" />
-                        <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay,Converter={StaticResource TimeSpanConverter}}" />
+                        <TimePicker Time="{Binding Time,RelativeSource={RelativeSource Mode=TemplatedParent},Mode=TwoWay}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>

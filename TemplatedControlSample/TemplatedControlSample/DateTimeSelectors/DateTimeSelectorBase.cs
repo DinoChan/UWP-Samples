@@ -8,17 +8,17 @@ using Windows.UI.Xaml.Controls;
 
 namespace TemplatedControlSample
 {
-    public class DateTimeSelector2 : Control
+    public class DateTimeSelectorBase : UserControl
     {
         /// <summary>
         /// 标识 Date 依赖属性。
         /// </summary>
         public static readonly DependencyProperty DateProperty =
-            DependencyProperty.Register("Date", typeof(DateTime?), typeof(DateTimeSelector2), new PropertyMetadata(null, OnDateChanged));
+            DependencyProperty.Register("Date", typeof(DateTime?), typeof(DateTimeSelectorBase), new PropertyMetadata(null, OnDateChanged));
 
         private static void OnDateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            DateTimeSelector2 target = obj as DateTimeSelector2;
+            DateTimeSelectorBase target = obj as DateTimeSelectorBase;
             DateTime? oldValue = (DateTime?)args.OldValue;
             DateTime? newValue = (DateTime?)args.NewValue;
             if (oldValue != newValue)
@@ -31,13 +31,13 @@ namespace TemplatedControlSample
         /// 标识 Time 依赖属性。
         /// </summary>
         public static readonly DependencyProperty TimeProperty =
-            DependencyProperty.Register("Time", typeof(TimeSpan?), typeof(DateTimeSelector2), new PropertyMetadata(null, OnTimeChanged));
+            DependencyProperty.Register("Time", typeof(TimeSpan), typeof(DateTimeSelectorBase), new PropertyMetadata(null, OnTimeChanged));
 
         private static void OnTimeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            DateTimeSelector2 target = obj as DateTimeSelector2;
-            TimeSpan? oldValue = (TimeSpan?)args.OldValue;
-            TimeSpan? newValue = (TimeSpan?)args.NewValue;
+            DateTimeSelectorBase target = obj as DateTimeSelectorBase;
+            TimeSpan oldValue = (TimeSpan)args.OldValue;
+            TimeSpan newValue = (TimeSpan)args.NewValue;
             if (oldValue != newValue)
                 target.OnTimeChanged(oldValue, newValue);
         }
@@ -46,21 +46,21 @@ namespace TemplatedControlSample
         /// 标识 DateTime 依赖属性。
         /// </summary>
         public static readonly DependencyProperty DateTimeProperty =
-            DependencyProperty.Register("DateTime", typeof(DateTime?), typeof(DateTimeSelector2), new PropertyMetadata(null, OnDateTimeChanged));
+            DependencyProperty.Register("DateTime", typeof(DateTime?), typeof(DateTimeSelectorBase), new PropertyMetadata(null, OnDateTimeChanged));
 
         private static void OnDateTimeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            DateTimeSelector2 target = obj as DateTimeSelector2;
+            DateTimeSelectorBase target = obj as DateTimeSelectorBase;
             DateTime? oldValue = (DateTime?)args.OldValue;
             DateTime? newValue = (DateTime?)args.NewValue;
             if (oldValue != newValue)
                 target.OnDateTimeChanged(oldValue, newValue);
         }
 
-        public DateTimeSelector2()
-        {
-            this.DefaultStyleKey = typeof(DateTimeSelector2);
-        }
+        //public DateTimeSelectorBase()
+        //{
+          
+        //}
 
         /// <summary>
         /// 获取或设置Date的值
@@ -97,7 +97,7 @@ namespace TemplatedControlSample
         }
 
 
-        protected virtual void OnTimeChanged(TimeSpan? oldValue, TimeSpan? newValue)
+        protected virtual void OnTimeChanged(TimeSpan oldValue, TimeSpan newValue)
         {
             UpdateDateTime();
         }
