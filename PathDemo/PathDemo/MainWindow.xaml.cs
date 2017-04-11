@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +27,7 @@ namespace PathDemo
             InitializeComponent();
             Loaded += OnLoaded;
             this.SizeChanged += OnSizeChanged;
+            CodeTimer.Initialize();
             //Polyline.SizeChanged += Polyline_SizeChanged;
         }
 
@@ -37,7 +39,7 @@ namespace PathDemo
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             watch.Stop();
-            MessageBox.Show(watch.ElapsedMilliseconds.ToString());
+            //MessageBox.Show(watch.ElapsedMilliseconds.ToString());
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -78,28 +80,39 @@ namespace PathDemo
         Stopwatch watch = new Stopwatch();
         private async void OnChangeSize(object sender, RoutedEventArgs e)
         {
-           
+
             watch.Start();
             Random random = new Random();
             this.Height = random.Next(800);
             //this.Dispatcher.InvokeAsync(() => {
             //    this.Dispatcher.InvokeAsync(() => {
-              
+
             //});
             //});
-            await Task.Delay(TimeSpan.FromMilliseconds(200));
+            //Thread t = new Thread(() =>
+            //{
+            //    CodeTimer.Time("a", 1, () =>
+            //    {
+            //        Thread.Sleep(2000);
+
+            //    });
+            //});
+            //t.Start();
+
+            //await Task.Delay(TimeSpan.FromMilliseconds(200));
             //Action action = new Action(() => {
-               
+
             //});
-            this.BeginInvoke(() =>
-            {
-                this.BeginInvoke(() =>
-                {
-                    this.BeginInvoke(() => {
-                     
-                    });
-                });
-            });
+            //this.BeginInvoke(() =>
+            //{
+            //    this.BeginInvoke(() =>
+            //    {
+            //        this.BeginInvoke(() =>
+            //        {
+
+            //        });
+            //    });
+            //});
             //this.Dispatcher.BeginInvoke(action);
         }
 

@@ -14,13 +14,13 @@ namespace TemplatedControlSample
         /// 标识 Date 依赖属性。
         /// </summary>
         public static readonly DependencyProperty DateProperty =
-            DependencyProperty.Register("Date", typeof(DateTime?), typeof(DateTimeSelectorBase), new PropertyMetadata(null, OnDateChanged));
+            DependencyProperty.Register("Date", typeof(DateTime), typeof(DateTimeSelectorBase), new PropertyMetadata(null, OnDateChanged));
 
         private static void OnDateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             DateTimeSelectorBase target = obj as DateTimeSelectorBase;
-            DateTime? oldValue = (DateTime?)args.OldValue;
-            DateTime? newValue = (DateTime?)args.NewValue;
+            DateTime oldValue = (DateTime)args.OldValue;
+            DateTime newValue = (DateTime)args.NewValue;
             if (oldValue != newValue)
                 target.OnDateChanged(oldValue, newValue);
         }
@@ -46,28 +46,28 @@ namespace TemplatedControlSample
         /// 标识 DateTime 依赖属性。
         /// </summary>
         public static readonly DependencyProperty DateTimeProperty =
-            DependencyProperty.Register("DateTime", typeof(DateTime?), typeof(DateTimeSelectorBase), new PropertyMetadata(null, OnDateTimeChanged));
+            DependencyProperty.Register("DateTime", typeof(DateTime), typeof(DateTimeSelectorBase), new PropertyMetadata(null, OnDateTimeChanged));
 
         private static void OnDateTimeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             DateTimeSelectorBase target = obj as DateTimeSelectorBase;
-            DateTime? oldValue = (DateTime?)args.OldValue;
-            DateTime? newValue = (DateTime?)args.NewValue;
+            DateTime oldValue = (DateTime)args.OldValue;
+            DateTime newValue = (DateTime)args.NewValue;
             if (oldValue != newValue)
                 target.OnDateTimeChanged(oldValue, newValue);
         }
 
         //public DateTimeSelectorBase()
         //{
-          
+
         //}
 
         /// <summary>
         /// 获取或设置Date的值
         /// </summary>  
-        public DateTime? Date
+        public DateTime Date
         {
-            get { return (DateTime?)GetValue(DateProperty); }
+            get { return (DateTime)GetValue(DateProperty); }
             set { SetValue(DateProperty, value); }
         }
 
@@ -83,15 +83,15 @@ namespace TemplatedControlSample
         /// <summary>
         /// 获取或设置DateTime的值
         /// </summary>  
-        public DateTime? DateTime
+        public DateTime DateTime
         {
-            get { return (DateTime?)GetValue(DateTimeProperty); }
+            get { return (DateTime)GetValue(DateTimeProperty); }
             set { SetValue(DateTimeProperty, value); }
         }
 
         private bool _isUpdatingDateTime;
 
-        protected virtual void OnDateChanged(DateTime? oldValue, DateTime? newValue)
+        protected virtual void OnDateChanged(DateTime oldValue, DateTime newValue)
         {
             UpdateDateTime();
         }
@@ -102,21 +102,13 @@ namespace TemplatedControlSample
             UpdateDateTime();
         }
 
-        protected virtual void OnDateTimeChanged(DateTime? oldValue, DateTime? newValue)
+        protected virtual void OnDateTimeChanged(DateTime oldValue, DateTime newValue)
         {
             _isUpdatingDateTime = true;
             try
             {
-                if (newValue == null)
-                {
-                    Date = null;
-                    Time = null;
-                }
-                else
-                {
-                    Date = newValue.Value.Date;
-                    Time = newValue.Value.TimeOfDay;
-                }
+                Date = newValue.Date;
+                Time = newValue.TimeOfDay;
             }
             finally
             {
@@ -129,10 +121,7 @@ namespace TemplatedControlSample
             if (_isUpdatingDateTime)
                 return;
 
-            if (Date == null || Time == null)
-                DateTime = null;
-            else
-                DateTime = Date.Value.Date.Add(Time.Value);
+            DateTime = Date.Date.Add(Time.Value);
         }
     }
 }

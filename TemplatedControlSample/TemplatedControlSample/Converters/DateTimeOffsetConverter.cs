@@ -11,11 +11,11 @@ namespace TemplatedControlSample
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            DateTime? from = value as DateTime?;
-            if (from == null)
+            if ((value is DateTime) == false)
                 return new DateTimeOffset(DateTime.Now);
 
-            return new DateTimeOffset(from.Value);
+            DateTime from = (DateTime)value ;
+            return new DateTimeOffset(from);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
@@ -23,9 +23,6 @@ namespace TemplatedControlSample
             if (value is DateTimeOffset?)
             {
                 DateTimeOffset? from = value as DateTimeOffset?;
-                if (from == null)
-                    return null;
-
                 return from.Value.DateTime;
             }
             else
