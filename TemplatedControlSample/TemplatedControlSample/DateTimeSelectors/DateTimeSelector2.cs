@@ -14,7 +14,7 @@ namespace TemplatedControlSample
         /// 标识 Date 依赖属性。
         /// </summary>
         public static readonly DependencyProperty DateProperty =
-            DependencyProperty.Register("Date", typeof(DateTime), typeof(DateTimeSelector2), new PropertyMetadata(null, OnDateChanged));
+            DependencyProperty.Register("Date", typeof(DateTime), typeof(DateTimeSelector2), new PropertyMetadata(DateTime.Now, OnDateChanged));
 
         private static void OnDateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
@@ -31,7 +31,7 @@ namespace TemplatedControlSample
         /// 标识 Time 依赖属性。
         /// </summary>
         public static readonly DependencyProperty TimeProperty =
-            DependencyProperty.Register("Time", typeof(TimeSpan), typeof(DateTimeSelector2), new PropertyMetadata(null, OnTimeChanged));
+            DependencyProperty.Register("Time", typeof(TimeSpan), typeof(DateTimeSelector2), new PropertyMetadata(TimeSpan.Zero, OnTimeChanged));
 
         private static void OnTimeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
@@ -46,7 +46,7 @@ namespace TemplatedControlSample
         /// 标识 DateTime 依赖属性。
         /// </summary>
         public static readonly DependencyProperty DateTimeProperty =
-            DependencyProperty.Register("DateTime", typeof(DateTime), typeof(DateTimeSelector2), new PropertyMetadata(null, OnDateTimeChanged));
+            DependencyProperty.Register("DateTime", typeof(DateTime), typeof(DateTimeSelector2), new PropertyMetadata(DateTime.Now, OnDateTimeChanged));
 
         private static void OnDateTimeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {

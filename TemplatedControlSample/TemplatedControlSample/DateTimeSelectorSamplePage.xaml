@@ -59,8 +59,8 @@
                                      Style="{StaticResource DateTimeSelector2CustomStyle}" />
             <TextBlock Text="{Binding ElementName=DateTimeSelector4,Path=DateTime}" />
 
-            <!--<local:DateTimeSelector4 x:Name="DateTimeSelector5" />
-            <TextBlock Text="{Binding ElementName=DateTimeSelector5,Path=DateTime}" />-->
+            <local:DateTimeSelector4 x:Name="DateTimeSelector5" />
+            <TextBlock Text="{Binding ElementName=DateTimeSelector5,Path=DateTime}" />
         </StackPanel>
 
         <StackPanel  Margin="20"
