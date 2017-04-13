@@ -63,10 +63,10 @@ namespace PathDemo
 
             for (int i = 0; i < 1000; i++)
             {
-                figure.Segments.Add(new LineSegment { Point = new Point(i, random.Next(200)) });
+                figure.Segments.Add(new LineSegment { Point = new Point(i, 200) });
             }
 
-            figure.Segments.Add(new LineSegment { Point = new Point(0, 200) });
+            figure.Segments.Add(new LineSegment { Point = new Point(1000, 0) });
 
             if (figure.Segments.Count > 1)
             {
