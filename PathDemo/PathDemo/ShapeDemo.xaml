@@ -8,7 +8,7 @@
         WindowState="Maximized"
         Title="ShapeDemo"
         Height="1000"
-        Width="500">
+        Width="800">
     <Grid>
         <TabControl>
             <TabItem Header="Rectangle">
@@ -72,6 +72,47 @@
                             </Grid>
                         </StackPanel>
 
+                        <TextBlock Text="Radius"
+                                   Margin="0,10,0,0" />
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle  Height="200"
+                                        Width="200"
+                                        Margin="10"
+                                        Fill="#FF7E9EC0"
+                                        Stroke="#FFFF0EC4"
+                                        StrokeThickness="20"
+                                        StrokeLineJoin="Bevel" />
+
+                            <Rectangle  Height="200"
+                                        Width="200"
+                                        Margin="10"
+                                        Fill="#FF7E9EC0"
+                                        Stroke="#FFFF0EC4"
+                                        StrokeThickness="20"
+                                        StrokeLineJoin="Miter" />
+
+
+                            <Rectangle  Height="200"
+                                        Width="200"
+                                        Margin="10"
+                                        Fill="#FF7E9EC0"
+                                        Stroke="#FFFF0EC4"
+                                        StrokeThickness="20"
+                                        StrokeLineJoin="Round" />
+
+
+
+                        </StackPanel>
+                        <Rectangle StrokeThickness="5"
+                                   Stroke="Coral"
+                                   Height="20"
+                                   StrokeDashArray="4 2"
+                                   Margin="10" />
+                        <Rectangle StrokeThickness="5"
+                                   Stroke="Coral"
+                                   Height="20"
+                                   StrokeDashArray="4 2 1"
+                                   Margin="10" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -300,10 +341,11 @@
                             </Grid.ColumnDefinitions>
                             <Grid Margin="10,20"
                                   Width="200"
-                                  Height="10">
+                                  Height="10"
+                                  Background="Gray">
                                 <Line Stretch="Fill"
                                       Stroke="Red"
-                                      StrokeThickness="10"
+                                      StrokeThickness="10.5"
                                       X2="1"
                                       StrokeEndLineCap="Flat" />
                             </Grid>
@@ -313,8 +355,9 @@
                             <Grid Width="200"
                                   Margin="10,20"
                                   Height="10"
+                                  Background="Gray"
                                   Grid.Row="1">
-                                <Line Stretch="Fill"
+                                <Line Stretch="Uniform"
                                       Stroke="Red"
                                       StrokeThickness="10"
                                       X2="1"
@@ -327,6 +370,7 @@
                             <Grid Width="200"
                                   Margin="10,20"
                                   Height="10"
+                                  Background="Gray"
                                   Grid.Row="2">
                                 <Line Stretch="Fill"
                                       Stroke="Red"
@@ -341,6 +385,7 @@
                             <Grid Width="200"
                                   Margin="10,20"
                                   Height="10"
+                                  Background="Gray"
                                   Grid.Row="3">
                                 <Line Stretch="Fill"
                                       Stroke="Red"
