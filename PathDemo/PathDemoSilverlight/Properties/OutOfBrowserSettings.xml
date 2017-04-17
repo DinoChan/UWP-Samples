@@ -1,0 +1,7 @@
+<OutOfBrowserSettings ShortName="PathDemoSilverlight 应用程序" EnableGPUAcceleration="False" ShowInstallMenuItem="False">
+  <OutOfBrowserSettings.Blurb>您的桌面上的 PathDemoSilverlight 应用程序；在家、工作或旅途中均可使用。</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.WindowSettings>
+    <WindowSettings Title="PathDemoSilverlight 应用程序" />
+  </OutOfBrowserSettings.WindowSettings>
+  <OutOfBrowserSettings.Icons />
+</OutOfBrowserSettings>

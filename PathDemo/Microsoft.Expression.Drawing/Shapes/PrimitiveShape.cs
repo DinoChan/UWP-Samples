@@ -2,6 +2,7 @@ using Microsoft.Expression.Drawing.Core;
 using Microsoft.Expression.Media;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Data;
@@ -71,7 +72,7 @@ namespace Microsoft.Expression.Shapes
         static PrimitiveShape()
         {
             PrimitiveShape.StretchListenerProperty = DependencyProperty.Register("StretchListener", typeof(System.Windows.Media.Stretch), typeof(PrimitiveShape), new DrawingPropertyMetadata((object)System.Windows.Media.Stretch.Fill, DrawingPropertyMetadataOptions.AffectsRender));
-            PrimitiveShape.ThicknessListenerProperty = DependencyProperty.Register("ThicknessListener", typeof(double), typeof(PrimitiveShape), new DrawingPropertyMetadata((object)1, DrawingPropertyMetadataOptions.AffectsRender));
+            PrimitiveShape.ThicknessListenerProperty = DependencyProperty.Register("ThicknessListener", typeof(double), typeof(PrimitiveShape), new DrawingPropertyMetadata(1d, DrawingPropertyMetadataOptions.AffectsRender));
         }
 
         protected PrimitiveShape()
@@ -84,7 +85,7 @@ namespace Microsoft.Expression.Shapes
         {
             if (this.GeometrySource.UpdateGeometry(this, finalSize.Bounds()) && !this.realizeGeometryScheduled)
             {
-                this.realizeGeometryScheduled = true;
+                //this.realizeGeometryScheduled = true;
                 base.LayoutUpdated += new EventHandler(this.OnLayoutUpdated);
             }
             base.ArrangeOverride(finalSize);
@@ -100,7 +101,7 @@ namespace Microsoft.Expression.Shapes
                 base.InvalidateArrange();
                 if (Application.Current != null && Application.Current.RootVisual != null && (bool)Application.Current.RootVisual.GetValue(DesignerProperties.IsInDesignModeProperty) && (int)(reasons & InvalidateGeometryReasons.IsAnimated) != 0 && this.GeometrySource.UpdateGeometry(this, this.ActualBounds()) && !this.realizeGeometryScheduled)
                 {
-                    this.realizeGeometryScheduled = true;
+                    //this.realizeGeometryScheduled = true;
                     base.LayoutUpdated += new EventHandler(this.OnLayoutUpdated);
                 }
             }
@@ -154,6 +155,7 @@ namespace Microsoft.Expression.Shapes
         
         private new void OnLayoutUpdated(object sender, EventArgs e)
         {
+            Debug.WriteLine("New OnLayoutUpdated");
             this.realizeGeometryScheduled = false;
             base.LayoutUpdated -= new EventHandler(this.OnLayoutUpdated);
             this.RealizeGeometry();

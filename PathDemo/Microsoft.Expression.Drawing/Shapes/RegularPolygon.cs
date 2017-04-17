@@ -58,8 +58,8 @@ namespace Microsoft.Expression.Shapes
 
 		static RegularPolygon()
 		{
-			RegularPolygon.PointCountProperty = DependencyProperty.Register("PointCount", typeof(double), typeof(RegularPolygon), new DrawingPropertyMetadata((object)6, DrawingPropertyMetadataOptions.AffectsRender));
-			RegularPolygon.InnerRadiusProperty = DependencyProperty.Register("InnerRadius", typeof(double), typeof(RegularPolygon), new DrawingPropertyMetadata((object)1, DrawingPropertyMetadataOptions.AffectsRender));
+			RegularPolygon.PointCountProperty = DependencyProperty.Register("PointCount", typeof(double), typeof(RegularPolygon), new DrawingPropertyMetadata(6d, DrawingPropertyMetadataOptions.AffectsRender));
+			RegularPolygon.InnerRadiusProperty = DependencyProperty.Register("InnerRadius", typeof(double), typeof(RegularPolygon), new DrawingPropertyMetadata(1d, DrawingPropertyMetadataOptions.AffectsRender));
 		}
 
 		public RegularPolygon()

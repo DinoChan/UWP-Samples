@@ -1,5 +1,6 @@
 using Microsoft.Expression.Media;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -106,10 +107,17 @@ namespace Microsoft.Expression.Shapes
 
 		static Arc()
 		{
-			Arc.StartAngleProperty = DependencyProperty.Register("StartAngle", typeof(double), typeof(Arc), new DrawingPropertyMetadata((object)0, DrawingPropertyMetadataOptions.AffectsRender));
-			Arc.EndAngleProperty = DependencyProperty.Register("EndAngle", typeof(double), typeof(Arc), new DrawingPropertyMetadata((object)90, DrawingPropertyMetadataOptions.AffectsRender));
-			Arc.ArcThicknessProperty = DependencyProperty.Register("ArcThickness", typeof(double), typeof(Arc), new DrawingPropertyMetadata((object)0, DrawingPropertyMetadataOptions.AffectsRender));
-			Arc.ArcThicknessUnitProperty = DependencyProperty.Register("ArcThicknessUnit", typeof(UnitType), typeof(Arc), new DrawingPropertyMetadata((object)UnitType.Pixel, DrawingPropertyMetadataOptions.AffectsRender));
+		    try
+		    {
+		        Arc.StartAngleProperty = DependencyProperty.Register("StartAngle", typeof(double), typeof(Arc), new DrawingPropertyMetadata(0d, DrawingPropertyMetadataOptions.AffectsRender));
+		        Arc.EndAngleProperty = DependencyProperty.Register("EndAngle", typeof(double), typeof(Arc), new DrawingPropertyMetadata(90d, DrawingPropertyMetadataOptions.AffectsRender));
+		        Arc.ArcThicknessProperty = DependencyProperty.Register("ArcThickness", typeof(double), typeof(Arc), new DrawingPropertyMetadata(0d, DrawingPropertyMetadataOptions.AffectsRender));
+		        Arc.ArcThicknessUnitProperty = DependencyProperty.Register("ArcThicknessUnit", typeof(UnitType), typeof(Arc), new DrawingPropertyMetadata(UnitType.Pixel, DrawingPropertyMetadataOptions.AffectsRender));
+		    }
+		    catch (Exception ex)
+		    {
+
+		    }
 		}
 
 		public Arc()
@@ -135,5 +143,19 @@ namespace Microsoft.Expression.Shapes
 		{
 		    get { return base.StrokeThickness; }
 		}
-	}
+
+        protected override Size MeasureOverride(Size availableSize)
+        {
+            Debug.WriteLine("MeasureOverride");
+            return base.MeasureOverride(availableSize);
+        }
+
+
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            Debug.WriteLine("ArrangeOverride");
+            return base.ArrangeOverride(finalSize);
+        }
+
+    }
 }
