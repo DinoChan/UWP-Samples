@@ -34,9 +34,9 @@
                 x:Name="Arc"
                 LayoutUpdated="Arc_LayoutUpdated"
                 SizeChanged="Arc_SizeChanged" />
-        <ed:RegularPolygon Stretch="Fill"
+        <!--<ed:RegularPolygon Stretch="Fill"
                            PointCount="3"
-                           Fill="Red" />
+                           Fill="Red" />-->
         <Button  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                  Content="Click"
