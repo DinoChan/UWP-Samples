@@ -406,14 +406,14 @@
                 <ScrollViewer>
                     <StackPanel>
                         <Polyline Points="15,10 35,40 65,15 95,45 115,20 155,65"
-                                  Stroke="Blue"
+                                  Stroke="Blue" 
                                   StrokeThickness="4" />
                         <Polyline Points="15,10 35,40 65,15 95,45 115,20 155,65"
-                                  Fill="Red"
+                                  Fill="Red" FillRule="Nonzero"
                                   Stroke="Blue"
                                   StrokeThickness="4" />
-                        <Polyline Points="15,200 68,70 110,200 0,125 135,125"
-                                  Fill="Red"
+                        <Polyline Points="15,130 68,0 110,130 0,55 135,55"
+                                  Fill="Red" 
                                   Stroke="Blue"
                                   StrokeThickness="4" />
                         <Grid Height="100"
@@ -446,11 +446,51 @@
                         <Grid Height="100"
                               Width="100">
                             <Polygon Points="15,200 68,70 110,200 0,125 135,125"
-                                     Fill="Red"
+                                     Fill="Red" 
                                      Stroke="Blue"
                                      StrokeThickness="4"
                                      Stretch="Fill" />
                         </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Path">
+                <ScrollViewer>
+                    <StackPanel>
+                        <Path Stroke="Black"
+                              StrokeThickness="1"
+                              Fill="#CCCCFF" 
+                              >
+                            <Path.Data>
+                                <GeometryGroup>
+                                    <RectangleGeometry Rect="50,5 100,10" />
+                                    <RectangleGeometry Rect="5,5 95,180" />
+                                    <EllipseGeometry Center="100, 100"
+                                                     RadiusX="20"
+                                                     RadiusY="30" />
+                                    <RectangleGeometry Rect="50,175 100,10" />
+                                    <PathGeometry>
+                                        <PathGeometry.Figures>
+                                            <PathFigureCollection>
+                                                <PathFigure IsClosed="true"
+                                                            StartPoint="50,50">
+                                                    <PathFigure.Segments>
+                                                        <PathSegmentCollection>
+                                                            <BezierSegment Point1="75,300"
+                                                                           Point2="125,100"
+                                                                           Point3="150,50" />
+                                                            <BezierSegment Point1="125,300"
+                                                                           Point2="75,100"
+                                                                           Point3="50,50" />
+                                                        </PathSegmentCollection>
+                                                    </PathFigure.Segments>
+                                                </PathFigure>
+                                            </PathFigureCollection>
+                                        </PathGeometry.Figures>
+                                    </PathGeometry>
+                                </GeometryGroup>
+                            </Path.Data>
+                        </Path>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
