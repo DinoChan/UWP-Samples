@@ -81,7 +81,8 @@
                                         Fill="#FF7E9EC0"
                                         Stroke="#FFFF0EC4"
                                         StrokeThickness="20"
-                                        StrokeLineJoin="Bevel" />
+                                        StrokeLineJoin="Bevel"
+                                        />
 
                             <Rectangle  Height="200"
                                         Width="200"
@@ -89,7 +90,8 @@
                                         Fill="#FF7E9EC0"
                                         Stroke="#FFFF0EC4"
                                         StrokeThickness="20"
-                                        StrokeLineJoin="Miter" />
+                                        StrokeLineJoin="Miter"
+                                        />
 
 
                             <Rectangle  Height="200"

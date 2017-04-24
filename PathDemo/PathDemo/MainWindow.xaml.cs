@@ -28,7 +28,36 @@ namespace PathDemo
             Loaded += OnLoaded;
             this.SizeChanged += OnSizeChanged;
             CodeTimer.Initialize();
-            //Polyline.SizeChanged += Polyline_SizeChanged;
+            this.LayoutUpdated += (s2, e2) =>
+            {
+                this.BeginInvoke(() =>
+                {
+                    this.BeginInvoke(() =>
+                    {
+                        this.BeginInvoke(() =>
+                        {
+                            watch.Stop();
+                            Debug.WriteLine("LyaoutUpdated " + watch.ElapsedMilliseconds.ToString());
+                        });
+                    });
+                });
+
+            };
+            this.SizeChanged += (s3, e3) =>
+            {
+                this.BeginInvoke(() =>
+                {
+                    this.BeginInvoke(() =>
+                    {
+                        this.BeginInvoke(() =>
+                        {
+                            watch2.Stop();
+                            Debug.WriteLine("SizeChanged " + watch2.ElapsedMilliseconds.ToString());
+                        });
+                    });
+                });
+
+            };
         }
 
         private void Polyline_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -38,8 +67,7 @@ namespace PathDemo
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            watch.Stop();
-            //MessageBox.Show(watch.ElapsedMilliseconds.ToString());
+          
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -63,7 +91,7 @@ namespace PathDemo
 
             for (int i = 0; i < 1000; i++)
             {
-                figure.Segments.Add(new LineSegment { Point = new Point(i, 200) });
+                figure.Segments.Add(new LineSegment { Point = new Point(i, random.Next(300)) });
             }
 
             figure.Segments.Add(new LineSegment { Point = new Point(1000, 0) });
@@ -78,12 +106,15 @@ namespace PathDemo
 
         }
         Stopwatch watch = new Stopwatch();
+        Stopwatch watch2 = new Stopwatch();
         private async void OnChangeSize(object sender, RoutedEventArgs e)
         {
-
+            watch = new Stopwatch();
             watch.Start();
+            watch2 = new Stopwatch();
+            watch2.Start();
             Random random = new Random();
-            this.Height = random.Next(800);
+            this.Height =500+ random.Next(100);
             //this.Dispatcher.InvokeAsync(() => {
             //    this.Dispatcher.InvokeAsync(() => {
 
@@ -114,6 +145,7 @@ namespace PathDemo
             //    });
             //});
             //this.Dispatcher.BeginInvoke(action);
+           
         }
 
         private void BeginInvoke(Action action)
