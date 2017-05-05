@@ -27,7 +27,7 @@ namespace PathDemoUWwp
         public MainPage()
         {
             this.InitializeComponent();
-            Line s;s.Stretch 
+            Polyline s;s.Stretch 
              PointCollection pointCollection = new PointCollection();
             for (int i = 0; i < 300; i++)
             {
