@@ -27,7 +27,7 @@ namespace PathDemoUWwp
         public MainPage()
         {
             this.InitializeComponent();
-            ProgressRing
+            Line s;s.Stretch 
              PointCollection pointCollection = new PointCollection();
             for (int i = 0; i < 300; i++)
             {

@@ -8,7 +8,7 @@
         WindowState="Maximized"
         Title="ShapeDemo"
         Height="1000"
-        Width="800">
+        Width="1000">
     <Grid>
         <TabControl>
             <TabItem Header="Rectangle">
@@ -51,9 +51,8 @@
                                         RadiusX="50"
                                         RadiusY="50" />
 
-                            <Grid>
+                            <Grid VerticalAlignment="Top">
                                 <Rectangle  Height="100"
-                                            Margin="10"
                                             Width="100"
                                             Fill="#FF7E9EC0"
                                             Stroke="#FFFF0EC4"
@@ -62,7 +61,6 @@
                                             RadiusY="20" />
                                 <Ellipse HorizontalAlignment="Left"
                                          VerticalAlignment="Top"
-                                         Margin="10"
                                          StrokeThickness="5"
                                          Stroke="Yellow"
                                          Fill="Red"
@@ -75,6 +73,7 @@
                         <TextBlock Text="Radius"
                                    Margin="0,10,0,0" />
                         <StackPanel Orientation="Horizontal">
+                            <StackPanel>
                             <Rectangle  Height="200"
                                         Width="200"
                                         Margin="10"
@@ -83,17 +82,10 @@
                                         StrokeThickness="20"
                                         StrokeLineJoin="Bevel"
                                         />
-
-                            <Rectangle  Height="200"
-                                        Width="200"
-                                        Margin="10"
-                                        Fill="#FF7E9EC0"
-                                        Stroke="#FFFF0EC4"
-                                        StrokeThickness="20"
-                                        StrokeLineJoin="Miter"
-                                        />
-
-
+                                <TextBlock Text="Bevel" FontSize="20" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                          
+                            <StackPanel>
                             <Rectangle  Height="200"
                                         Width="200"
                                         Margin="10"
@@ -101,9 +93,39 @@
                                         Stroke="#FFFF0EC4"
                                         StrokeThickness="20"
                                         StrokeLineJoin="Round" />
-
-
-
+                                <TextBlock Text="Round"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel>
+                                <Rectangle  Height="200"
+                                            Width="200"
+                                            Margin="10"
+                                            Fill="#FF7E9EC0"
+                                            Stroke="#FFFF0EC4"
+                                            StrokeThickness="20"
+                                            StrokeLineJoin="Miter"
+                                             />
+                                <TextBlock Text="Miter"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel>
+                                <Rectangle  Height="200"
+                                            Width="200"
+                                            Margin="10"
+                                            Fill="#FF7E9EC0"
+                                            Stroke="#FFFF0EC4"
+                                            StrokeThickness="20"
+                                            StrokeLineJoin="Miter"
+                                            StrokeMiterLimit="1" />
+                                <TextBlock Text="Miter"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="StrokeMiterLimit = 1"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center" />
+                            </StackPanel>
                         </StackPanel>
                         <Rectangle StrokeThickness="5"
                                    Stroke="Coral"
@@ -120,8 +142,19 @@
             </TabItem>
             <TabItem Header="Ellipse">
                 <ScrollViewer>
-                    <StackPanel>
-                        <TextBlock Text="Basic" />
+                    <StackPanel Margin="10">
+                        <Ellipse StrokeDashArray="1,2,3"
+                                 Stroke="#FFFF0EC4"
+                                 StrokeThickness="10"
+                                 Height="200"
+                                 Width="200" Margin="0,10"/>
+
+                        <Ellipse StrokeDashArray="4 2"
+                                 Stroke="#FFFF0EC4"
+                                 StrokeThickness="3"
+                                 Height="200"
+                                 Width="200" />
+                        <TextBlock Text="Basic" Margin="0,10"/>
                         <StackPanel Orientation="Horizontal">
                             <Ellipse  Height="100"
                                       Width="100"
@@ -171,6 +204,7 @@
                                              Stroke="#FFFF0EC4"
                                              StrokeThickness="5"
                                              Stretch="Uniform" />
+                                  
                                 </Grid>
                             </StackPanel>
                             <StackPanel>
