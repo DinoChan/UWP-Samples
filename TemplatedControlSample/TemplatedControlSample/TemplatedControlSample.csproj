@@ -125,6 +125,9 @@
     <Compile Include="EventListViewSamplePage.xaml.cs">
       <DependentUpon>EventListViewSamplePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FocusVisualPage.xaml.cs">
+      <DependentUpon>FocusVisualPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GuiSamplePage.xaml.cs">
       <DependentUpon>GuiSamplePage.xaml</DependentUpon>
     </Compile>
@@ -220,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EventListViewSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FocusVisualPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
