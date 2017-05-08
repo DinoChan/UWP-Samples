@@ -74,25 +74,26 @@
                                    Margin="0,10,0,0" />
                         <StackPanel Orientation="Horizontal">
                             <StackPanel>
-                            <Rectangle  Height="200"
-                                        Width="200"
-                                        Margin="10"
-                                        Fill="#FF7E9EC0"
-                                        Stroke="#FFFF0EC4"
-                                        StrokeThickness="20"
-                                        StrokeLineJoin="Bevel"
-                                        />
-                                <TextBlock Text="Bevel" FontSize="20" HorizontalAlignment="Center"/>
+                                <Rectangle  Height="200"
+                                            Width="200"
+                                            Margin="10"
+                                            Fill="#FF7E9EC0"
+                                            Stroke="#FFFF0EC4"
+                                            StrokeThickness="20"
+                                            StrokeLineJoin="Bevel" />
+                                <TextBlock Text="Bevel"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center" />
                             </StackPanel>
-                          
+
                             <StackPanel>
-                            <Rectangle  Height="200"
-                                        Width="200"
-                                        Margin="10"
-                                        Fill="#FF7E9EC0"
-                                        Stroke="#FFFF0EC4"
-                                        StrokeThickness="20"
-                                        StrokeLineJoin="Round" />
+                                <Rectangle  Height="200"
+                                            Width="200"
+                                            Margin="10"
+                                            Fill="#FF7E9EC0"
+                                            Stroke="#FFFF0EC4"
+                                            StrokeThickness="20"
+                                            StrokeLineJoin="Round" />
                                 <TextBlock Text="Round"
                                            FontSize="20"
                                            HorizontalAlignment="Center" />
@@ -104,8 +105,7 @@
                                             Fill="#FF7E9EC0"
                                             Stroke="#FFFF0EC4"
                                             StrokeThickness="20"
-                                            StrokeLineJoin="Miter"
-                                             />
+                                            StrokeLineJoin="Miter" />
                                 <TextBlock Text="Miter"
                                            FontSize="20"
                                            HorizontalAlignment="Center" />
@@ -147,14 +147,16 @@
                                  Stroke="#FFFF0EC4"
                                  StrokeThickness="10"
                                  Height="200"
-                                 Width="200" Margin="0,10"/>
+                                 Width="200"
+                                 Margin="0,10" />
 
                         <Ellipse StrokeDashArray="4 2"
                                  Stroke="#FFFF0EC4"
                                  StrokeThickness="3"
                                  Height="200"
                                  Width="200" />
-                        <TextBlock Text="Basic" Margin="0,10"/>
+                        <TextBlock Text="Basic"
+                                   Margin="0,10" />
                         <StackPanel Orientation="Horizontal">
                             <Ellipse  Height="100"
                                       Width="100"
@@ -173,49 +175,65 @@
                         <TextBlock Text="Stretch"
                                    Margin="10" />
                         <StackPanel Orientation="Horizontal">
+
+                            <Ellipse Fill="#FF7E9EC0"
+                                     Stroke="#FFFF0EC4"
+                                     StrokeThickness="5"
+                                     Height="50"
+                                     Width="100"
+                                     Stretch="Fill" />
+                            <Ellipse Fill="#FF7E9EC0"
+                                     Stroke="#FFFF0EC4"
+                                     StrokeThickness="5"
+                                     Height="50"
+                                     Width="100"
+                                     Stretch="None" />
+                            <Ellipse Fill="#FF7E9EC0"
+                                     Stroke="#FFFF0EC4"
+                                     StrokeThickness="5"
+                                     Height="50"
+                                     Width="100"
+                                     Stretch="Uniform" />
+                            <Ellipse Fill="#FF7E9EC0"
+                                     Stroke="#FFFF0EC4"
+                                     StrokeThickness="5"
+                                     Height="50"
+                                     Width="100"
+                                     Stretch="UniformToFill" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+
                             <StackPanel>
                                 <TextBlock Text="Fill"
                                            HorizontalAlignment="Center" />
                                 <Grid Height="100"
-                                      Width="50">
-                                    <Ellipse Fill="#FF7E9EC0"
-                                             Stroke="#FFFF0EC4"
-                                             StrokeThickness="5"
-                                             Stretch="Fill" />
+                                      Width="100">
+
                                 </Grid>
                             </StackPanel>
                             <StackPanel>
                                 <TextBlock Text="None"
                                            HorizontalAlignment="Center" />
                                 <Grid Height="100"
-                                      Width="50">
-                                    <Ellipse Fill="#FF7E9EC0"
-                                             Stroke="#FFFF0EC4"
-                                             StrokeThickness="5"
-                                             Stretch="None" />
+                                      Width="100">
+
                                 </Grid>
                             </StackPanel>
                             <StackPanel>
                                 <TextBlock Text="Uniform"
                                            HorizontalAlignment="Center" />
                                 <Grid Height="100"
-                                      Width="50">
-                                    <Ellipse Fill="#FF7E9EC0"
-                                             Stroke="#FFFF0EC4"
-                                             StrokeThickness="5"
-                                             Stretch="Uniform" />
-                                  
+                                      Width="100">
+
+
                                 </Grid>
                             </StackPanel>
                             <StackPanel>
                                 <TextBlock Text="UniformToFill"
                                            HorizontalAlignment="Center" />
                                 <Grid Height="100"
-                                      Width="50">
-                                    <Ellipse Fill="#FF7E9EC0"
-                                             Stroke="#FFFF0EC4"
-                                             StrokeThickness="5"
-                                             Stretch="UniformToFill" />
+                                      Width="100">
+
                                 </Grid>
                             </StackPanel>
                         </StackPanel>
@@ -442,14 +460,15 @@
                 <ScrollViewer>
                     <StackPanel>
                         <Polyline Points="15,10 35,40 65,15 95,45 115,20 155,65"
-                                  Stroke="Blue" 
+                                  Stroke="Blue"
                                   StrokeThickness="4" />
                         <Polyline Points="15,10 35,40 65,15 95,45 115,20 155,65"
-                                  Fill="Red" FillRule="Nonzero"
+                                  Fill="Red"
+                                  FillRule="Nonzero"
                                   Stroke="Blue"
                                   StrokeThickness="4" />
                         <Polyline Points="15,130 68,0 110,130 0,55 135,55"
-                                  Fill="Red" 
+                                  Fill="Red"
                                   Stroke="Blue"
                                   StrokeThickness="4" />
                         <Grid Height="100"
@@ -482,7 +501,7 @@
                         <Grid Height="100"
                               Width="100">
                             <Polygon Points="15,200 68,70 110,200 0,125 135,125"
-                                     Fill="Red" 
+                                     Fill="Red"
                                      Stroke="Blue"
                                      StrokeThickness="4"
                                      Stretch="Fill" />
@@ -495,8 +514,7 @@
                     <StackPanel>
                         <Path Stroke="Black"
                               StrokeThickness="1"
-                              Fill="#CCCCFF" 
-                              >
+                              Fill="#CCCCFF">
                             <Path.Data>
                                 <GeometryGroup>
                                     <RectangleGeometry Rect="50,5 100,10" />

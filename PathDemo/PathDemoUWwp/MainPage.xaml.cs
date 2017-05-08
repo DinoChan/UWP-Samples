@@ -27,14 +27,15 @@ namespace PathDemoUWwp
         public MainPage()
         {
             this.InitializeComponent();
-            Polyline s;s.Stretch 
-             PointCollection pointCollection = new PointCollection();
-            for (int i = 0; i < 300; i++)
-            {
-                pointCollection.Add(new Point(i, i % 2 == 0 ? 0 : 500));
-            }
-            Polyline.Points = pointCollection;
-            Loaded += MainPage_Loaded;
+            
+
+            // PointCollection pointCollection = new PointCollection();
+            //for (int i = 0; i < 300; i++)
+            //{
+            //    pointCollection.Add(new Point(i, i % 2 == 0 ? 0 : 500));
+            //}
+            //Polyline.Points = pointCollection;
+            //Loaded += MainPage_Loaded;
         }
 
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)

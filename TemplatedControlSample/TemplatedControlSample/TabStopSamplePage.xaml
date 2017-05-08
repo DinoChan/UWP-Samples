@@ -15,6 +15,38 @@
                                      Margin="0,10" />
             <ComboBox  Width="300"
                        HorizontalAlignment="Left" />
+            <TextBlock Text="开盘"
+                       Margin="0,3,0,0" />
+            <TextBlock Text="68.9" />
+            <TextBlock Text="前收盘"
+                       Margin="0,3,0,0" />
+            <TextBlock Text="68.81" />
+            <TextBlock Text="成交量"
+                       Margin="0,3,0,0" />
+            <TextBlock Text="1912.88万" />
+            <TextBlock Text="市值"
+                       Margin="0,3,0,0" />
+            <TextBlock Text="5333.70亿" />
+
+
+            <TextBlock Text="开盘" Foreground="#88000000" FontSize="11"
+                       Margin="0,3,0,0" />
+            <TextBlock Text="68.9" />
+            <TextBlock Text="前收盘"
+                       Foreground="#88000000"
+                       FontSize="11"
+                       Margin="0,3,0,0" />
+            <TextBlock Text="68.81" />
+            <TextBlock Text="成交量"
+                       Foreground="#88000000"
+                       FontSize="11"
+                       Margin="0,3,0,0" />
+            <TextBlock Text="1912.88万" />
+            <TextBlock Text="市值"
+                       Foreground="#88000000"
+                       FontSize="11"
+                       Margin="0,3,0,0" />
+            <TextBlock Text="5333.70亿" />
         </StackPanel>
     </Grid>
 </Page>
