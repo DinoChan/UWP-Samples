@@ -8,7 +8,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <ScrollViewer>
+       
             <StackPanel Margin="10">
                 <local:Triangle Fill="#FFF4F4F5"
                                 Height="100"
@@ -246,6 +246,5 @@
 
 
             </StackPanel>
-        </ScrollViewer>
     </Grid>
 </Page>

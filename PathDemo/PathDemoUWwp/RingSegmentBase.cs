@@ -10,10 +10,8 @@ using Windows.UI.Xaml.Shapes;
 
 namespace PathDemoUWwp
 {
-   public class RingSegment2 : Path
+    public class RingSegmentBase : Path
     {
-        private bool _isUpdating;
-
         #region StartAngle
         /// <summary>
         /// The start angle property.
@@ -22,7 +20,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "StartAngle",
                 typeof(double),
-                typeof(RingSegment2),
+                typeof(RingSegmentBase),
                 new PropertyMetadata(
                     0d,
                     OnStartAngleChanged));
@@ -41,7 +39,7 @@ namespace PathDemoUWwp
 
         private static void OnStartAngleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)sender;
+            var target = (RingSegmentBase)sender;
             var oldStartAngle = (double)e.OldValue;
             var newStartAngle = (double)e.NewValue;
             target.OnStartAngleChanged(oldStartAngle, newStartAngle);
@@ -49,7 +47,7 @@ namespace PathDemoUWwp
 
         private void OnStartAngleChanged(double oldStartAngle, double newStartAngle)
         {
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
@@ -61,7 +59,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "EndAngle",
                 typeof(double),
-                typeof(RingSegment2),
+                typeof(RingSegmentBase),
                 new PropertyMetadata(
                     0d,
                     OnEndAngleChanged));
@@ -80,7 +78,7 @@ namespace PathDemoUWwp
 
         private static void OnEndAngleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)sender;
+            var target = (RingSegmentBase)sender;
             var oldEndAngle = (double)e.OldValue;
             var newEndAngle = (double)e.NewValue;
             target.OnEndAngleChanged(oldEndAngle, newEndAngle);
@@ -88,7 +86,7 @@ namespace PathDemoUWwp
 
         private void OnEndAngleChanged(double oldEndAngle, double newEndAngle)
         {
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
@@ -100,7 +98,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "Radius",
                 typeof(double),
-                typeof(RingSegment2),
+                typeof(RingSegmentBase),
                 new PropertyMetadata(
                     0d,
                     OnRadiusChanged));
@@ -119,7 +117,7 @@ namespace PathDemoUWwp
 
         private static void OnRadiusChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)sender;
+            var target = (RingSegmentBase)sender;
             var oldRadius = (double)e.OldValue;
             var newRadius = (double)e.NewValue;
             target.OnRadiusChanged(oldRadius, newRadius);
@@ -128,7 +126,7 @@ namespace PathDemoUWwp
         private void OnRadiusChanged(double oldRadius, double newRadius)
         {
             this.Width = this.Height = 2 * Radius;
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
@@ -140,7 +138,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "InnerRadius",
                 typeof(double),
-                typeof(RingSegment2),
+                typeof(RingSegmentBase),
                 new PropertyMetadata(
                     0d,
                     OnInnerRadiusChanged));
@@ -159,7 +157,7 @@ namespace PathDemoUWwp
 
         private static void OnInnerRadiusChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)sender;
+            var target = (RingSegmentBase)sender;
             var oldInnerRadius = (double)e.OldValue;
             var newInnerRadius = (double)e.NewValue;
             target.OnInnerRadiusChanged(oldInnerRadius, newInnerRadius);
@@ -172,7 +170,7 @@ namespace PathDemoUWwp
                 throw new ArgumentException("InnerRadius can't be a negative value.", "InnerRadius");
             }
 
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
@@ -184,7 +182,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "Center",
                 typeof(Point?),
-                typeof(RingSegment2),
+                typeof(RingSegmentBase),
                 new PropertyMetadata(null, OnCenterChanged));
 
         /// <summary>
@@ -212,7 +210,7 @@ namespace PathDemoUWwp
         private static void OnCenterChanged(
             DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)d;
+            var target = (RingSegmentBase)d;
             Point? oldCenter = (Point?)e.OldValue;
             Point? newCenter = target.Center;
             target.OnCenterChanged(oldCenter, newCenter);
@@ -227,132 +225,12 @@ namespace PathDemoUWwp
         private void OnCenterChanged(
             Point? oldCenter, Point? newCenter)
         {
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RingSegment2" /> class.
-        /// </summary>
-        public RingSegment2()
+        protected virtual void UpdatePath()
         {
-           
         }
-
-        private bool _realizeGeometryScheduled;
-        private Size _orginalSize;
-        private Direction _orginalDirection;
-
-        protected override Size ArrangeOverride(Size finalSize)
-        {
-            if (_realizeGeometryScheduled == false && _orginalSize != finalSize)
-            {
-                _realizeGeometryScheduled = true;
-                LayoutUpdated += OnTriangleLayoutUpdated;
-                _orginalSize = finalSize;
-            }
-            base.ArrangeOverride(finalSize);
-            return finalSize;
-        }
-
-        protected override Size MeasureOverride(Size availableSize)
-        {
-            return new Size(base.StrokeThickness, base.StrokeThickness);
-        }
-
-        public void InvalidateGeometry()
-        {
-            InvalidateArrange();
-            if (_realizeGeometryScheduled == false && _orginalDirection != Direction)
-            {
-                _realizeGeometryScheduled = true;
-                LayoutUpdated += OnTriangleLayoutUpdated;
-            }
-        }
-
-        private void OnTriangleLayoutUpdated(object sender, object e)
-        {
-            _realizeGeometryScheduled = false;
-            LayoutUpdated -= OnTriangleLayoutUpdated;
-            RealizeGeometry();
-        }
-
-        private void UpdatePath()
-        {
-            var innerRadius = this.InnerRadius + this.StrokeThickness / 2;
-            var outerRadius = this.Radius - this.StrokeThickness / 2;
-
-            if (_isUpdating ||
-                this.ActualWidth == 0 ||
-                innerRadius <= 0 ||
-                outerRadius < innerRadius)
-            {
-                return;
-            }
-
-            var pathGeometry = new PathGeometry();
-            var pathFigure = new PathFigure();
-            pathFigure.IsClosed = true;
-
-            var center =
-                this.Center ??
-                new Point(
-                    outerRadius + this.StrokeThickness / 2,
-                    outerRadius + this.StrokeThickness / 2);
-
-            // Starting Point
-            pathFigure.StartPoint =
-                new Point(
-                    center.X + Math.Sin(StartAngle * Math.PI / 180) * innerRadius,
-                    center.Y - Math.Cos(StartAngle * Math.PI / 180) * innerRadius);
-
-            // Inner Arc
-            var innerArcSegment = new ArcSegment();
-            innerArcSegment.IsLargeArc = (EndAngle - StartAngle) >= 180.0;
-            innerArcSegment.Point =
-                new Point(
-                    center.X + Math.Sin(EndAngle * Math.PI / 180) * innerRadius,
-                    center.Y - Math.Cos(EndAngle * Math.PI / 180) * innerRadius);
-            innerArcSegment.Size = new Size(innerRadius, innerRadius);
-            innerArcSegment.SweepDirection = SweepDirection.Clockwise;
-
-            var lineSegment =
-                new LineSegment
-                {
-                    Point = new Point(
-                        center.X + Math.Sin(EndAngle * Math.PI / 180) * outerRadius,
-                        center.Y - Math.Cos(EndAngle * Math.PI / 180) * outerRadius)
-                };
-
-            // Outer Arc
-            var outerArcSegment = new ArcSegment();
-            outerArcSegment.IsLargeArc = (EndAngle - StartAngle) >= 180.0;
-            outerArcSegment.Point =
-                new Point(
-                    center.X + Math.Sin(StartAngle * Math.PI / 180) * outerRadius,
-                    center.Y - Math.Cos(StartAngle * Math.PI / 180) * outerRadius);
-            outerArcSegment.Size = new Size(outerRadius, outerRadius);
-            outerArcSegment.SweepDirection = SweepDirection.Counterclockwise;
-
-            pathFigure.Segments.Add(innerArcSegment);
-            pathFigure.Segments.Add(lineSegment);
-            pathFigure.Segments.Add(outerArcSegment);
-            pathGeometry.Figures.Add(pathFigure);
-            this.InvalidateArrange();
-            this.Data = pathGeometry;
-        }
-
-
-        private void RealizeGeometry()
-        {
-            var geometry = new PathGeometry();
-            var figure = new PathFigure { IsClosed = true };
-            geometry.Figures.Add(figure);
-           
-            Data = geometry;
-        }
-
-
     }
-
 }

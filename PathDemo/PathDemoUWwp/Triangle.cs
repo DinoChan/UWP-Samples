@@ -18,9 +18,7 @@ namespace PathDemoUWwp
         public static readonly DependencyProperty DirectionProperty =
             DependencyProperty.Register("Direction", typeof(Direction), typeof(Triangle), new PropertyMetadata(Direction.Up, OnDirectionChanged));
 
-        private bool _realizeGeometryScheduled;
-        private Size _orginalSize;
-        private Direction _orginalDirection;
+      
 
         /// <summary>
         ///     获取或设置Direction的值
@@ -47,9 +45,13 @@ namespace PathDemoUWwp
 
         public Triangle()
         {
-            RealizeGeometry();
+          
         }
-       
+
+        private bool _realizeGeometryScheduled;
+        private Size _orginalSize;
+        private Direction _orginalDirection;
+
         protected override Size ArrangeOverride(Size finalSize)
         {
             if (_realizeGeometryScheduled == false && _orginalSize != finalSize)

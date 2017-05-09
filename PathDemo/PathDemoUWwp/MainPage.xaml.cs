@@ -40,24 +40,24 @@ namespace PathDemoUWwp
 
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            bool isIncrease = true;
-            double position = 0;
-            while (true)
-            {
-                if (position < 0)
-                    isIncrease = true;
-                else if (position > 500)
-                    isIncrease = false;
+            //bool isIncrease = true;
+            //double position = 0;
+            //while (true)
+            //{
+            //    if (position < 0)
+            //        isIncrease = true;
+            //    else if (position > 500)
+            //        isIncrease = false;
 
-                if (isIncrease)
-                    position++;
-                else
-                    position--;
+            //    if (isIncrease)
+            //        position++;
+            //    else
+            //        position--;
 
-                Canvas.SetLeft(Polyline, position);
-                Canvas.SetTop(Polyline, position);
-                await Task.Delay(100);
-            }
+            //    Canvas.SetLeft(Polyline, position);
+            //    Canvas.SetTop(Polyline, position);
+            //    await Task.Delay(100);
+            //}
         }
     }
 }
