@@ -67,7 +67,7 @@ namespace PathDemo
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-          
+            
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)

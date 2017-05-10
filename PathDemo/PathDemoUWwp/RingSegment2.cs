@@ -285,66 +285,7 @@ namespace PathDemoUWwp
 
         private void RealizeGeometry()
         {
-            Debug.WriteLine("RealizeGeometry");
-            var innerRadius = this.InnerRadius + this.StrokeThickness / 2;
-            var outerRadius = this.Radius - this.StrokeThickness / 2;
-
-            if (_isUpdating ||
-                this.ActualWidth == 0 ||
-                innerRadius <= 0 ||
-                outerRadius < innerRadius)
-            {
-                return;
-            }
-
-            var pathGeometry = new PathGeometry();
-            var pathFigure = new PathFigure();
-            pathFigure.IsClosed = true;
-
-            var center =
-                this.Center ??
-                new Point(
-                    outerRadius + this.StrokeThickness / 2,
-                    outerRadius + this.StrokeThickness / 2);
-
-            // Starting Point
-            pathFigure.StartPoint =
-                new Point(
-                    center.X + Math.Sin(StartAngle * Math.PI / 180) * innerRadius,
-                    center.Y - Math.Cos(StartAngle * Math.PI / 180) * innerRadius);
-
-            // Inner Arc
-            var innerArcSegment = new ArcSegment();
-            innerArcSegment.IsLargeArc = (EndAngle - StartAngle) >= 180.0;
-            innerArcSegment.Point =
-                new Point(
-                    center.X + Math.Sin(EndAngle * Math.PI / 180) * innerRadius,
-                    center.Y - Math.Cos(EndAngle * Math.PI / 180) * innerRadius);
-            innerArcSegment.Size = new Size(innerRadius, innerRadius);
-            innerArcSegment.SweepDirection = SweepDirection.Clockwise;
-
-            var lineSegment =
-                new LineSegment
-                {
-                    Point = new Point(
-                        center.X + Math.Sin(EndAngle * Math.PI / 180) * outerRadius,
-                        center.Y - Math.Cos(EndAngle * Math.PI / 180) * outerRadius)
-                };
-
-            // Outer Arc
-            var outerArcSegment = new ArcSegment();
-            outerArcSegment.IsLargeArc = (EndAngle - StartAngle) >= 180.0;
-            outerArcSegment.Point =
-                new Point(
-                    center.X + Math.Sin(StartAngle * Math.PI / 180) * outerRadius,
-                    center.Y - Math.Cos(StartAngle * Math.PI / 180) * outerRadius);
-            outerArcSegment.Size = new Size(outerRadius, outerRadius);
-            outerArcSegment.SweepDirection = SweepDirection.Counterclockwise;
-
-            pathFigure.Segments.Add(innerArcSegment);
-            pathFigure.Segments.Add(lineSegment);
-            pathFigure.Segments.Add(outerArcSegment);
-            pathGeometry.Figures.Add(pathFigure);
+            //other code here
 
             Data = pathGeometry;
         }

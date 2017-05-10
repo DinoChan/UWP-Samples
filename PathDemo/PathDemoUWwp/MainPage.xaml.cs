@@ -29,7 +29,7 @@ namespace PathDemoUWwp
             this.InitializeComponent();
             CollectionViewSource v;
             
-            
+            Line
             // PointCollection pointCollection = new PointCollection();
             //for (int i = 0; i < 300; i++)
             //{
