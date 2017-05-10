@@ -27,8 +27,9 @@ namespace PathDemoUWwp
         public MainPage()
         {
             this.InitializeComponent();
+            CollectionViewSource v;
             
-
+            
             // PointCollection pointCollection = new PointCollection();
             //for (int i = 0; i < 300; i++)
             //{

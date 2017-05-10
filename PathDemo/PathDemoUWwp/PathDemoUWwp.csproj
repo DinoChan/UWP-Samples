@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Direction.cs" />
+    <Compile Include="InvalidateArrangeDemo.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -105,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RingSegment.cs" />
     <Compile Include="RingSegment2.cs" />
+    <Compile Include="RingSegment3.cs" />
     <Compile Include="RingSegmentBase.cs" />
     <Compile Include="Triangle.cs" />
   </ItemGroup>

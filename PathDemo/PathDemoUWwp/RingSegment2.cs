@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -252,18 +253,20 @@ namespace PathDemoUWwp
                 _orginalSize = finalSize;
             }
             base.ArrangeOverride(finalSize);
+            Debug.WriteLine("ArrangeOverride");
             return finalSize;
         }
 
         protected override Size MeasureOverride(Size availableSize)
         {
+            Debug.WriteLine("MeasureOverride");
             return new Size(base.StrokeThickness, base.StrokeThickness);
         }
 
         public void InvalidateGeometry()
         {
             InvalidateArrange();
-            if (_realizeGeometryScheduled == false && _orginalDirection != Direction)
+            if (_realizeGeometryScheduled == false )
             {
                 _realizeGeometryScheduled = true;
                 LayoutUpdated += OnTriangleLayoutUpdated;
@@ -277,8 +280,12 @@ namespace PathDemoUWwp
             RealizeGeometry();
         }
 
-        private void UpdatePath()
+       
+
+
+        private void RealizeGeometry()
         {
+            Debug.WriteLine("RealizeGeometry");
             var innerRadius = this.InnerRadius + this.StrokeThickness / 2;
             var outerRadius = this.Radius - this.StrokeThickness / 2;
 
@@ -338,21 +345,12 @@ namespace PathDemoUWwp
             pathFigure.Segments.Add(lineSegment);
             pathFigure.Segments.Add(outerArcSegment);
             pathGeometry.Figures.Add(pathFigure);
-            this.InvalidateArrange();
-            this.Data = pathGeometry;
+
+            Data = pathGeometry;
         }
 
 
-        private void RealizeGeometry()
-        {
-            var geometry = new PathGeometry();
-            var figure = new PathFigure { IsClosed = true };
-            geometry.Figures.Add(figure);
-           
-            Data = geometry;
-        }
-
-
+      
     }
 
 }

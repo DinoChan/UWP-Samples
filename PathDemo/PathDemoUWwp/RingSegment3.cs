@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Shapes;
 
 namespace PathDemoUWwp
 {
-    public class RingSegment : Path
+   public class RingSegment3 : Path
     {
         private bool _isUpdating;
 
@@ -23,7 +23,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "StartAngle",
                 typeof(double),
-                typeof(RingSegment),
+                typeof(RingSegment3),
                 new PropertyMetadata(
                     0d,
                     OnStartAngleChanged));
@@ -42,7 +42,7 @@ namespace PathDemoUWwp
 
         private static void OnStartAngleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment)sender;
+            var target = (RingSegment3)sender;
             var oldStartAngle = (double)e.OldValue;
             var newStartAngle = (double)e.NewValue;
             target.OnStartAngleChanged(oldStartAngle, newStartAngle);
@@ -62,7 +62,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "EndAngle",
                 typeof(double),
-                typeof(RingSegment),
+                typeof(RingSegment3),
                 new PropertyMetadata(
                     0d,
                     OnEndAngleChanged));
@@ -81,7 +81,7 @@ namespace PathDemoUWwp
 
         private static void OnEndAngleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment)sender;
+            var target = (RingSegment3)sender;
             var oldEndAngle = (double)e.OldValue;
             var newEndAngle = (double)e.NewValue;
             target.OnEndAngleChanged(oldEndAngle, newEndAngle);
@@ -101,7 +101,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "Radius",
                 typeof(double),
-                typeof(RingSegment),
+                typeof(RingSegment3),
                 new PropertyMetadata(
                     0d,
                     OnRadiusChanged));
@@ -120,7 +120,7 @@ namespace PathDemoUWwp
 
         private static void OnRadiusChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment)sender;
+            var target = (RingSegment3)sender;
             var oldRadius = (double)e.OldValue;
             var newRadius = (double)e.NewValue;
             target.OnRadiusChanged(oldRadius, newRadius);
@@ -141,7 +141,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "InnerRadius",
                 typeof(double),
-                typeof(RingSegment),
+                typeof(RingSegment3),
                 new PropertyMetadata(
                     0d,
                     OnInnerRadiusChanged));
@@ -160,7 +160,7 @@ namespace PathDemoUWwp
 
         private static void OnInnerRadiusChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment)sender;
+            var target = (RingSegment3)sender;
             var oldInnerRadius = (double)e.OldValue;
             var newInnerRadius = (double)e.NewValue;
             target.OnInnerRadiusChanged(oldInnerRadius, newInnerRadius);
@@ -185,7 +185,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "Center",
                 typeof(Point?),
-                typeof(RingSegment),
+                typeof(RingSegment3),
                 new PropertyMetadata(null, OnCenterChanged));
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace PathDemoUWwp
         private static void OnCenterChanged(
             DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment)d;
+            var target = (RingSegment3)d;
             Point? oldCenter = (Point?)e.OldValue;
             Point? newCenter = target.Center;
             target.OnCenterChanged(oldCenter, newCenter);
@@ -233,9 +233,9 @@ namespace PathDemoUWwp
         #endregion
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RingSegment" /> class.
+        /// Initializes a new instance of the <see cref="RingSegment3" /> class.
         /// </summary>
-        public RingSegment()
+        public RingSegment3()
         {
             this.SizeChanged += OnSizeChanged;
         }
@@ -346,6 +346,45 @@ namespace PathDemoUWwp
             return base.MeasureOverride(availableSize);
         }
 
+        private int _deferLevel;
+
+        public virtual IDisposable DeferRefresh()
+        {
+            ++_deferLevel;
+            return new DeferHelper(this);
+        }
+
+        private void EndDefer()
+        {
+            Debug.Assert(_deferLevel > 0);
+            --_deferLevel;
+            if (_deferLevel == 0)
+            {
+                UpdatePath();
+            }
+        }
+
+        private class DeferHelper : IDisposable
+        {
+            public DeferHelper(RingSegment3 source)
+            {
+                _source = source;
+            }
+
+            private RingSegment3 _source;
+
+            public void Dispose()
+            {
+                GC.SuppressFinalize(this);
+                if (_source != null)
+                {
+                    _source.EndDefer();
+                    _source = null;
+                }
+            }
+        }
+
+        //http://referencesource.microsoft.com/#WindowsBase/Base/System/Windows/Data/DataSourceProvider.cs,a3be821f75984c4b
     }
 
 }
