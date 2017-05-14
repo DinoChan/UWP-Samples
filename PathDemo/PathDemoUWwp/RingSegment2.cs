@@ -287,7 +287,7 @@ namespace PathDemoUWwp
         {
             //other code here
 
-            Data = pathGeometry;
+            //Data = pathGeometry;
         }
 
 
