@@ -111,6 +111,9 @@
     <Compile Include="RingSegment2.cs" />
     <Compile Include="RingSegment3.cs" />
     <Compile Include="RingSegmentBase.cs" />
+    <Compile Include="RingSegmentDemoPage.xaml.cs">
+      <DependentUpon>RingSegmentDemoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PerformanceCanvas1Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RingSegmentDemoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
