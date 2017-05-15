@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Shapes;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Ink;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
-namespace PathDemoUWwp
+namespace PathDemoSilverlight
 {
-   public class RingSegment2 : Path
+    public class RingSegment : Path
     {
         private bool _isUpdating;
 
@@ -23,7 +24,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "StartAngle",
                 typeof(double),
-                typeof(RingSegment2),
+                typeof(RingSegment),
                 new PropertyMetadata(
                     0d,
                     OnStartAngleChanged));
@@ -42,7 +43,7 @@ namespace PathDemoUWwp
 
         private static void OnStartAngleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)sender;
+            var target = (RingSegment)sender;
             var oldStartAngle = (double)e.OldValue;
             var newStartAngle = (double)e.NewValue;
             target.OnStartAngleChanged(oldStartAngle, newStartAngle);
@@ -50,7 +51,7 @@ namespace PathDemoUWwp
 
         private void OnStartAngleChanged(double oldStartAngle, double newStartAngle)
         {
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
@@ -62,7 +63,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "EndAngle",
                 typeof(double),
-                typeof(RingSegment2),
+                typeof(RingSegment),
                 new PropertyMetadata(
                     0d,
                     OnEndAngleChanged));
@@ -81,7 +82,7 @@ namespace PathDemoUWwp
 
         private static void OnEndAngleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)sender;
+            var target = (RingSegment)sender;
             var oldEndAngle = (double)e.OldValue;
             var newEndAngle = (double)e.NewValue;
             target.OnEndAngleChanged(oldEndAngle, newEndAngle);
@@ -89,7 +90,7 @@ namespace PathDemoUWwp
 
         private void OnEndAngleChanged(double oldEndAngle, double newEndAngle)
         {
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
@@ -101,7 +102,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "Radius",
                 typeof(double),
-                typeof(RingSegment2),
+                typeof(RingSegment),
                 new PropertyMetadata(
                     0d,
                     OnRadiusChanged));
@@ -120,7 +121,7 @@ namespace PathDemoUWwp
 
         private static void OnRadiusChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)sender;
+            var target = (RingSegment)sender;
             var oldRadius = (double)e.OldValue;
             var newRadius = (double)e.NewValue;
             target.OnRadiusChanged(oldRadius, newRadius);
@@ -129,7 +130,7 @@ namespace PathDemoUWwp
         private void OnRadiusChanged(double oldRadius, double newRadius)
         {
             this.Width = this.Height = 2 * Radius;
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
@@ -141,7 +142,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "InnerRadius",
                 typeof(double),
-                typeof(RingSegment2),
+                typeof(RingSegment),
                 new PropertyMetadata(
                     0d,
                     OnInnerRadiusChanged));
@@ -160,7 +161,7 @@ namespace PathDemoUWwp
 
         private static void OnInnerRadiusChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)sender;
+            var target = (RingSegment)sender;
             var oldInnerRadius = (double)e.OldValue;
             var newInnerRadius = (double)e.NewValue;
             target.OnInnerRadiusChanged(oldInnerRadius, newInnerRadius);
@@ -173,7 +174,7 @@ namespace PathDemoUWwp
                 throw new ArgumentException("InnerRadius can't be a negative value.", "InnerRadius");
             }
 
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
@@ -185,7 +186,7 @@ namespace PathDemoUWwp
             DependencyProperty.Register(
                 "Center",
                 typeof(Point?),
-                typeof(RingSegment2),
+                typeof(RingSegment),
                 new PropertyMetadata(null, OnCenterChanged));
 
         /// <summary>
@@ -213,7 +214,7 @@ namespace PathDemoUWwp
         private static void OnCenterChanged(
             DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (RingSegment2)d;
+            var target = (RingSegment)d;
             Point? oldCenter = (Point?)e.OldValue;
             Point? newCenter = target.Center;
             target.OnCenterChanged(oldCenter, newCenter);
@@ -228,64 +229,48 @@ namespace PathDemoUWwp
         private void OnCenterChanged(
             Point? oldCenter, Point? newCenter)
         {
-            InvalidateGeometry();
+            UpdatePath();
         }
         #endregion
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RingSegment2" /> class.
+        /// Initializes a new instance of the <see cref="RingSegment" /> class.
         /// </summary>
-        public RingSegment2()
+        public RingSegment()
         {
-           
+            this.SizeChanged += OnSizeChanged;
         }
 
-        private bool _realizeGeometryScheduled;
-        private Size _orginalSize;
-        private Direction _orginalDirection;
-
-        protected override Size ArrangeOverride(Size finalSize)
+        private void OnStrokeThicknessChanged(object sender, double e)
         {
-            if (_realizeGeometryScheduled == false && _orginalSize != finalSize)
-            {
-                _realizeGeometryScheduled = true;
-                LayoutUpdated += OnTriangleLayoutUpdated;
-                _orginalSize = finalSize;
-            }
-            base.ArrangeOverride(finalSize);
-            Debug.WriteLine("ArrangeOverride");
-            return finalSize;
+            UpdatePath();
         }
 
-        protected override Size MeasureOverride(Size availableSize)
+        private void OnSizeChanged(object sender, SizeChangedEventArgs sizeChangedEventArgs)
         {
-            Debug.WriteLine("MeasureOverride");
-            return new Size(base.StrokeThickness, base.StrokeThickness);
+            UpdatePath();
         }
 
-        public void InvalidateGeometry()
+        /// <summary>
+        /// Suspends path updates until EndUpdate is called;
+        /// </summary>
+        public void BeginUpdate()
         {
-            InvalidateArrange();
-            if (_realizeGeometryScheduled == false )
-            {
-                _realizeGeometryScheduled = true;
-                LayoutUpdated += OnTriangleLayoutUpdated;
-            }
+            _isUpdating = true;
         }
 
-        private void OnTriangleLayoutUpdated(object sender, object e)
+        /// <summary>
+        /// Resumes immediate path updates every time a component property value changes. Updates the path.
+        /// </summary>
+        public void EndUpdate()
         {
-            _realizeGeometryScheduled = false;
-            LayoutUpdated -= OnTriangleLayoutUpdated;
-            RealizeGeometry();
+            _isUpdating = false;
+            UpdatePath();
         }
 
-       
-
-
-        private void RealizeGeometry()
+        private void UpdatePath()
         {
-          
+            Debug.WriteLine("UpdatePath");
             var innerRadius = this.InnerRadius + this.StrokeThickness / 2;
             var outerRadius = this.Radius - this.StrokeThickness / 2;
 
@@ -345,11 +330,23 @@ namespace PathDemoUWwp
             pathFigure.Segments.Add(lineSegment);
             pathFigure.Segments.Add(outerArcSegment);
             pathGeometry.Figures.Add(pathFigure);
-            Data = pathGeometry;
+            //this.InvalidateArrange();
+            this.Data = pathGeometry;
         }
 
 
-      
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            Debug.WriteLine("ArrangeOverride");
+            return base.ArrangeOverride(finalSize); ;
+        }
+
+        protected override Size MeasureOverride(Size availableSize)
+        {
+            Debug.WriteLine("MeasureOverride");
+            return base.MeasureOverride(availableSize);
+        }
+
     }
 
 }

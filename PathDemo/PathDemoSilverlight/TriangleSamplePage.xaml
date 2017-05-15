@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="PathDemoSilverlight.TriangleSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+             xmlns:local="clr-namespace:PathDemoSilverlight"
+    d:DesignHeight="300" d:DesignWidth="400">
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Red" BorderThickness="1"   
+                Margin="50">
+        <!--<Polygon Points="50,0 100,100 0,100" Stretch="None"  Stroke="Green" StrokeThickness="10"/>-->
+            <local:Triangle  Stroke="Green" Stretch="None"
+                             StrokeThickness="10"
+                             x:Name="Triangle"/>
+            <!--<local:RingSegment Stroke="Blue" StrokeThickness="10" StartAngle="30" EndAngle="270" Radius="50" InnerRadius="30"
+                               Center="50,50"/>-->
+        </Border>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" >
+            <Button Content="Left" Margin="10" Click="Button_Click"/>
+            <Button Content="Up"
+                    Margin="10" Click="OnUp"/>
+            <Button Content="Right"
+                    Margin="10" Click="OnRight"/>
+            <Button Content="Down"
+                    Margin="10" Click="OnDown"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

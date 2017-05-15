@@ -17,8 +17,7 @@ namespace PathDemoSilverlight
 
         private bool _realizeGeometryScheduled;
         private Size _orginalSize;
-        private Direction _orginalDirection;
-
+       
         /// <summary>
         ///     获取或设置Direction的值
         /// </summary>
@@ -72,7 +71,7 @@ namespace PathDemoSilverlight
         public void InvalidateGeometry()
         {
             InvalidateArrange();
-            if (Application.Current != null && Application.Current.RootVisual != null && (bool)Application.Current.RootVisual.GetValue(DesignerProperties.IsInDesignModeProperty) && _realizeGeometryScheduled == false && _orginalDirection != Direction)
+            if (Application.Current != null && Application.Current.RootVisual != null  && _realizeGeometryScheduled == false)
             {
                 _realizeGeometryScheduled = true;
                 LayoutUpdated += OnTriangleLayoutUpdated;
@@ -122,7 +121,7 @@ namespace PathDemoSilverlight
                     figure.Segments.Add(segment);
                     break;
             }
-            _orginalDirection = Direction;
+            Debug.WriteLine("aaaaaaaaaaaa");
             Data = geometry;
         }
 
