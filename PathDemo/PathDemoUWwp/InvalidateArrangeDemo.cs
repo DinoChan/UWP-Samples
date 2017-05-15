@@ -17,7 +17,7 @@ namespace PathDemoUWwp
 
         protected bool ArrangeDirty { get; set; }
 
-        public void IndalidateArrange()
+        public void InvalidateArrange()
         {
             if (ArrangeDirty == true)
                 return;

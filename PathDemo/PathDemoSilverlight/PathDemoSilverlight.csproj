@@ -81,6 +81,10 @@
     <Compile Include="RingSegment.cs" />
     <Compile Include="Triangle.cs" />
     <Compile Include="Triangle2.cs" />
+    <Compile Include="TriangleControl.cs" />
+    <Compile Include="TriangleControlSamplePage.xaml.cs">
+      <DependentUpon>TriangleControlSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TriangleSamplePage.xaml.cs">
       <DependentUpon>TriangleSamplePage.xaml</DependentUpon>
     </Compile>
@@ -91,6 +95,14 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TriangleControlSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

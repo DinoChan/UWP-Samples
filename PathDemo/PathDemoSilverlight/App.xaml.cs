@@ -26,7 +26,7 @@ namespace PathDemoSilverlight
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            this.RootVisual = new TriangleSamplePage();
+            this.RootVisual = new TriangleControlSamplePage();
         }
 
         private void Application_Exit(object sender, EventArgs e)
