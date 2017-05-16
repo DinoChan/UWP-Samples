@@ -77,6 +77,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProgressRingPage.xaml.cs">
+      <DependentUpon>ProgressRingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RingSegment.cs" />
     <Compile Include="Triangle.cs" />
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressRingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
