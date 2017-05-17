@@ -70,7 +70,7 @@ namespace ShapeDemoSilverlight
             var point = figure.StartPoint;
             foreach (var item in figure.Segments)
             {
-                var segment = item as LineSe5gment;
+                var segment = item as LineSegment;
                 if (segment == null)
                     return 0;
 
