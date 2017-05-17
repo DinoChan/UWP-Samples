@@ -115,6 +115,7 @@
       <DependentUpon>RingSegmentDemoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Triangle.cs" />
+    <Compile Include="TriangleControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -156,6 +157,10 @@
     <Page Include="ShapeDemoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

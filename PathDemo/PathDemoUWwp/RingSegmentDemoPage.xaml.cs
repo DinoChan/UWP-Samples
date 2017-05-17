@@ -30,17 +30,17 @@ namespace PathDemoUWwp
 
         private void RingSegmentDemoPage_Loaded(object sender, RoutedEventArgs e)
         {
-            InvalidateArrangeDemo demo = new InvalidateArrangeDemo();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
-            demo.IndalidateArrange();
+            //InvalidateArrangeDemo demo = new InvalidateArrangeDemo();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
+            //demo.IndalidateArrange();
         }
     }
 }

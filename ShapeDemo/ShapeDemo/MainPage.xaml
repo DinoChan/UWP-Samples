@@ -8,6 +8,14 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <local:RingSegment  Height="100"
+                            Width="100"
+                            StartAngle="30"
+                            EndAngle="330"
+                            Radius="50"
+                            InnerRadius="30"
+                            Fill="#FFF179DC"
+                            Stroke="#FF00A5F1"
+                            StrokeThickness="2" />
     </Grid>
 </Page>
