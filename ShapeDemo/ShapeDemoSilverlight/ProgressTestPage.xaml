@@ -8,29 +8,85 @@
              d:DesignHeight="300"
              d:DesignWidth="400">
     <UserControl.Resources>
-      
+
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot"
           Background="White">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
             <StackPanel.Resources>
                 <local:ProgressToStrokeDashArrayConverter x:Key="ProgressToStrokeDashArrayConverter"
                                                           TargetTriangle="{Binding ElementName=Triangle}" />
+                <local:ProgressToStrokeDashArrayConverter2 x:Key="ProgressToStrokeDashArrayConverter2"
+                                                           TargetTriangle="{Binding ElementName=Triangle}" />
+                <local:ProgressToHeightConverter x:Key="ProgressToHeightConverter"
+                                                 TargetContentControl="{Binding ElementName=ContentControl}" />
             </StackPanel.Resources>
-            <Slider x:Name="Slider" Margin="0,0,0,20" Maximum="100" Minimum="0" Width="200" Value="50"/>
+            <Slider x:Name="Slider"
+                    Margin="0,0,0,20"
+                    Maximum="100"
+                    Minimum="0"
+                    Width="200"
+                    Value="50" />
             <Grid>
-            <local:Triangle x:Name="Triangle"
-                            Height="40"
-                            Width="40"
-                            StrokeThickness="2"
-                            Stroke="RoyalBlue"
-                            StrokeDashArray="{Binding ElementName=Slider,Path=Value,Converter={StaticResource ProgressToStrokeDashArrayConverter}}"
-                            StrokeDashOffset="00"
-                            StrokeDashCap="Round" 
-                           />
-                <TextBlock Text="{Binding Value,ElementName=Slider}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <local:Triangle Height="40"
+                                Width="40"
+                                StrokeThickness="2"
+                                Stroke="DarkGray" />
+                <local:Triangle x:Name="Triangle"
+                                Height="40"
+                                Width="40"
+                                StrokeThickness="2"
+                                Stroke="RoyalBlue"
+                                StrokeDashArray="{Binding ElementName=Slider,Path=Value,Converter={StaticResource ProgressToStrokeDashArrayConverter}}"
+                                StrokeDashOffset="00"
+                                StrokeDashCap="Round" />
+                <TextBlock Text="{Binding Value,ElementName=Slider}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
             </Grid>
+            <Grid Margin="0,20,0,0">
+                <local:Triangle Height="40"
+                                Width="40"
+                                StrokeThickness="2"
+                                Stroke="DarkGray" />
+                <local:Triangle x:Name="Triangle2"
+                                Height="40"
+                                Width="40"
+                                StrokeThickness="2"
+                                Stroke="RoyalBlue"
+                                StrokeDashArray="{Binding ElementName=Slider,Path=Value,Converter={StaticResource ProgressToStrokeDashArrayConverter2}}" />
+                <TextBlock Text="{Binding Value,ElementName=Slider}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+            <Grid Margin="0,20,0,0">
+                <local:Triangle Height="40"
+                                Width="40"
+                                StrokeThickness="2"
+                                Fill="LightGray" />
+                <local:Triangle  Height="40"
+                                 Width="40"
+                                 StrokeThickness="2"
+                                 Stroke="RoyalBlue" />
+                <ContentControl x:Name="ContentControl"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center"
+                                Height="{Binding ElementName=Slider,Path=Value,Converter={StaticResource ProgressToHeightConverter}}">
+                    <local:Triangle x:Name="Triangle3"
+                                    Height="40"
+                                    Width="40"
+                                    StrokeThickness="2"
+                                    Fill="RoyalBlue"
+                                    Stretch="Uniform"
+                                    VerticalAlignment="Bottom" />
+                </ContentControl>
+                <TextBlock Text="{Binding Value,ElementName=Slider}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+
         </StackPanel>
-        
+
     </Grid>
 </UserControl>

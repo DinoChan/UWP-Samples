@@ -80,7 +80,9 @@
     <Compile Include="ProgressTestPage.xaml.cs">
       <DependentUpon>ProgressTestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProgressToHeightConverter.cs" />
     <Compile Include="ProgressToStrokeDashArrayConverter.cs" />
+    <Compile Include="ProgressToStrokeDashArrayConverter2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Triangle.cs" />
   </ItemGroup>
