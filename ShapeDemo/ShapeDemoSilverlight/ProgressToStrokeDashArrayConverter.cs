@@ -17,21 +17,22 @@ namespace ShapeDemoSilverlight
     public class ProgressToStrokeDashArrayConverter : DependencyObject, IValueConverter
     {
 
+
         /// <summary>
-        /// 获取或设置TargetTriangle的值
+        /// 获取或设置TargetPath的值
         /// </summary>  
-        public Triangle TargetTriangle
+        public Path TargetPath
         {
-            get { return (Triangle)GetValue(TargetTriangleProperty); }
-            set { SetValue(TargetTriangleProperty, value); }
+            get { return (Path)GetValue(TargetPathProperty); }
+            set { SetValue(TargetPathProperty, value); }
         }
 
         /// <summary>
-        /// 标识 TargetTriangle 依赖属性。
+        /// 标识 TargetPath 依赖属性。
         /// </summary>
-        public static readonly DependencyProperty TargetTriangleProperty =
-            DependencyProperty.Register("TargetTriangle", typeof(Triangle), typeof(ProgressToStrokeDashArrayConverter), new PropertyMetadata(null));
-
+        public static readonly DependencyProperty TargetPathProperty =
+            DependencyProperty.Register("TargetPath", typeof(Path), typeof(ProgressToStrokeDashArrayConverter), new PropertyMetadata(null));
+        
 
         public virtual object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -40,11 +41,11 @@ namespace ShapeDemoSilverlight
 
             var progress = (double)value;
 
-            if (TargetTriangle == null)
+            if (TargetPath == null)
                 return null;
 
             var totalLength = GetTriangleTotalLength();
-            var result = new DoubleCollection { progress * totalLength / 100/TargetTriangle.StrokeThickness, double.MaxValue };
+            var result = new DoubleCollection { progress * totalLength / 100/ TargetPath.StrokeThickness, double.MaxValue };
             return result;
         }
 
@@ -55,7 +56,7 @@ namespace ShapeDemoSilverlight
 
         protected double GetTriangleTotalLength()
         {
-            var geometry = TargetTriangle.Data as PathGeometry;
+            var geometry = TargetPath.Data as PathGeometry;
             if (geometry == null)
                 return 0;
 

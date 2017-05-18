@@ -8,23 +8,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace ShapeDemoSilverlight
 {
-    public partial class MainPage : UserControl
+    public partial class ProgressRingPage : UserControl
     {
-        public MainPage()
+        public ProgressRingPage()
         {
             InitializeComponent();
-            Loaded += MainPage_Loaded;
+            Loaded += OnLoaded;
         }
 
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
             Storyboard1.Begin();
-           
+            Storyboard2.Begin();
         }
     }
 }

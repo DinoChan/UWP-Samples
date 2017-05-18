@@ -8,23 +8,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace ShapeDemoSilverlight
 {
-    public partial class MainPage : UserControl
+    public partial class LinePage : UserControl
     {
-        public MainPage()
+        public LinePage()
         {
             InitializeComponent();
-            Loaded += MainPage_Loaded;
-        }
-
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            Storyboard1.Begin();
-           
         }
     }
 }
