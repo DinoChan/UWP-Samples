@@ -14,7 +14,7 @@ namespace ShapeDemoSilverlight
 {
     [TemplateVisualState(GroupName = CommonStatesName, Name = NormalStateName)]
     [TemplateVisualState(GroupName = CommonStatesName, Name = PointerOverStateName)]
-    [TemplatePart(Name = PointerOverElementName, Type = typeof(Rectangle))]
+    [TemplatePart(Name = PointerOverElementName, Type = typeof(Ellipse))]
     public class ButtonChrome : Control
     {
         private const string PointerOverElementName = "PointerOverElement";
@@ -27,13 +27,15 @@ namespace ShapeDemoSilverlight
             this.DefaultStyleKey = typeof(ButtonChrome);
         }
 
-        private Rectangle _pointerOverElement;
+        private Ellipse _pointerOverElement;
         private bool _isPointerEntered;
+        private Point _lastPoint;
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _pointerOverElement = GetTemplateChild(PointerOverElementName) as Rectangle;
+            _pointerOverElement = GetTemplateChild(PointerOverElementName) as Ellipse;
+            UpdateVisualState(false);
         }
 
         protected override void OnMouseEnter(MouseEventArgs e)
@@ -45,11 +47,18 @@ namespace ShapeDemoSilverlight
             if (_pointerOverElement.StrokeThickness == 0)
                 return;
 
-            var point = e.GetPosition(this);
-            
-            var offset = (-_pointerOverElement.ActualHeight - _pointerOverElement.ActualWidth)/_pointerOverElement.StrokeThickness;
+            var rotateTransform = _pointerOverElement.RenderTransform as RotateTransform;
+            if (rotateTransform == null)
+                return;
 
-            _pointerOverElement.StrokeDashOffset = offset;
+            var point = e.GetPosition(this);
+
+            var centerPoint = new Point(this.ActualWidth / 2, this.ActualHeight / 2);
+
+            double angleOfLine = Math.Atan2((point.Y - centerPoint.Y), (point.X - centerPoint.X)) * 180 / Math.PI;
+            rotateTransform.Angle = angleOfLine + 180;
+            //var offset = (-_pointerOverElement.ActualHeight - _pointerOverElement.ActualWidth) / _pointerOverElement.StrokeThickness;
+            //_pointerOverElement.StrokeDashOffset = offset;
             _isPointerEntered = true;
             UpdateVisualState();
         }
@@ -58,7 +67,31 @@ namespace ShapeDemoSilverlight
         {
             base.OnMouseLeave(e);
             _isPointerEntered = false;
+
+            if (_pointerOverElement == null)
+                return;
+
+            if (_pointerOverElement.StrokeThickness == 0)
+                return;
+
+            var rotateTransform = _pointerOverElement.RenderTransform as RotateTransform;
+            if (rotateTransform == null)
+                return;
+
+            var point = _lastPoint;
+
+            var centerPoint = new Point(this.ActualWidth / 2, this.ActualHeight / 2);
+
+            double angleOfLine = Math.Atan2((point.Y - centerPoint.Y), (point.X - centerPoint.X)) * 180 / Math.PI;
+            rotateTransform.Angle = angleOfLine + 180;
+
             UpdateVisualState();
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            _lastPoint = e.GetPosition(this);
         }
 
         protected virtual void UpdateVisualState(bool useTransitions = true)

@@ -16,7 +16,7 @@
                     Value="#FF000000" />
             <Setter Property="Padding"
                     Value="3" />
-           
+
             <Setter Property="BorderBrush">
                 <Setter.Value>
                     <LinearGradientBrush EndPoint="0.5,1"
@@ -48,14 +48,16 @@
                                     <VisualState x:Name="Unfocused" />
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                            <local:ButtonChrome BorderBrush="{TemplateBinding BorderBrush}"
-                                               />
                             <ContentPresenter x:Name="contentPresenter"
                                               ContentTemplate="{TemplateBinding ContentTemplate}"
                                               Content="{TemplateBinding Content}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               Margin="{TemplateBinding Padding}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <Border BorderBrush="Red"
+                                    BorderThickness="1">
+                                <local:ButtonChrome BorderBrush="{TemplateBinding BorderBrush}" />
+                            </Border>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -65,18 +67,18 @@
 
     <Grid x:Name="LayoutRoot"
           Background="White">
-        <Button Height="25" 
+        <Button Height="100"
                 Width="100"
                 Content="Button"
-                BorderBrush="DarkSlateBlue"
-         
+                BorderBrush="LightSeaGreen"
                 Style="{StaticResource ButtonStyle1}" />
 
-        <Rectangle Stroke="Red"
-                   Margin="0,100,0,0"
-                   StrokeThickness="1"
-                   Height="25"
-                   Width="100" 
-                   StrokeDashArray="100 50 50 1000" StrokeDashOffset="30"/>
+        <Ellipse Stroke="Red"
+                 Margin="150,200,150,0"
+                 StrokeThickness="3"
+                 Height="100"
+                 Width="100"
+                 StrokeDashArray="0,1000,0,0"
+                 StrokeDashOffset="0" />
     </Grid>
 </UserControl>

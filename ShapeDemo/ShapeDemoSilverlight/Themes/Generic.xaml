@@ -14,8 +14,8 @@
                     <Border>
                         <Border.Resources>
                             <local:ProgressWrapper x:Name="ProgressWrapper" />
-                            <local:RectangleStrokeDashArrayConverter x:Key="RectangleStrokeDashArrayConverter"
-                                                                     TargetRectangle="{Binding ElementName=PointerOverElement}" />
+                            <local:EllipseStrokeDashArrayConverter x:Key="EllipseStrokeDashArrayConverter"
+                                                                 TargetEllipse="{Binding ElementName=PointerOverElement}" />
                         </Border.Resources>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -39,21 +39,21 @@
                                         <DoubleAnimation Duration="0"
                                                          To="100"
                                                          Storyboard.TargetProperty="(local:ProgressWrapper.Progress)"
-                                                         Storyboard.TargetName="ProgressWrapper"
-                                                        />
+                                                         Storyboard.TargetName="ProgressWrapper" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Grid>
-                            <Grid x:Name="Grid"
-                                  Height="0" />
-                            <Rectangle x:Name="PointerOverElement"
-                                       Fill="Transparent"
-                                       Stroke="{TemplateBinding BorderBrush}"
-                                       StrokeThickness="1"
-                                       StrokeDashArray="{Binding Source={StaticResource ProgressWrapper} ,Path=Progress, Converter={StaticResource RectangleStrokeDashArrayConverter}}" />
-                        </Grid>
+                        <Ellipse x:Name="PointerOverElement"
+                                 Fill="Transparent"
+                                 Stroke="{TemplateBinding BorderBrush}"
+                                 StrokeThickness="2"
+                                 StrokeDashArray="{Binding Source={StaticResource ProgressWrapper} ,Path=Progress, Converter={StaticResource EllipseStrokeDashArrayConverter}}"
+                                 RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.RenderTransform>
+                                <RotateTransform />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

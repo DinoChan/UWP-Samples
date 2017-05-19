@@ -81,6 +81,7 @@
       <DependentUpon>ButtonPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Direction.cs" />
+    <Compile Include="EllipseStrokeDashArrayConverter.cs" />
     <Compile Include="LinePage.xaml.cs">
       <DependentUpon>LinePage.xaml</DependentUpon>
     </Compile>
