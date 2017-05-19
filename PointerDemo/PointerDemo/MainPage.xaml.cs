@@ -17,6 +17,7 @@ namespace PointerDemo
         public MainPage()
         {
             InitializeComponent();
+         
         }
     }
 }
