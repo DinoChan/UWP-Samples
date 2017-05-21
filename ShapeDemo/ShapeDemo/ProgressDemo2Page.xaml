@@ -16,9 +16,9 @@
                     VerticalAlignment="Center">
             <StackPanel.Resources>
                 <local:ProgressToStrokeDashArrayConverter x:Key="ProgressToStrokeDashArrayConverter"
-                                                          TargetTriangle="{Binding ElementName=Triangle}" />
+                                                          TargetPath="{Binding ElementName=Triangle}" />
                 <local:ProgressToStrokeDashArrayConverter2 x:Key="ProgressToStrokeDashArrayConverter2"
-                                                           TargetTriangle="{Binding ElementName=Triangle}" />
+                                                           TargetPath="{Binding ElementName=Triangle}" />
                 <local:ProgressToHeightConverter x:Key="ProgressToHeightConverter"
                                                  TargetContentControl="{Binding ElementName=ContentControl}" />
                 <local:ReverseProgressToHeightConverter x:Key="ReverseProgressToHeightConverter"

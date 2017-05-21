@@ -102,6 +102,9 @@
     <Compile Include="RectangleStrokeDashArrayConverter.cs" />
     <Compile Include="ReverseProgressToHeightConverter.cs" />
     <Compile Include="Triangle.cs" />
+    <Compile Include="TriangleDemo.xaml.cs">
+      <DependentUpon>TriangleDemo.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -135,6 +138,10 @@
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TriangleDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

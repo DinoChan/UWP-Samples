@@ -13,24 +13,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-//“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
+// “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
 namespace ShapeDemo
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ButtonPage : Page
     {
-        public MainPage()
+        public ButtonPage()
         {
             this.InitializeComponent();
-            Loaded += MainPage_Loaded;
-        }
-
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            ProgressStoryboard.Begin();
         }
     }
 }

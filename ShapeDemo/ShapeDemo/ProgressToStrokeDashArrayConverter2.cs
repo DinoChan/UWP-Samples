@@ -17,11 +17,11 @@ namespace ShapeDemo
 
             var progress = (double)value;
 
-            if (TargetTriangle == null)
+            if (TargetPath == null)
                 return null;
 
-            var totalLength = GetTriangleTotalLength();
-            totalLength = totalLength / TargetTriangle.StrokeThickness;
+            var totalLength = GetTotalLength();
+            totalLength = totalLength / TargetPath.StrokeThickness;
             var thirdSection = progress * totalLength / 100;
             var secondSection = (totalLength - thirdSection) / 2;
             var result = new DoubleCollection { 0, secondSection, thirdSection, double.MaxValue };
