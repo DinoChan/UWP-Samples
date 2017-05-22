@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeDemoSilverlight", "Sha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgDemo", "SvgDemo\SvgDemo.csproj", "{09CA4A17-319D-4D7F-8E60-A670C1B1E65F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeDemo2", "ShapeDemo2\ShapeDemo2.csproj", "{CF2B8FF3-1D25-4F74-9800-126004F083C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,26 @@ Global
 		{09CA4A17-319D-4D7F-8E60-A670C1B1E65F}.Release|x86.ActiveCfg = Release|x86
 		{09CA4A17-319D-4D7F-8E60-A670C1B1E65F}.Release|x86.Build.0 = Release|x86
 		{09CA4A17-319D-4D7F-8E60-A670C1B1E65F}.Release|x86.Deploy.0 = Release|x86
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|ARM.ActiveCfg = Debug|ARM
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|ARM.Build.0 = Debug|ARM
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|ARM.Deploy.0 = Debug|ARM
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|x64.ActiveCfg = Debug|x64
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|x64.Build.0 = Debug|x64
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|x64.Deploy.0 = Debug|x64
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|x86.ActiveCfg = Debug|x86
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|x86.Build.0 = Debug|x86
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Debug|x86.Deploy.0 = Debug|x86
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|Any CPU.ActiveCfg = Release|x86
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|ARM.ActiveCfg = Release|ARM
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|ARM.Build.0 = Release|ARM
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|ARM.Deploy.0 = Release|ARM
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|x64.ActiveCfg = Release|x64
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|x64.Build.0 = Release|x64
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|x64.Deploy.0 = Release|x64
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|x86.ActiveCfg = Release|x86
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|x86.Build.0 = Release|x86
+		{CF2B8FF3-1D25-4F74-9800-126004F083C4}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
