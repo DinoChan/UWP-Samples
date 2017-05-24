@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              d:DesignHeight="500"
-             d:DesignWidth="800">
+             d:DesignWidth="1000">
     <UserControl.Resources>
         <Storyboard x:Name="Storyboard1"
                     RepeatBehavior="Forever"
@@ -50,9 +50,9 @@
             <PointAnimation Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(LineSegment.Point)"
                             Storyboard.TargetName="PathSeries"
                             To="0,0" />
-            <ColorAnimation To="#FF85C82E"
+            <!--<ColorAnimation To="#FF85C82E"
                             Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
-                            Storyboard.TargetName="PathSeries" />
+                            Storyboard.TargetName="PathSeries" />-->
         </Storyboard>
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot"
@@ -147,12 +147,13 @@
                       Grid.RowSpan="100"
                       Stroke="#FF004C97"
                       VerticalAlignment="Center"
-                      Width="800"
+                      Width="660"
+                      Height="120"
                       x:Name="PathSeries">
                     <Path.Data>
                         <PathGeometry>
-                            <PathFigure StartPoint="0,0">
-                                <LineSegment Point="60,0" />
+                            <PathFigure StartPoint="0,60">
+                                <!--<LineSegment Point="60,0" />
                                 <LineSegment Point="120,0" />
                                 <LineSegment Point="180,0" />
                                 <LineSegment Point="240,0" />
@@ -163,63 +164,17 @@
                                 <LineSegment Point="540,0" />
                                 <LineSegment Point="600,0" />
                                 <LineSegment Point="660,0" />
+                                <LineSegment Point="60,60"/>-->
+                                
                             </PathFigure>
                         </PathGeometry>
                     </Path.Data>
                 </Path>
 
-                <Path StrokeThickness="2"
-                      Grid.Column="1"
-                      Grid.RowSpan="100"
-                      Stroke="#FF004C97"
-                      VerticalAlignment="Center"
-                      Width="800"
-                      x:Name="PathSeries2">
-                    <Path.Data>
-                        <PathGeometry>
-                            <PathFigure StartPoint="0,-10">
-                                <LineSegment Point="60,-20" />
-                                <LineSegment Point="120,40" />
-                                <LineSegment Point="180,-21" />
-                                <LineSegment Point="240,-23" />
-                                <LineSegment Point="300,-18" />
-                                <LineSegment Point="360,-1" />
-                                <LineSegment Point="420,30" />
-                                <LineSegment Point="480,1" />
-                                <LineSegment Point="540,5" />
-                                <LineSegment Point="600,15" />
-                                <LineSegment Point="660,3" />
-                            </PathFigure>
-                        </PathGeometry>
-                    </Path.Data>
-                </Path>
+              
 
-                <Path StrokeThickness="2"
-                      Grid.Column="1"
-                      Grid.RowSpan="100"
-                      Stroke="#FF004C97"
-                      VerticalAlignment="Center"
-                      Width="800"
-                      x:Name="PathSeries3">
-                    <Path.Data>
-                        <PathGeometry>
-                            <PathFigure StartPoint="0,-10">
-                                <ArcSegment Point="60,-20" />
-                                <ArcSegment Point="120,40" />
-                                <ArcSegment Point="180,-21" />
-                                <ArcSegment Point="240,-23" />
-                                <ArcSegment Point="300,-18" />
-                                <ArcSegment Point="360,-1" />
-                                <ArcSegment Point="420,30" />
-                                <ArcSegment Point="480,1" />
-                                <ArcSegment Point="540,5" />
-                                <ArcSegment Point="600,15" />
-                                <ArcSegment Point="660,3" />
-                            </PathFigure>
-                        </PathGeometry>
-                    </Path.Data>
-                </Path>
-            </Grid>
+                  </Grid>
+            <Button Margin="0,30,0,0" HorizontalAlignment="Center" Content="Start" Click="OnStartPointAnimation"/>
         </StackPanel>
     </Grid>
 </UserControl>
