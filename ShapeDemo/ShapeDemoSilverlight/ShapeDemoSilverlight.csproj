@@ -78,6 +78,9 @@
     <Compile Include="ArcDemoPage.xaml.cs">
       <DependentUpon>ArcDemoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AttachedPropertyTest.xaml.cs">
+      <DependentUpon>AttachedPropertyTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ButtonChrome.cs" />
     <Compile Include="ButtonPage.xaml.cs">
       <DependentUpon>ButtonPage.xaml</DependentUpon>
@@ -93,6 +96,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PathExtention.cs" />
     <Compile Include="PointAnimationPage.xaml.cs">
       <DependentUpon>PointAnimationPage.xaml</DependentUpon>
     </Compile>
@@ -120,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="ArcDemoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AttachedPropertyTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
