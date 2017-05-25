@@ -17,7 +17,10 @@ namespace PointerDemo
         public MainPage()
         {
             InitializeComponent();
-         
+        var result=    Math.Atan(5d / 10d);
+            var t = Math.Tan(Math.PI/4);
+            var t2 = Math.Atan(t);
+            var j = Math.PI / 4 * 180 / Math.PI;
         }
     }
 }

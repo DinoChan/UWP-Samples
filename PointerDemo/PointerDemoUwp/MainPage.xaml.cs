@@ -28,6 +28,7 @@ namespace PointerDemoUwp
         {
             this.InitializeComponent();
             //Windows.UI.Xaml.Shapes.Path p;SolidColorBrush
+          
         }
     }
 }
