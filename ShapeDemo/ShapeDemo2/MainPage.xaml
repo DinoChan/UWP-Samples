@@ -9,16 +9,20 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot Title="Pivot">
-            <PivotItem Header="Point Test">
+            <!--<PivotItem Header="Point Test">
                 <Grid>
                     <local:PointTest />
                 </Grid>
             </PivotItem>
             <PivotItem Header="PivotItem 1">
-                <Grid />
-            </PivotItem>
+                <Grid>
+                    <local:PointDemo2 />
+                </Grid>
+            </PivotItem>-->
             <PivotItem Header="PivotItem 2">
-                <Grid />
+                <Grid>
+                    <local:AttachedPropertyTestPage />
+                </Grid>
             </PivotItem>
         </Pivot>
 

@@ -98,13 +98,22 @@
     <Compile Include="AttachedPropertyTest.xaml.cs">
       <DependentUpon>AttachedPropertyTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AttachedPropertyTestPage.xaml.cs">
+      <DependentUpon>AttachedPropertyTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Direction.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathExtention.cs" />
+    <Compile Include="PointDemo2.xaml.cs">
+      <DependentUpon>PointDemo2.xaml</DependentUpon>
     </Compile>
     <Compile Include="PointTest.xaml.cs">
       <DependentUpon>PointTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -131,9 +140,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AttachedPropertyTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PointDemo2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PointTest.xaml">
       <SubType>Designer</SubType>
