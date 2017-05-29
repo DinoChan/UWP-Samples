@@ -19,9 +19,14 @@
                     <local:PointDemo2 />
                 </Grid>
             </PivotItem>-->
-            <PivotItem Header="PivotItem 2">
+            <!--<PivotItem Header="PivotItem 2">
                 <Grid>
                     <local:AttachedPropertyTestPage />
+                </Grid>
+            </PivotItem>-->
+            <PivotItem Header="Behavior">
+                <Grid>
+                    <local:BehaviorTestPage />
                 </Grid>
             </PivotItem>
         </Pivot>

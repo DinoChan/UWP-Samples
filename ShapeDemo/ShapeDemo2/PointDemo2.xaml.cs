@@ -44,7 +44,6 @@ namespace ShapeDemo2
             Storyboard1.Begin();
             Storyboard2.Begin();
 
-
         }
 
         private Storyboard _storyboard;
