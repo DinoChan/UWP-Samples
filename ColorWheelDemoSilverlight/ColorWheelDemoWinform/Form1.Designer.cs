@@ -28,25 +28,25 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.colorWheel1 = new ColorWheelDemoWinform.ColorWheel();
-      this.SuspendLayout();
-      // 
-      // colorWheel1
-      // 
-      this.colorWheel1.Location = new System.Drawing.Point(104, 97);
-      this.colorWheel1.Name = "colorWheel1";
-      this.colorWheel1.Size = new System.Drawing.Size(677, 518);
-      this.colorWheel1.TabIndex = 0;
-      // 
-      // Form1
-      // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(849, 647);
-      this.Controls.Add(this.colorWheel1);
-      this.Name = "Form1";
-      this.Text = "Form1";
-      this.ResumeLayout(false);
+            this.colorWheel1 = new ColorWheelDemoWinform.ColorWheel();
+            this.SuspendLayout();
+            // 
+            // colorWheel1
+            // 
+            this.colorWheel1.Location = new System.Drawing.Point(63, 25);
+            this.colorWheel1.Name = "colorWheel1";
+            this.colorWheel1.Size = new System.Drawing.Size(444, 444);
+            this.colorWheel1.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(849, 647);
+            this.Controls.Add(this.colorWheel1);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.ResumeLayout(false);
 
     }
 

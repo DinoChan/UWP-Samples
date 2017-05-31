@@ -39,21 +39,24 @@ namespace ColorWheelDemoSilverlight
 
             int width = Convert.ToInt32(e.NewSize.Width);
             int height = Convert.ToInt32(e.NewSize.Height);
-            int radius = width < height ? width : height;
-            var source = new WriteableBitmap(radius * 2, radius * 2);
-            for (int i = 0; i < radius * radius; i++)
+            int diameter = width < height ? width : height;
+            int radius = diameter / 2;
+            var source = new WriteableBitmap(diameter, diameter);
+            double[,] array = new double[diameter, diameter];
+            for (int i = 0; i < diameter * diameter; i++)
             {
-                int x = i % radius;
-                int y = i / radius;
-                double distance = Math.Sqrt(Math.Pow(radius - i % radius, 2) + Math.Pow(radius - i / radius, 2));
-                var saturation = Convert.ToInt32(distance * 100 / radius);
-                var hue = 0;
-                if (saturation > 100)
+                //source.Pixels[i * 4] = 255 << 24 | 255 << 16 | 255 << 8 | 255;
+                //source.Pixels[i * 4+1] = 255 << 24 | 255 << 16 | 255 << 8 | 255;
+                //source.Pixels[i * 4+2] = 255 << 24 | 255 << 16 | 255 << 8 | 255;
+                //source.Pixels[i*4+3] = 255 << 24 | 255 << 16 | 255 << 8 | 255;
+                //continue;
+                int x = i % diameter;
+                int y = i / diameter;
+                double distance = Math.Sqrt(Math.Pow(radius - x, 2) + Math.Pow(radius - y, 2));
+                var saturation = distance * 100 / radius;
+                array[x, y] = saturation;
+                if (saturation >= 100)
                 {
-                    //source.Pixels[i * 4] = 255;
-                    //source.Pixels[i * 4 + 1] = 255;
-                    //source.Pixels[i * 4 + 2] = 255;
-                    //source.Pixels[i * 4 + 3] = 255;
                     source.Pixels[i] = 255 << 24 | 255 << 16 | 255 << 8 | 255;
                 }
                 else
@@ -72,16 +75,23 @@ namespace ColorWheelDemoSilverlight
 
                     double alpha = Math.Sqrt((cx * cx) + (cy * cy));
 
-                    hue = (int)((theta / (Math.PI * 2)) * 360.0);
-                    var color = new HsvColor(hue, saturation, 100);
+                    var hue = (int)((theta / (Math.PI * 2)) * 360.0);
+                    var color = new HsvColor(hue, Convert.ToInt32(saturation), 100);
                     var rgbColor = color.ToRgb();
-                    //source.Pixels[i * 4] = 255;
-                    //source.Pixels[i * 4 + 1] = 255;// rgbColor.Red;
-                    //source.Pixels[i * 4 + 2] = 255;// rgbColor.Green;
-                    //source.Pixels[i * 4 + 3] = 255;// rgbColor.Blue;
-                    //source.Pixels[i] = 255 << 24 | rgbColor.Red << 16 | rgbColor.Green << 8 | rgbColor.Blue;
+
+                    source.Pixels[i] = 255 << 24 | rgbColor.Red << 16 | rgbColor.Green << 8 | rgbColor.Blue;
                 }
             }
+            //string s = "";
+            //for (int i = 0; i < diameter; i++)
+            //{
+            //    for (int j = 0; j < diameter; j++)
+            //    {
+            //        s += array[i,j] + "\t";
+            //    }
+            //    s += Environment.NewLine;
+            //}
+
             _imageElement.Source = source;
         }
     }
