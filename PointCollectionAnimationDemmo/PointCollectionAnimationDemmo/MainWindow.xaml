@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:PointCollectionAnimationDemmo"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Storyboard x:Key="Storboard1">
+            <local:PointCollectionAnimation Storyboard.TargetName="p"
+                                            Storyboard.TargetProperty="Points"
+                                            From="0,20 10,20 30,20"
+                                            To="0,30 10,10 30,50" Duration="0:0:5"/>
+             <!--<proj:GridLengthAnimation Storyboard.TargetName="Col1"
+                                      Storyboard.TargetProperty="Width"
+                                      From="*"
+                                      To="2*"
+                                      Duration="0:0:2" />-->
+        </Storyboard>
+    </Window.Resources>
     <Grid>
-        
+        <Polygon Stroke="Red" StrokeThickness="1" Points="0,20 10,20 30,20"
+                 x:Name="p"/>
     </Grid>
 </Window>
+ 
