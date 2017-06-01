@@ -26,7 +26,7 @@ namespace ShapeDemoSilverlight
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            this.RootVisual = new AttachedPropertyTest();
+            this.RootVisual = new ProgressTestPage();
         }
 
         private void Application_Exit(object sender, EventArgs e)

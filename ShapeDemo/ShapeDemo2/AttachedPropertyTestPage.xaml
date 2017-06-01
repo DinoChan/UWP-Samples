@@ -25,9 +25,7 @@
                             Stroke="RoyalBlue"
                             StrokeDashOffset="00"
                             StrokeDashCap="Round">
-                
             </local:Triangle>
-
         </StackPanel>
     </Grid>
 </Page>

@@ -61,6 +61,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Expression.Drawing, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="mscorlib" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -68,6 +69,7 @@
       <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
@@ -100,6 +102,9 @@
     <Compile Include="PointAnimationPage.xaml.cs">
       <DependentUpon>PointAnimationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PointCollectionTestPage.xaml.cs">
+      <DependentUpon>PointCollectionTestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProgressRingPage.xaml.cs">
       <DependentUpon>ProgressRingPage.xaml</DependentUpon>
     </Compile>
@@ -107,6 +112,7 @@
       <DependentUpon>ProgressTestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProgressToHeightConverter.cs" />
+    <Compile Include="ProgressToPointCollectionBridge.cs" />
     <Compile Include="ProgressToStrokeDashArrayConverter.cs" />
     <Compile Include="ProgressToStrokeDashArrayConverter2.cs" />
     <Compile Include="ProgressWrapper.cs" />
@@ -148,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PointAnimationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PointCollectionTestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

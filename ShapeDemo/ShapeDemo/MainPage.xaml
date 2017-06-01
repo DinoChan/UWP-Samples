@@ -7,11 +7,6 @@
       mc:Ignorable="d">
     <Page.Resources>
         <Storyboard x:Name="ProgressStoryboard">
-            <!--<DoubleAnimation Duration="0:1:1"
-                             To="-500"
-                             Storyboard.TargetProperty="(Shape.StrokeDashOffset)"
-                             Storyboard.TargetName="triangle"
-                             d:IsOptimized="True" />-->
             <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True"
                                            Storyboard.TargetProperty="(Shape.StrokeDashOffset)"
                                            Storyboard.TargetName="triangle">
@@ -20,7 +15,6 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Page.Resources>
-
     <Grid Background="#FFCCCCCC">
         <Grid Height="100"
               HorizontalAlignment="Center">
