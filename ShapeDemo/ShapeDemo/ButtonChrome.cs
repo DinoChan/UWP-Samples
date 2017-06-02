@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
@@ -25,83 +20,37 @@ namespace ShapeDemo
         private const string NormalStateName = "Normal";
         private const string PointerOverStateName = "PointerOver";
 
+        private bool _isPointerEntered;
+        private Ellipse _pointerOverElement;
+
         public ButtonChrome()
         {
-            this.DefaultStyleKey = typeof(ButtonChrome);
+            DefaultStyleKey = typeof(ButtonChrome);
         }
 
-        private Ellipse _pointerOverElement;
-        private bool _isPointerEntered;
-        //private Point _lastPoint;
 
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             _pointerOverElement = GetTemplateChild(PointerOverElementName) as Ellipse;
-            var converter = GetTemplateChild("EllipseStrokeDashArrayConverter") as EllipseStrokeDashArrayConverter;
-            if (converter != null)
-                converter.TargetEllipse = _pointerOverElement;
-
             UpdateVisualState(false);
         }
 
         protected override void OnPointerEntered(PointerRoutedEventArgs e)
         {
             base.OnPointerEntered(e);
-            if (_pointerOverElement == null)
-                return;
-
-            if (_pointerOverElement.StrokeThickness == 0)
-                return;
-
-            var rotateTransform = _pointerOverElement.RenderTransform as RotateTransform;
-            if (rotateTransform == null)
-                return;
-
-            var point = e.GetCurrentPoint(this).Position;
-
-            var centerPoint = new Point(this.ActualWidth / 2, this.ActualHeight / 2);
-
-            double angleOfLine = Math.Atan2((point.Y - centerPoint.Y), (point.X - centerPoint.X)) * 180 / Math.PI;
-            rotateTransform.Angle = angleOfLine + 180;
-            //var offset = (-_pointerOverElement.ActualHeight - _pointerOverElement.ActualWidth) / _pointerOverElement.StrokeThickness;
-            //_pointerOverElement.StrokeDashOffset = offset;
             _isPointerEntered = true;
+            UpdateAngle(e);
             UpdateVisualState();
         }
 
         protected override void OnPointerExited(PointerRoutedEventArgs e)
         {
             base.OnPointerExited(e);
-          
             _isPointerEntered = false;
-
-            if (_pointerOverElement == null)
-                return;
-
-            if (_pointerOverElement.StrokeThickness == 0)
-                return;
-
-            var rotateTransform = _pointerOverElement.RenderTransform as RotateTransform;
-            if (rotateTransform == null)
-                return;
-
-            var point = e.GetCurrentPoint(this).Position;
-
-            var centerPoint = new Point(this.ActualWidth / 2, this.ActualHeight / 2);
-
-            double angleOfLine = Math.Atan2((point.Y - centerPoint.Y), (point.X - centerPoint.X)) * 180 / Math.PI;
-            rotateTransform.Angle = angleOfLine + 180;
-
+            UpdateAngle(e);
             UpdateVisualState();
         }
-
-        //protected override void OnPointerMoved(PointerRoutedEventArgs e)
-        //{
-        //    base.OnPointerMoved(e);
-        //    _lastPoint = e.GetCurrentPoint(this).Position;
-        //}
-
 
         protected virtual void UpdateVisualState(bool useTransitions = true)
         {
@@ -109,7 +58,24 @@ namespace ShapeDemo
                 VisualStateManager.GoToState(this, PointerOverStateName, useTransitions);
             else
                 VisualStateManager.GoToState(this, NormalStateName, useTransitions);
+        }
 
+        private void UpdateAngle(PointerRoutedEventArgs e)
+        {
+            if (_pointerOverElement == null)
+                return;
+
+            if (_pointerOverElement.StrokeThickness == 0)
+                return;
+
+            var rotateTransform = _pointerOverElement.RenderTransform as RotateTransform;
+            if (rotateTransform == null)
+                return;
+
+            var point = e.GetCurrentPoint(this).Position;
+            var centerPoint = new Point(ActualWidth / 2, ActualHeight / 2);
+            var angleOfLine = Math.Atan2(point.Y - centerPoint.Y, point.X - centerPoint.X) * 180 / Math.PI;
+            rotateTransform.Angle = angleOfLine + 180;
         }
     }
 }

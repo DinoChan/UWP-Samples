@@ -99,16 +99,21 @@
     <Compile Include="ButtonPage.xaml.cs">
       <DependentUpon>ButtonPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangeAngleToEnterPointerBehavior.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="EllipsePage.xaml.cs">
       <DependentUpon>EllipsePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EllipseProgressBehavior.cs" />
     <Compile Include="EllipseStrokeDashArrayConverter.cs" />
     <Compile Include="LinePage.xaml.cs">
       <DependentUpon>LinePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PointCollectionTestPage.xaml.cs">
+      <DependentUpon>PointCollectionTestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProgressDemo2Page.xaml.cs">
       <DependentUpon>ProgressDemo2Page.xaml</DependentUpon>
@@ -117,6 +122,7 @@
       <DependentUpon>ProgressDemoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProgressToHeightConverter.cs" />
+    <Compile Include="ProgressToPointCollectionBridge.cs" />
     <Compile Include="ProgressToStrokeDashArrayConverter.cs" />
     <Compile Include="ProgressToStrokeDashArrayConverter2.cs" />
     <Compile Include="ProgressWrapper.cs" />
@@ -161,6 +167,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PointCollectionTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProgressDemo2Page.xaml">
       <SubType>Designer</SubType>
