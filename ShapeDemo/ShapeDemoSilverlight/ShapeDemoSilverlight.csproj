@@ -119,6 +119,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RectangleStrokeDashArrayConverter.cs" />
     <Compile Include="ReverseProgressToHeightConverter.cs" />
+    <Compile Include="SpiralPage.xaml.cs">
+      <DependentUpon>SpiralPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Triangle.cs" />
     <Compile Include="TriangleDemo.xaml.cs">
       <DependentUpon>TriangleDemo.xaml</DependentUpon>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProgressTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpiralPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
