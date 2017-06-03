@@ -40,7 +40,10 @@ public class ProgressToStrokeDashArrayConverter : DependencyObject, IValueConver
             return null;
 
         var totalLength = GetTotalLength();
-        var result = new DoubleCollection { progress * totalLength / 100 / TargetPath.StrokeThickness, double.MaxValue };
+        var firstSection = progress * totalLength / 100 / TargetPath.StrokeThickness;
+        if (progress == 100)
+            firstSection = Math.Ceiling(firstSection);
+        var result = new DoubleCollection { firstSection, double.MaxValue };
         return result;
     }
 

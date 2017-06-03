@@ -217,11 +217,13 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Height="100"
-                Width="100"
-                Content="Button"
-                BorderBrush="LightSeaGreen"
-                Style="{StaticResource EllipseStyle}"
-                HorizontalAlignment="Center" />
+       
+            <Button Height="100"
+                    Width="100"
+                    Content="Button"
+                    BorderBrush="LightSeaGreen"
+                    Style="{StaticResource EllipseStyle}"
+                    HorizontalAlignment="Center" />
+     
     </Grid>
 </Page>

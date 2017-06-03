@@ -17,7 +17,8 @@
                              To="100"
                              FillBehavior="HoldEnd"
                              Storyboard.TargetProperty="(local:ProgressToPointCollectionBridge.Progress)"
-                             Storyboard.TargetName="ProgressToPointCollectionBridge">
+                             Storyboard.TargetName="ProgressToPointCollectionBridge"
+                             EnableDependentAnimation="True">
                 <DoubleAnimation.EasingFunction>
                     <ElasticEase EasingMode="EaseInOut" />
                 </DoubleAnimation.EasingFunction>
@@ -39,8 +40,8 @@
                  Points="{Binding Source={StaticResource ProgressToPointCollectionBridge},Path=Points}"
                  Stroke="DarkOliveGreen"
                  StrokeThickness="2"
-                 Height="100"
-                 Width="100"
+                 Height="250"
+                 Width="250"
                  Stretch="Fill"
                  Fill="#FFEBF412" />
 

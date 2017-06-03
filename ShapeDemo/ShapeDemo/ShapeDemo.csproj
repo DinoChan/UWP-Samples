@@ -118,6 +118,12 @@
     <Compile Include="ProgressDemo2Page.xaml.cs">
       <DependentUpon>ProgressDemo2Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProgressDemo3Page.xaml.cs">
+      <DependentUpon>ProgressDemo3Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressDemo4Page.xaml.cs">
+      <DependentUpon>ProgressDemo4Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProgressDemoPage.xaml.cs">
       <DependentUpon>ProgressDemoPage.xaml</DependentUpon>
     </Compile>
@@ -173,6 +179,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProgressDemo2Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressDemo3Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressDemo4Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

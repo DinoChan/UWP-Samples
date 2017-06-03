@@ -31,16 +31,16 @@ namespace ShapeDemo
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (value is double == false)
-                return 0d;
+                return double.NaN;
 
             var progress = (double)value;
 
             if (TargetContentControl == null)
-                return 0d;
+                return double.NaN;
 
             var element = TargetContentControl.Content as FrameworkElement;
             if (element == null)
-                return 0d;
+                return double.NaN;
 
             return element.Height * (100 - progress) / 100;
         }

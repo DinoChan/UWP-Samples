@@ -42,7 +42,13 @@ public class EllipseProgressBehavior : Behavior<Ellipse>
         UpdateStrokeDashArray();
     }
 
-    protected virtual double GetTotalLength()
+        protected override void OnAttached()
+        {
+            base.OnAttached();
+            UpdateStrokeDashArray();
+        }
+
+        protected virtual double GetTotalLength()
     {
         if (AssociatedObject == null)
             return 0;

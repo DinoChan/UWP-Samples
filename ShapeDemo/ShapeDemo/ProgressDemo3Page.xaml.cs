@@ -13,26 +13,22 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
+// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace ShapeDemo2
+namespace ShapeDemo
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ProgressDemo3Page : Page
     {
-        public MainPage()
+        public ProgressDemo3Page()
         {
             this.InitializeComponent();
-            /*使用PointAnimation使Line变形，然后使三角形变成四方形，然后做图表的动画。
-             使用数据的动画使StrokeDashArray变形
-             使用附加属性修改StrokeDashArray*/
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            base.OnNavigatedTo(e);
             Storyboard1.Begin();
         }
     }

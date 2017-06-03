@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="femorphology_1.svg" />
+    <Content Include="feoffset_1.svg" />
     <Content Include="filter1.svg" />
     <Content Include="path2.svg" />
     <Content Include="Properties\Default.rd.xml" />

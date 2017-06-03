@@ -15,14 +15,24 @@
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center">
             <StackPanel.Resources>
-                <local:ProgressToStrokeDashArrayConverter x:Key="ProgressToStrokeDashArrayConverter"
-                                                          TargetPath="{Binding ElementName=Triangle}" />
-                <local:ProgressToStrokeDashArrayConverter2 x:Key="ProgressToStrokeDashArrayConverter2"
-                                                           TargetPath="{Binding ElementName=Triangle}" />
+
                 <local:ProgressToHeightConverter x:Key="ProgressToHeightConverter"
                                                  TargetContentControl="{Binding ElementName=ContentControl}" />
                 <local:ReverseProgressToHeightConverter x:Key="ReverseProgressToHeightConverter"
                                                         TargetContentControl="{Binding ElementName=ContentControl2}" />
+                <local:ProgressToStrokeDashArrayConverter x:Key="ProgressToStrokeDashArrayConverter"
+                                                          TargetPath="{Binding ElementName=Triangle}" />
+                <local:ProgressToStrokeDashArrayConverter2 x:Key="ProgressToStrokeDashArrayConverter2"
+                                                           TargetPath="{Binding ElementName=Triangle}" />
+
+
+                <Storyboard x:Name="Storyboard1">
+                    <DoubleAnimation Duration="0:0:5"
+                                     To="100"
+                                     Storyboard.TargetProperty="Progress"
+                                     Storyboard.TargetName="PathProgressBehavior"
+                                     EnableDependentAnimation="True" />
+                </Storyboard>
             </StackPanel.Resources>
             <Slider x:Name="Slider"
                     Margin="0,0,0,20"
@@ -30,40 +40,45 @@
                     Minimum="0"
                     Width="200"
                     Value="50" />
-            <Grid>
-                <local:Triangle Height="40"
-                                Width="40"
-                                StrokeThickness="2"
-                                Stroke="DarkGray" />
-                <local:Triangle x:Name="Triangle"
-                                Height="40"
-                                Width="40"
-                                StrokeThickness="2"
-                                Stroke="RoyalBlue"
-                                StrokeDashArray="{Binding ElementName=Slider,Path=Value,Converter={StaticResource ProgressToStrokeDashArrayConverter}}"
-                                StrokeDashOffset="00"
-                                StrokeDashCap="Round" />
-                <TextBlock Text="{Binding Value,ElementName=Slider}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,15,0,0" />
-            </Grid>
-            <Grid Margin="0,20,0,0">
-                <local:Triangle Height="40"
-                                Width="40"
-                                StrokeThickness="2"
-                                Stroke="DarkGray" />
-                <local:Triangle x:Name="Triangle2"
-                                Height="40"
-                                Width="40"
-                                StrokeThickness="2"
-                                Stroke="RoyalBlue"
-                                StrokeDashArray="{Binding ElementName=Slider,Path=Value,Converter={StaticResource ProgressToStrokeDashArrayConverter2}}" />
-                <TextBlock Text="{Binding Value,ElementName=Slider}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,15,0,0" />
-            </Grid>
+            <Viewbox Height="150">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <local:Triangle Height="40"
+                                        Width="40"
+                                        StrokeThickness="2"
+                                        Stroke="DarkGray" />
+                        <local:Triangle x:Name="Triangle"
+                                        Height="40"
+                                        Width="40"
+                                        StrokeThickness="2"
+                                        Stroke="RoyalBlue"
+                                        StrokeDashArray="{Binding ElementName=Slider,Path=Value,Converter={StaticResource ProgressToStrokeDashArrayConverter}}"
+                                        StrokeDashOffset="00"
+                                       />
+                        <TextBlock Text="{Binding Value,ElementName=Slider}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="0,15,0,0" />
+                    </Grid>
+                    <Grid Margin="20,0,0,0">
+                        <local:Triangle Height="40"
+                                        Width="40"
+                                        StrokeThickness="2"
+                                        Stroke="DarkGray" />
+                        <local:Triangle x:Name="Triangle2"
+                                        Height="40"
+                                        Stretch="None"
+                                        Width="40"
+                                        StrokeThickness="2"
+                                        Stroke="RoyalBlue"
+                                        StrokeDashArray="{Binding ElementName=Slider,Path=Value,Converter={StaticResource ProgressToStrokeDashArrayConverter2}}" />
+                        <TextBlock Text="{Binding Value,ElementName=Slider}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="0,15,0,0" />
+                    </Grid>
+                </StackPanel>
+            </Viewbox>
             <Grid Margin="0,20,0,0">
                 <local:Triangle Height="40"
                                 Width="40"
@@ -71,6 +86,7 @@
                                 Fill="LightGray" />
                 <local:Triangle  Height="40"
                                  Width="40"
+                                 Stretch="Fill"
                                  StrokeThickness="2"
                                  Stroke="RoyalBlue" />
                 <ContentControl x:Name="ContentControl"
@@ -109,7 +125,24 @@
                     </ScrollViewer>
                 </ContentControl>
             </Grid>
+            <Path Stroke="Green"
+                  StrokeThickness="5"
+                  Height="40"
+                  Width="40"
+                  SizeChanged="Path_SizeChanged"
+                  Stretch="Fill"
+                  StrokeDashArray="0,1000">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="20,0"
+                                    IsClosed="True">
+                            <LineSegment Point="40,40" />
+                            <LineSegment Point="0,40" />
 
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
         </StackPanel>
 
     </Grid>

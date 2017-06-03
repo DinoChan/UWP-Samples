@@ -69,7 +69,7 @@
     </Page.Resources>
     <Grid x:Name="LayoutRoot"
           Background="White">
-
+        <Viewbox>
 
         <StackPanel  Margin="50">
             <Path x:Name="Path"
@@ -207,5 +207,6 @@
                     Content="Start"
                     Click="OnStartPointAnimation" />
         </StackPanel>
+        </Viewbox>
     </Grid>
 </Page>

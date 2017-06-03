@@ -26,5 +26,10 @@ namespace ShapeDemo
         {
             this.InitializeComponent();
         }
+
+        private void Path_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
     }
 }
