@@ -47,7 +47,7 @@ namespace ShapeDemoSilverlight
             _storyboard = new Storyboard();
             Random random = new Random();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < _pathFigure.Segments.Count; i++)
             {
                 var animation = new PointAnimation { Duration = TimeSpan.FromSeconds(3) };
                 Storyboard.SetTarget(animation, _pathFigure.Segments[i]);
