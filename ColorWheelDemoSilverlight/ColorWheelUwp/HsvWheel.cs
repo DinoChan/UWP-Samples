@@ -59,10 +59,10 @@ namespace ColorWheelUwp
                 array[x, y] = saturation;
                 if (saturation >= 100)
                 {
-                    pixels.Bytes[i] = (Byte)0;
-                    pixels.Bytes[i + 1] = (Byte)0;
-                    pixels.Bytes[i + 2] = (Byte)0;
-                    pixels.Bytes[i + 3] = (Byte)0;
+                    pixels.Bytes[i*4] = (Byte)0;
+                    pixels.Bytes[i*4 + 1] = (Byte)0;
+                    pixels.Bytes[i*4 + 2] = (Byte)0;
+                    pixels.Bytes[i*4 + 3] = (Byte)0;
                 }
                 else
                 {
@@ -80,10 +80,10 @@ namespace ColorWheelUwp
 
                     var hue = theta / (Math.PI * 2) * 360.0;
                     var color = ColorHelper.FromHsv(hue, saturation, 100);
-                    pixels.Bytes[i] = (Byte)color.B;
-                    pixels.Bytes[i + 1] = (Byte)color.G;
-                    pixels.Bytes[i + 2] = (Byte)color.R;
-                    pixels.Bytes[i + 3] = (Byte)255;
+                    pixels.Bytes[i*4] = (Byte)color.B;
+                    pixels.Bytes[i*4 + 1] = (Byte)color.G;
+                    pixels.Bytes[i *4+ 2] = (Byte)color.R;
+                    pixels.Bytes[i *4+ 3] = (Byte)255;
                 }
             }
             pixels.UpdateFromBytes();
