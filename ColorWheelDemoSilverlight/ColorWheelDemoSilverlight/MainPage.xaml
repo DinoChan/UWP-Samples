@@ -9,10 +9,10 @@
 
     <Grid x:Name="LayoutRoot">
         <!--<Grid.Effect>
-            <BlurEffect Radius="3"/>
+            <BlurEffect Radius="2" />
         </Grid.Effect>-->
         <Rectangle Height="100" Width="100" Fill="Red" HorizontalAlignment="Right"/>
-        <local:HsvWheel />
+        <local:HsvWheel Margin="10"/>
        
     </Grid>
 </UserControl>
