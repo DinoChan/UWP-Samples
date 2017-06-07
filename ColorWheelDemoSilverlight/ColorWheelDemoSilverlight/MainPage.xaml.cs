@@ -13,19 +13,19 @@ using System.Windows.Shapes;
 
 namespace ColorWheelDemoSilverlight
 {
-  public partial class MainPage : UserControl
-  {
-    public MainPage()
+    public partial class MainPage : UserControl
     {
-      InitializeComponent();
-     
+        public MainPage()
+        {
+            InitializeComponent();
+
             Loaded += MainPage_Loaded;
 
-    }
+        }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-          
+
         }
 
         private void ssss(object sender, RoutedEventArgs e)

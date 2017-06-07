@@ -24,6 +24,24 @@ namespace ColorWheelDemoSilverlight
             this.SizeChanged += OnHsvWheelSizeChanged;
         }
 
+
+        /// <summary>
+        /// 获取或设置Radius的值
+        /// </summary>  
+        public double Radius
+        {
+            get { return (double)GetValue(RadiusProperty); }
+            set { SetValue(RadiusProperty, value); }
+        }
+
+        /// <summary>
+        /// 标识 Radius 依赖属性。
+        /// </summary>
+        public static readonly DependencyProperty RadiusProperty =
+            DependencyProperty.Register("Radius", typeof(double), typeof(HsvWheel), new PropertyMetadata(0d));
+
+        
+
         private Image _imageElement;
 
         public override void OnApplyTemplate()
@@ -43,6 +61,7 @@ namespace ColorWheelDemoSilverlight
             int diameter = width < height ? width : height;
             diameter = 800;
             int radius = diameter / 2;
+            Radius = radius;
             var source = new WriteableBitmap(diameter, diameter);
             double[,] array = new double[diameter, diameter];
             for (int i = 0; i < diameter * diameter; i++)

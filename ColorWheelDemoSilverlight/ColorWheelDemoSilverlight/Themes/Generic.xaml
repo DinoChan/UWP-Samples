@@ -1,8 +1,9 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ColorWheelDemoSilverlight">
-
-
+    <local:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+    <local:ColorToAngleConverter x:Key="ColorToAngleConverter"/>
+    
     <Style TargetType="local:HsvWheel">
         <Setter Property="Template">
             <Setter.Value>
@@ -11,6 +12,49 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Image x:Name="ImageElement" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ColorPointVisual">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorPointVisual">
+                    <Border>
+                        <Ellipse Fill="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ColorPoint.Color,Converter={StaticResource ColorToBrushConverter} }"
+                                 Height="20"
+                                 Width="20" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:HsvWheelColorPicker">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:HsvWheelColorPicker">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ItemsControl>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="local:ColorPoint">
+                                    <local:ColorPointVisual HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                        <local:ColorPointVisual.RenderTransform>
+                                            <CompositeTransform Rotation="{Binding Color,Converter={StaticResource ColorToAngleConverter}}"/>
+                                        </local:ColorPointVisual.RenderTransform>
+                                    </local:ColorPointVisual>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Grid/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
