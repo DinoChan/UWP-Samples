@@ -11,83 +11,76 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media.Imaging;
 
 namespace ColorWheelDemoSilverlight
 {
-    [TemplatePart(Name =ItemsControlElementName,Type =typeof(ItemsControl))]
+
     public class HsvWheelColorPicker : ColorPicker
     {
-        private const string ItemsControlElementName = "ItemsControlElement";
+
 
         public HsvWheelColorPicker()
         {
             this.DefaultStyleKey = typeof(HsvWheelColorPicker);
-            _colorPointVisuals = new ObservableCollection<ColorPointVisual>();
         }
 
+        private Point _dragOrginalPosition;
 
-        private ObservableCollection<ColorPointVisual> _colorPointVisuals;
-
-        private ItemsControl _itemsControl;
-
-
-        public override void OnApplyTemplate()
+        protected override void OnColorPointVisualDragStarted(ColorPointVisual colorPointVisual, Point position)
         {
-            base.OnApplyTemplate();
-            _itemsControl = GetTemplateChild(ItemsControlElementName) as ItemsControl;
-            if (_itemsControl != null)
-                _itemsControl.ItemsSource = _colorPointVisuals;
-        }
-
-        protected override void OnColorPointsChanged(Collection<ColorPoint> oldValue, Collection<ColorPoint> newValue)
-        {
-            base.OnColorPointsChanged(oldValue, newValue);
-
-            _colorPointVisuals.Clear();
-            if (newValue == null)
+            base.OnColorPointVisualDragStarted(colorPointVisual, position);
+            var transform = colorPointVisual.TransformToVisual(this);
+            var bounds = colorPointVisual.GetBoundsRelativeTo(this);
+            if (bounds == null)
                 return;
 
-            foreach (var item in newValue)
-            {
-                _colorPointVisuals.Add(CreateColorPointVisual(item));
-            }
+            _dragOrginalPosition = new Point(bounds.Value.X + bounds.Value.Width / 2, bounds.Value.Y + bounds.Value.Height / 2);
         }
 
-        protected override void OnColorPointsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override void OnColorPointVisualDragDelta(ColorPointVisual colorPointVisual, Point position)
         {
-            base.OnColorPointsCollectionChanged(sender, e);
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-                    foreach (var item in e.NewItems.Cast<ColorPoint>())
-                    {
-                        _colorPointVisuals.Add(CreateColorPointVisual(item));
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    foreach (var item in e.NewItems.Cast<ColorPoint>())
-                    {
-                       var colorPointVisual= _colorPointVisuals.FirstOrDefault(v => v.ColorPoint == item);
-                        if (colorPointVisual != null)
-                            _colorPointVisuals.Remove(colorPointVisual);
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-                    throw new NotSupportedException("Do not support Replace action");
-                    break;
-                case NotifyCollectionChangedAction.Reset:
-                    _colorPointVisuals.Clear();
-                    break;
-                default:
-                    break;
-            }
+            base.OnColorPointVisualDragDelta(colorPointVisual, position);
+            _dragOrginalPosition = new Point(_dragOrginalPosition.X + position.X, _dragOrginalPosition.Y + position.Y);
+            colorPointVisual.ColorPoint.Color = GetColor(_dragOrginalPosition);
         }
 
-        protected override ColorPointVisual CreateColorPointVisual(ColorPoint colorPoint)
+
+        private Color GetColor(Point point)
         {
-            var visual = new ColorPointVisual();
-            visual.ColorPoint = colorPoint;
-            return visual;
+            var centerPoint = new Point(ActualWidth / 2, ActualHeight / 2);
+            var diameter = ActualWidth < ActualHeight ? ActualWidth : ActualHeight;
+            var radius = diameter / 2;
+
+            var x = point.X;
+            var y = point.Y;
+            double distance = Math.Sqrt(Math.Pow(centerPoint.X - x, 2) + Math.Pow(centerPoint.Y - y, 2));
+            var saturation = distance * 100 / radius;
+            saturation = Math.Min(100, saturation);
+
+
+            //var deltaX = x * x - radius * radius;
+            //var deltaY = y * y - radius * radius;
+            var cx = x - centerPoint.X;
+            var cy = y - centerPoint.Y;
+
+            double theta = Math.Atan2(cy, cx);
+
+            if (theta < 0)
+            {
+                theta += 2 * Math.PI;
+            }
+
+            //double alpha = Math.Sqrt((cx * cx) + (cy * cy));
+
+            var hue = (int)((theta / (Math.PI * 2)) * 360.0);
+            var color = new HsvColor(hue, Convert.ToInt32(saturation), 100);
+            var rgbColor = color.ToColor();
+
+            return rgbColor;
+
+
         }
     }
 }

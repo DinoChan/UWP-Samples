@@ -16,6 +16,8 @@ namespace ColorWheelDemoSilverlight
     public class SaturationToRadiusConverter : DependencyObject, IValueConverter
     {
 
+
+
         /// <summary>
         /// 获取或设置Radius的值
         /// </summary>  

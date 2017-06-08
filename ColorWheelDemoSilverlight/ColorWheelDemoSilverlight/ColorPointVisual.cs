@@ -1,52 +1,112 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 
 namespace ColorWheelDemoSilverlight
 {
+    [TemplatePart(Name = ThumbElementName, Type = typeof(Thumb))]
     public class ColorPointVisual : Control
     {
-        public ColorPointVisual()
-        {
-            this.DefaultStyleKey = typeof(ColorPointVisual);
-        }
-
+        private const string ThumbElementName = "ThumbElement";
 
         /// <summary>
-        /// 获取或设置ColorPoint的值
-        /// </summary>  
-        public ColorPoint ColorPoint
-        {
-            get { return (ColorPoint)GetValue(ColorPointProperty); }
-            set { SetValue(ColorPointProperty, value); }
-        }
-
-        /// <summary>
-        /// 标识 ColorPoint 依赖属性。
+        ///     标识 ColorPoint 依赖属性。
         /// </summary>
         public static readonly DependencyProperty ColorPointProperty =
             DependencyProperty.Register("ColorPoint", typeof(ColorPoint), typeof(ColorPointVisual), new PropertyMetadata(null, OnColorPointChanged));
 
+        /// <summary>
+        ///     标识 DragStartedCommand 依赖属性。
+        /// </summary>
+        public static readonly DependencyProperty DragStartedCommandProperty =
+            DependencyProperty.Register("DragStartedCommand", typeof(ICommand), typeof(ColorPointVisual), new PropertyMetadata(null));
+
+        /// <summary>
+        ///     标识 DragDeltaCommand 依赖属性。
+        /// </summary>
+        public static readonly DependencyProperty DragDeltaCommandProperty =
+            DependencyProperty.Register("DragDeltaCommand", typeof(ICommand), typeof(ColorPointVisual), new PropertyMetadata(null));
+
+        private Thumb _thumbElement;
+
+        public ColorPointVisual()
+        {
+            DefaultStyleKey = typeof(ColorPointVisual);
+        }
+
+        /// <summary>
+        ///     获取或设置ColorPoint的值
+        /// </summary>
+        public ColorPoint ColorPoint
+        {
+            get { return (ColorPoint) GetValue(ColorPointProperty); }
+            set { SetValue(ColorPointProperty, value); }
+        }
+
+
+        /// <summary>
+        ///     获取或设置DragStartedCommand的值
+        /// </summary>
+        public ICommand DragStartedCommand
+        {
+            get { return (ICommand) GetValue(DragStartedCommandProperty); }
+            set { SetValue(DragStartedCommandProperty, value); }
+        }
+
+
+        /// <summary>
+        ///     获取或设置DragDeltaCommand的值
+        /// </summary>
+        public ICommand DragDeltaCommand
+        {
+            get { return (ICommand) GetValue(DragDeltaCommandProperty); }
+            set { SetValue(DragDeltaCommandProperty, value); }
+        }
+
         private static void OnColorPointChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            ColorPointVisual target = obj as ColorPointVisual;
-            ColorPoint oldValue = (ColorPoint)args.OldValue;
-            ColorPoint newValue = (ColorPoint)args.NewValue;
+            var target = obj as ColorPointVisual;
+            var oldValue = (ColorPoint) args.OldValue;
+            var newValue = (ColorPoint) args.NewValue;
             if (oldValue != newValue)
                 target.OnColorPointChanged(oldValue, newValue);
         }
 
         protected virtual void OnColorPointChanged(ColorPoint oldValue, ColorPoint newValue)
         {
+        }
+
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            _thumbElement = GetTemplateChild(ThumbElementName) as Thumb;
+            if (_thumbElement != null)
+            {
+                _thumbElement.DragStarted += OnDragStarted;
+                _thumbElement.DragDelta += OnDragDelta;
+            }
+        }
+
+        private void OnDragDelta(object sender, DragDeltaEventArgs e)
+        {
+            if (DragDeltaCommand != null && DragDeltaCommand.CanExecute(null))
+            {
+                var point = new Point(e.HorizontalChange, e.VerticalChange);
+                var parameter = new ColorPointVisualDragDeltaParameter(this, point);
+                DragDeltaCommand.Execute(parameter);
+            }
+        }
+
+        private void OnDragStarted(object sender, DragStartedEventArgs e)
+        {
+            if (DragStartedCommand != null && DragStartedCommand.CanExecute(null))
+            {
+                var point = new Point(e.HorizontalOffset, e.VerticalOffset);
+                var parameter = new ColorPointVisualDragStartedParameter(this, point);
+                DragStartedCommand.Execute(parameter);
+            }
         }
     }
 }
