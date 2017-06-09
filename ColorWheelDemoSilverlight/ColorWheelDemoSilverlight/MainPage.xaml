@@ -8,11 +8,11 @@
              d:DesignHeight="600"
              d:DesignWidth="600">
     <UserControl.Resources>
-        <local:ArgbConverter Mode="Red"
+        <local:ArgbConverter Model="Red"
                              x:Key="RedConverter" />
-        <local:ArgbConverter Mode="Green"
+        <local:ArgbConverter Model="Green"
                              x:Key="GreenConverter" />
-        <local:ArgbConverter Mode="Blue"
+        <local:ArgbConverter Model="Blue"
                              x:Key="BlueConverter" />
     </UserControl.Resources>
 

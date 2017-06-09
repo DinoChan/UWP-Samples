@@ -109,11 +109,11 @@
                                Style="{StaticResource ThumbStyle}"
                                Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ColorPoint.Color,Converter={StaticResource ColorToBrushConverter}}" />-->
 
-                        <Ellipse Stroke="Black"
-                                 StrokeThickness="1" />
+                        <!--<Ellipse Stroke="Black"
+                                 StrokeThickness="1" />-->
                         <Ellipse Stroke="White"
-                                 StrokeThickness="1"
-                                 Margin="1"
+                                 StrokeThickness="3"
+                                
                                  Fill="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ColorPoint.Color,Converter={StaticResource ColorToBrushConverter}}" />
 
                     </Grid>

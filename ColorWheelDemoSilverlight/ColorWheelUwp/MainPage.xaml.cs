@@ -25,6 +25,7 @@ namespace ColorWheelUwp
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
     }
 }

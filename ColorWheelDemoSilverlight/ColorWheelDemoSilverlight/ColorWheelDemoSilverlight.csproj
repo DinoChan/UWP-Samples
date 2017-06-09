@@ -84,6 +84,8 @@
     <Compile Include="ColorPointVisual.cs" />
     <Compile Include="ColorToAngleConverter.cs" />
     <Compile Include="ColorToBrushConverter.cs" />
+    <Compile Include="ColorValueEditor.cs" />
+    <Compile Include="ColorValueTextBox.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="HslColor.cs" />
     <Compile Include="HsvColor.cs" />

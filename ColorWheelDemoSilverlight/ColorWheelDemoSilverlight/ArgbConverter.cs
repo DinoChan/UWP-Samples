@@ -5,20 +5,20 @@ namespace ColorWheelDemoSilverlight
 {
     public class ArgbConverter : IColorConverter
     {
-        public ArgbMode Mode { get; set; }
+        public ArgbModel Model { get; set; }
 
         public Color ToColor(Color color, double value)
         {
             var byteOfValue = Convert.ToByte(Math.Min(255, value));
-            switch (Mode)
+            switch (Model)
             {
-                case ArgbMode.Alpha:
+                case ArgbModel.Alpha:
                   return  Color.FromArgb(byteOfValue, color.R, color.G, color.B);
-                case ArgbMode.Red:
+                case ArgbModel.Red:
                     return Color.FromArgb(color.A, byteOfValue, color.G, color.B);
-                case ArgbMode.Green:
+                case ArgbModel.Green:
                     return Color.FromArgb(color.A, color.R, byteOfValue, color.B);
-                case ArgbMode.Blue:
+                case ArgbModel.Blue:
                     return Color.FromArgb(color.A, color.R, color.G, byteOfValue);
             }
 
@@ -27,22 +27,22 @@ namespace ColorWheelDemoSilverlight
 
         public double ToValue(Color color)
         {
-            switch (Mode)
+            switch (Model)
             {
-                case ArgbMode.Alpha:
+                case ArgbModel.Alpha:
                     return color.A;
-                case ArgbMode.Red:
+                case ArgbModel.Red:
                     return color.R;
-                case ArgbMode.Green:
+                case ArgbModel.Green:
                     return color.G;
-                case ArgbMode.Blue:
+                case ArgbModel.Blue:
                     return color.B;
             }
             return double.NaN;
         }
     }
 
-    public enum ArgbMode
+    public enum ArgbModel
     {
         Alpha = 0,
         Red = 1,
