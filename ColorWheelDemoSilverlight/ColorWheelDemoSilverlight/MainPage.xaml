@@ -7,15 +7,54 @@
              xmlns:local="clr-namespace:ColorWheelDemoSilverlight"
              d:DesignHeight="600"
              d:DesignWidth="600">
+    <UserControl.Resources>
+        <local:ArgbConverter Mode="Red"
+                             x:Key="RedConverter" />
+        <local:ArgbConverter Mode="Green"
+                             x:Key="GreenConverter" />
+        <local:ArgbConverter Mode="Blue"
+                             x:Key="BlueConverter" />
+    </UserControl.Resources>
 
-    <Grid x:Name="LayoutRoot">
-        <!--<Grid.Effect>
-            <BlurEffect Radius="2" />
-        </Grid.Effect>-->
-        <local:HsvWheelColorPicker>
-            <local:ColorPoint Color="LightGreen" />
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <local:HsvWheelColorPicker x:Name="hsvWheelColorPicker">
+            <local:ColorPoint x:Name="colorPoint"
+                              Color="LightGreen" />
             <local:ColorPoint Color="Red" />
         </local:HsvWheelColorPicker>
+        <StackPanel Grid.Row="1">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Rgb" Margin="5,0"/>
+                <Line  Grid.Column="1" Stretch="Fill" 
+                       X2="1"
+                       StrokeThickness="1"
+                       Stroke="Black"
+                       VerticalAlignment="Center"/>
+            </Grid>
+            <local:ColorGradient Color="{Binding ColorPoints[0].Color, ElementName=hsvWheelColorPicker}"
+                                 Minimum="0"
+                                 Maximum="255"
+                                 Height="25"
+                                 ColorConverter="{StaticResource RedConverter}" />
+            <local:ColorGradient Color="{Binding ColorPoints[0].Color, ElementName=hsvWheelColorPicker}"
+                                 Minimum="0"
+                                 Maximum="255"
+                                 Height="25"
+                                 ColorConverter="{StaticResource GreenConverter}" />
+            <local:ColorGradient Color="{Binding ColorPoints[0].Color, ElementName=hsvWheelColorPicker}"
+                                 Minimum="0"
+                                 Maximum="255"
+                                 Height="25"
+                                 ColorConverter="{StaticResource BlueConverter}" />
+        </StackPanel>
 
     </Grid>
 </UserControl>

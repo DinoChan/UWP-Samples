@@ -74,6 +74,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ArgbConverter.cs" />
+    <Compile Include="ColorGradient.cs" />
     <Compile Include="ColorHelper.cs" />
     <Compile Include="ColorPicker.cs" />
     <Compile Include="ColorPoint.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="HsvColor.cs" />
     <Compile Include="HsvWheel.cs" />
     <Compile Include="HsvWheelColorPicker.cs" />
+    <Compile Include="IColorConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

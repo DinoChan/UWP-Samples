@@ -32,7 +32,6 @@ namespace ColorWheelDemoSilverlight
         protected override void OnColorPointVisualDragStarted(ColorPointVisual colorPointVisual, Point position)
         {
             base.OnColorPointVisualDragStarted(colorPointVisual, position);
-            var transform = colorPointVisual.TransformToVisual(this);
             var bounds = colorPointVisual.GetBoundsRelativeTo(this);
             if (bounds == null)
                 return;

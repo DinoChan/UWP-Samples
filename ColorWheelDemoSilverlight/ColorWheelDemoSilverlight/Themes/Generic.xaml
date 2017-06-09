@@ -41,7 +41,7 @@
                                                          To="1"
                                                          Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)"
                                                          Storyboard.TargetName="grid" />
-                                      
+
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
@@ -81,13 +81,12 @@
                         </VisualStateManager.VisualStateGroups>
                         <Grid.Effect>
                             <DropShadowEffect ShadowDepth="0"
-                                              Opacity="0" 
-                                              BlurRadius="8"/>
+                                              Opacity="0"
+                                              BlurRadius="8" />
                         </Grid.Effect>
                         <Ellipse Stroke="Black"
                                  StrokeThickness="1" />
-                        <Ellipse 
-                                 Stroke="White"
+                        <Ellipse Stroke="White"
                                  StrokeThickness="1"
                                  Margin="1"
                                  Fill="{TemplateBinding Background}" />
@@ -129,7 +128,8 @@
                 <ControlTemplate TargetType="local:HsvWheelColorPicker">
                     <Grid Background="{TemplateBinding Background}">
                         <Grid.Resources>
-                            <local:TemplatedParentBridge x:Key="TemplatedParentBridge" TemplatedParent="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                            <local:TemplatedParentBridge x:Key="TemplatedParentBridge"
+                                                         TemplatedParent="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                         </Grid.Resources>
                         <local:HsvWheel x:Name="Wheel" />
                         <ItemsControl ItemsSource="{TemplateBinding ColorPoints}">
@@ -146,8 +146,7 @@
                                                                 RenderTransformOrigin="0.5,0.5"
                                                                 ColorPoint="{Binding}"
                                                                 DragDeltaCommand="{Binding Source={StaticResource TemplatedParentBridge},Path=TemplatedParent.ColorPointVisualDragDeltaCommand}"
-                                                                DragStartedCommand="{Binding Source={StaticResource TemplatedParentBridge},Path=TemplatedParent.ColorPointVisualDragStartedCommand}"
-                                                               >
+                                                                DragStartedCommand="{Binding Source={StaticResource TemplatedParentBridge},Path=TemplatedParent.ColorPointVisualDragStartedCommand}">
                                             <local:ColorPointVisual.RenderTransform>
                                                 <TransformGroup>
                                                     <TranslateTransform X="{Binding Source={StaticResource SaturationAndRadiusToTransformXBridge},Path=TranslateX}" />
@@ -165,6 +164,27 @@
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
                     </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ColorGradient">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorGradient">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0.5"
+                                                 EndPoint="1,0.5">
+                                <GradientStop Color="{Binding RelativeSource={RelativeSource  Mode=TemplatedParent},Path=MinimumColor}"
+                                              Offset="0" />
+                                <GradientStop Color="{Binding RelativeSource={RelativeSource  Mode=TemplatedParent},Path=MaximumColor}"
+                                              Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

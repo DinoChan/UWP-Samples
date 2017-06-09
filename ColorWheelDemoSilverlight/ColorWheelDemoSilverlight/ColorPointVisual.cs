@@ -1,8 +1,8 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Linq;
 
 namespace ColorWheelDemoSilverlight
 {
@@ -29,15 +29,45 @@ namespace ColorWheelDemoSilverlight
         public static readonly DependencyProperty DragDeltaCommandProperty =
             DependencyProperty.Register("DragDeltaCommand", typeof(ICommand), typeof(ColorPointVisual), new PropertyMetadata(null));
 
-        private Thumb _thumbElement;
         private bool _hasMouseCaptured;
         private Point _lastPoint;
+
+        private Thumb _thumbElement;
         private UIElement _visualParent;
 
         public ColorPointVisual()
         {
             DefaultStyleKey = typeof(ColorPointVisual);
+        }
 
+
+        /// <summary>
+        ///     获取或设置ColorPoint的值
+        /// </summary>
+        public ColorPoint ColorPoint
+        {
+            get { return (ColorPoint) GetValue(ColorPointProperty); }
+            set { SetValue(ColorPointProperty, value); }
+        }
+
+
+        /// <summary>
+        ///     获取或设置DragStartedCommand的值
+        /// </summary>
+        public ICommand DragStartedCommand
+        {
+            get { return (ICommand) GetValue(DragStartedCommandProperty); }
+            set { SetValue(DragStartedCommandProperty, value); }
+        }
+
+
+        /// <summary>
+        ///     获取或设置DragDeltaCommand的值
+        /// </summary>
+        public ICommand DragDeltaCommand
+        {
+            get { return (ICommand) GetValue(DragDeltaCommandProperty); }
+            set { SetValue(DragDeltaCommandProperty, value); }
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -47,7 +77,7 @@ namespace ColorWheelDemoSilverlight
                 return;
 
             var point = e.GetPosition(_visualParent);
-           
+
             if (DragDeltaCommand != null && DragDeltaCommand.CanExecute(null))
             {
                 var translation = new Point(point.X - _lastPoint.X, point.Y - _lastPoint.Y);
@@ -84,41 +114,11 @@ namespace ColorWheelDemoSilverlight
             _hasMouseCaptured = false;
         }
 
-
-        /// <summary>
-        ///     获取或设置ColorPoint的值
-        /// </summary>
-        public ColorPoint ColorPoint
-        {
-            get { return (ColorPoint)GetValue(ColorPointProperty); }
-            set { SetValue(ColorPointProperty, value); }
-        }
-
-
-        /// <summary>
-        ///     获取或设置DragStartedCommand的值
-        /// </summary>
-        public ICommand DragStartedCommand
-        {
-            get { return (ICommand)GetValue(DragStartedCommandProperty); }
-            set { SetValue(DragStartedCommandProperty, value); }
-        }
-
-
-        /// <summary>
-        ///     获取或设置DragDeltaCommand的值
-        /// </summary>
-        public ICommand DragDeltaCommand
-        {
-            get { return (ICommand)GetValue(DragDeltaCommandProperty); }
-            set { SetValue(DragDeltaCommandProperty, value); }
-        }
-
         private static void OnColorPointChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             var target = obj as ColorPointVisual;
-            var oldValue = (ColorPoint)args.OldValue;
-            var newValue = (ColorPoint)args.NewValue;
+            var oldValue = (ColorPoint) args.OldValue;
+            var newValue = (ColorPoint) args.NewValue;
             if (oldValue != newValue)
                 target.OnColorPointChanged(oldValue, newValue);
         }
