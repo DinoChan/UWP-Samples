@@ -19,8 +19,8 @@ namespace ColorWheelDemoSilverlight
         {
             if (value is Color)
             {
-                var hsvColor = HsvColor.FromColor((Color)value);
-                return hsvColor.Hue ;
+                var hsvColor =ColorHelper.ToHsv((Color)value);
+                return hsvColor.H ;
             }
             return 0d;
         }

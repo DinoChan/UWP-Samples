@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Linq;
 
 namespace ColorWheelDemoSilverlight
 {
@@ -29,18 +30,67 @@ namespace ColorWheelDemoSilverlight
             DependencyProperty.Register("DragDeltaCommand", typeof(ICommand), typeof(ColorPointVisual), new PropertyMetadata(null));
 
         private Thumb _thumbElement;
+        private bool _hasMouseCaptured;
+        private Point _lastPoint;
+        private UIElement _visualParent;
 
         public ColorPointVisual()
         {
             DefaultStyleKey = typeof(ColorPointVisual);
+
         }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            if (_hasMouseCaptured == false)
+                return;
+
+            var point = e.GetPosition(_visualParent);
+           
+            if (DragDeltaCommand != null && DragDeltaCommand.CanExecute(null))
+            {
+                var translation = new Point(point.X - _lastPoint.X, point.Y - _lastPoint.Y);
+                var parameter = new ColorPointVisualDragDeltaParameter(this, translation);
+                DragDeltaCommand.Execute(parameter);
+            }
+            _lastPoint = point;
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            _visualParent = this.GetVisualAncestors().OfType<UIElement>().FirstOrDefault();
+            if (_visualParent == null)
+                return;
+
+            _hasMouseCaptured = CaptureMouse();
+            if (_hasMouseCaptured == false)
+                return;
+
+            _lastPoint = e.GetPosition(_visualParent);
+            if (DragStartedCommand != null && DragStartedCommand.CanExecute(null))
+            {
+                var point = new Point(_lastPoint.X, _lastPoint.Y);
+                var parameter = new ColorPointVisualDragStartedParameter(this, point);
+                DragStartedCommand.Execute(parameter);
+            }
+        }
+
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonUp(e);
+            ReleaseMouseCapture();
+            _hasMouseCaptured = false;
+        }
+
 
         /// <summary>
         ///     获取或设置ColorPoint的值
         /// </summary>
         public ColorPoint ColorPoint
         {
-            get { return (ColorPoint) GetValue(ColorPointProperty); }
+            get { return (ColorPoint)GetValue(ColorPointProperty); }
             set { SetValue(ColorPointProperty, value); }
         }
 
@@ -50,7 +100,7 @@ namespace ColorWheelDemoSilverlight
         /// </summary>
         public ICommand DragStartedCommand
         {
-            get { return (ICommand) GetValue(DragStartedCommandProperty); }
+            get { return (ICommand)GetValue(DragStartedCommandProperty); }
             set { SetValue(DragStartedCommandProperty, value); }
         }
 
@@ -60,15 +110,15 @@ namespace ColorWheelDemoSilverlight
         /// </summary>
         public ICommand DragDeltaCommand
         {
-            get { return (ICommand) GetValue(DragDeltaCommandProperty); }
+            get { return (ICommand)GetValue(DragDeltaCommandProperty); }
             set { SetValue(DragDeltaCommandProperty, value); }
         }
 
         private static void OnColorPointChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             var target = obj as ColorPointVisual;
-            var oldValue = (ColorPoint) args.OldValue;
-            var newValue = (ColorPoint) args.NewValue;
+            var oldValue = (ColorPoint)args.OldValue;
+            var newValue = (ColorPoint)args.NewValue;
             if (oldValue != newValue)
                 target.OnColorPointChanged(oldValue, newValue);
         }

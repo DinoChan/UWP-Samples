@@ -11,11 +11,8 @@ using System.Windows.Shapes;
 
 namespace ColorWheelDemoSilverlight
 {
-
-    /// <summary>
-    /// Defines a color in Hue/Saturation/Value (HSV) space.
     /// </summary>
-    public struct HsvColor
+    public struct HslColor
     {
         /// <summary>
         /// The Hue in 0..360 range.
@@ -28,9 +25,9 @@ namespace ColorWheelDemoSilverlight
         public double S;
 
         /// <summary>
-        /// The Value in 0..1 range.
+        /// The Lightness in 0..1 range.
         /// </summary>
-        public double V;
+        public double L;
 
         /// <summary>
         /// The Alpha/opacity in 0..1 range.

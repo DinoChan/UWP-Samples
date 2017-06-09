@@ -98,10 +98,10 @@ namespace ColorWheelDemoSilverlight
             if (AttachedElement == null)
                 return;
 
-            var hsvColor = HsvColor.FromColor(Color);
+            var hsvColor = ColorHelper.ToHsv(Color);
 
             var radius = Math.Min(AttachedElement.ActualWidth, AttachedElement.ActualHeight) / 2;
-            TranslateX = hsvColor.Saturation * radius / 100;
+            TranslateX = hsvColor.S * radius ;
         }
     }
 }

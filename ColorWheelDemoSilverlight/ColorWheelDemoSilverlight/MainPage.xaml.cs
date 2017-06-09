@@ -20,7 +20,8 @@ namespace ColorWheelDemoSilverlight
             InitializeComponent();
 
             Loaded += MainPage_Loaded;
-
+           //var color= Color.FromArgb(255, 255, 255, 0);
+           // var v=HsvColor.FromColor(color);
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)

@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
 
@@ -56,8 +57,8 @@ namespace ColorWheelDemoSilverlight
             var x = point.X;
             var y = point.Y;
             double distance = Math.Sqrt(Math.Pow(centerPoint.X - x, 2) + Math.Pow(centerPoint.Y - y, 2));
-            var saturation = distance * 100 / radius;
-            saturation = Math.Min(100, saturation);
+            var saturation = distance / radius;
+            saturation = Math.Min(1, saturation);
 
 
             //var deltaX = x * x - radius * radius;
@@ -75,10 +76,10 @@ namespace ColorWheelDemoSilverlight
             //double alpha = Math.Sqrt((cx * cx) + (cy * cy));
 
             var hue = (int)((theta / (Math.PI * 2)) * 360.0);
-            var color = new HsvColor(hue, Convert.ToInt32(saturation), 100);
-            var rgbColor = color.ToColor();
+            var color = ColorHelper.FromHsv(hue, saturation, 1);
 
-            return rgbColor;
+
+            return color;
 
 
         }

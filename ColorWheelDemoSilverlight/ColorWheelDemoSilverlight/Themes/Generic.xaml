@@ -102,12 +102,21 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ColorPointVisual">
-                    <Grid>
-                        <Thumb x:Name="ThumbElement"
+                    <Grid  Height="30"
+                           Width="30">
+                        <!--<Thumb x:Name="ThumbElement"
                                Height="30"
-                               Width="30"
+                               Width="30" IsHitTestVisible="False"
                                Style="{StaticResource ThumbStyle}"
-                               Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ColorPoint.Color,Converter={StaticResource ColorToBrushConverter}}" />
+                               Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ColorPoint.Color,Converter={StaticResource ColorToBrushConverter}}" />-->
+
+                        <Ellipse Stroke="Black"
+                                 StrokeThickness="1" />
+                        <Ellipse Stroke="White"
+                                 StrokeThickness="1"
+                                 Margin="1"
+                                 Fill="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ColorPoint.Color,Converter={StaticResource ColorToBrushConverter}}" />
+
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

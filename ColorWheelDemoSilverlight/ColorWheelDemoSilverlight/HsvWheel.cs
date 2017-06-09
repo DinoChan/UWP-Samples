@@ -74,9 +74,9 @@ namespace ColorWheelDemoSilverlight
                 int x = i % diameter;
                 int y = i / diameter;
                 double distance = Math.Sqrt(Math.Pow(radius - x, 2) + Math.Pow(radius - y, 2));
-                var saturation = distance * 100 / radius;
+                var saturation = distance  / radius;
                 array[x, y] = saturation;
-                if (saturation >= 100)
+                if (saturation >= 1)
                 {
                     source.Pixels[i] = 255 << 24 | 255 << 16 | 255 << 8 | 255;
                 }
@@ -97,10 +97,10 @@ namespace ColorWheelDemoSilverlight
                     double alpha = Math.Sqrt((cx * cx) + (cy * cy));
 
                     var hue = (int)((theta / (Math.PI * 2)) * 360.0);
-                    var color = new HsvColor(hue, Convert.ToInt32(saturation), 100);
-                    var rgbColor = color.ToRgb();
+                    var color =ColorHelper.FromHsv(hue, saturation, 1);
+                   
 
-                    source.Pixels[i] = 255 << 24 | rgbColor.Red << 16 | rgbColor.Green << 8 | rgbColor.Blue;
+                    source.Pixels[i] = 255 << 24 | color.R << 16 | color.G << 8 | color.B;
                 }
             }
             //string s = "";

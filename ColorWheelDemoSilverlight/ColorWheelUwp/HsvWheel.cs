@@ -55,14 +55,14 @@ namespace ColorWheelUwp
                 int x = i % diameter;
                 int y = i / diameter;
                 double distance = Math.Sqrt(Math.Pow(radius - x, 2) + Math.Pow(radius - y, 2));
-                var saturation = distance * 100 / radius;
+                var saturation = distance  / radius;
                 array[x, y] = saturation;
-                if (saturation >= 100)
+                if (saturation >= 1)
                 {
-                    pixels.Bytes[i*4] = (Byte)0;
-                    pixels.Bytes[i*4 + 1] = (Byte)0;
-                    pixels.Bytes[i*4 + 2] = (Byte)0;
-                    pixels.Bytes[i*4 + 3] = (Byte)0;
+                    pixels.Bytes[i * 4] = (Byte)0;
+                    pixels.Bytes[i * 4 + 1] = (Byte)0;
+                    pixels.Bytes[i * 4 + 2] = (Byte)0;
+                    pixels.Bytes[i * 4 + 3] = (Byte)0;
                 }
                 else
                 {
@@ -79,11 +79,11 @@ namespace ColorWheelUwp
                     double alpha = Math.Sqrt((cx * cx) + (cy * cy));
 
                     var hue = theta / (Math.PI * 2) * 360.0;
-                    var color = ColorHelper.FromHsv(hue, saturation, 100);
-                    pixels.Bytes[i*4] = (Byte)color.B;
-                    pixels.Bytes[i*4 + 1] = (Byte)color.G;
-                    pixels.Bytes[i *4+ 2] = (Byte)color.R;
-                    pixels.Bytes[i *4+ 3] = (Byte)255;
+                    var color = ColorHelper.FromHsv(hue, saturation , 1);
+                    pixels.Bytes[i * 4] = (Byte)color.B;
+                    pixels.Bytes[i * 4 + 1] = (Byte)color.G;
+                    pixels.Bytes[i * 4 + 2] = (Byte)color.R;
+                    pixels.Bytes[i * 4 + 3] = (Byte)255;
                 }
             }
             pixels.UpdateFromBytes();
