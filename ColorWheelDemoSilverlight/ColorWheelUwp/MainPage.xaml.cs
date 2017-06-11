@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using WinRTXamlToolkit.Imaging;
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
 namespace ColorWheelUwp
@@ -26,6 +26,11 @@ namespace ColorWheelUwp
         {
             this.InitializeComponent();
             
+        }
+
+        private void OnSave(object sender, RoutedEventArgs e)
+        {
+            Wheel.SaveSource();
         }
     }
 }

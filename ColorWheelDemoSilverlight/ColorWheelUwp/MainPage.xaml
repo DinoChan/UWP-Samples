@@ -7,6 +7,9 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:HsvWheel />
+        <local:HsvWheel x:Name="Wheel"/>
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Save" Click="OnSave"/>
     </Grid>
 </Page>

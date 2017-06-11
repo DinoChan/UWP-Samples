@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -44,7 +45,7 @@ namespace ColorWheelUwp
             int width = Convert.ToInt32(e.NewSize.Width);
             int height = Convert.ToInt32(e.NewSize.Height);
             int diameter = width < height ? width : height;
-            //diameter = 800;
+            diameter = 3000;
             int radius = diameter / 2;
             var source = new WriteableBitmap(diameter, diameter);
             var pixels = source.PixelBuffer.GetPixels();
@@ -55,7 +56,7 @@ namespace ColorWheelUwp
                 int x = i % diameter;
                 int y = i / diameter;
                 double distance = Math.Sqrt(Math.Pow(radius - x, 2) + Math.Pow(radius - y, 2));
-                var saturation = distance  / radius;
+                var saturation = distance / radius;
                 array[x, y] = saturation;
                 if (saturation >= 1)
                 {
@@ -79,7 +80,7 @@ namespace ColorWheelUwp
                     double alpha = Math.Sqrt((cx * cx) + (cy * cy));
 
                     var hue = theta / (Math.PI * 2) * 360.0;
-                    var color = ColorHelper.FromHsv(hue, saturation , 1);
+                    var color = ColorHelper.FromHsv(hue, saturation, 1);
                     pixels.Bytes[i * 4] = (Byte)color.B;
                     pixels.Bytes[i * 4 + 1] = (Byte)color.G;
                     pixels.Bytes[i * 4 + 2] = (Byte)color.R;
@@ -89,6 +90,12 @@ namespace ColorWheelUwp
             pixels.UpdateFromBytes();
             source.Invalidate();
             _imageElement.Source = source;
+        }
+
+        public async void SaveSource()
+        {
+            var source = _imageElement.Source as WriteableBitmap;
+            await source.SaveAsync(KnownFolders.PicturesLibrary, "Wheel.png");
         }
     }
 }
