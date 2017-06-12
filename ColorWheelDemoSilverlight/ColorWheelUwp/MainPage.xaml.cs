@@ -25,7 +25,7 @@ namespace ColorWheelUwp
         public MainPage()
         {
             this.InitializeComponent();
-            
+
         }
 
         private void OnSave(object sender, RoutedEventArgs e)

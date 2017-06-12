@@ -1,6 +1,8 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:ColorWheelDemoSilverlight">
+                    xmlns:local="clr-namespace:ColorWheelDemoSilverlight"
+                    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit">
+
     <local:ColorToBrushConverter x:Key="ColorToBrushConverter" />
     <local:ColorToAngleConverter x:Key="ColorToAngleConverter" />
 
@@ -113,7 +115,6 @@
                                  StrokeThickness="1" />-->
                         <Ellipse Stroke="White"
                                  StrokeThickness="3"
-                                
                                  Fill="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ColorPoint.Color,Converter={StaticResource ColorToBrushConverter}}" />
 
                     </Grid>
@@ -122,10 +123,10 @@
         </Setter>
     </Style>
 
-    <Style TargetType="local:HsvWheelColorPicker">
+    <Style TargetType="local:HsvWheelColorPalette">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:HsvWheelColorPicker">
+                <ControlTemplate TargetType="local:HsvWheelColorPalette">
                     <Grid Background="{TemplateBinding Background}">
                         <Grid.Resources>
                             <local:TemplatedParentBridge x:Key="TemplatedParentBridge"
@@ -184,6 +185,24 @@
                                               Offset="1" />
                             </LinearGradientBrush>
                         </Border.Background>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style TargetType="local:ColorChannelTextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorChannelTextBox">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <toolkit:NumericUpDown Maximum="{TemplateBinding Maximum}"
+                                               Minimum="{TemplateBinding Minimum}"
+                                               Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Value,Mode=TwoWay}"
+                                               DecimalPlaces="{TemplateBinding DecimalPlaces}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

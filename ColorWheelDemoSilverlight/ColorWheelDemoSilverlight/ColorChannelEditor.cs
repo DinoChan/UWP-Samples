@@ -4,36 +4,36 @@ using System.Windows.Media;
 
 namespace ColorWheelDemoSilverlight
 {
-    public class ColorValueEditor : Control
+    public class ColorChannelEditor : Control
     {
         /// <summary>
         ///     标识 Color 依赖属性。
         /// </summary>
         public static readonly DependencyProperty ColorProperty =
-            DependencyProperty.Register("Color", typeof(Color), typeof(ColorValueEditor), new PropertyMetadata(default(Color), OnColorChanged));
+            DependencyProperty.Register("Color", typeof(Color), typeof(ColorChannelEditor), new PropertyMetadata(default(Color), OnColorChanged));
 
         /// <summary>
         ///     标识 Maximum 依赖属性。
         /// </summary>
         public static readonly DependencyProperty MaximumProperty =
-            DependencyProperty.Register("Maximum", typeof(double), typeof(ColorValueEditor), new PropertyMetadata(0d, OnMaximumChanged));
+            DependencyProperty.Register("Maximum", typeof(double), typeof(ColorChannelEditor), new PropertyMetadata(0d, OnMaximumChanged));
 
         /// <summary>
         ///     标识 Minimum 依赖属性。
         /// </summary>
         public static readonly DependencyProperty MinimumProperty =
-            DependencyProperty.Register("Minimum", typeof(double), typeof(ColorValueEditor), new PropertyMetadata(0d, OnMinimumChanged));
+            DependencyProperty.Register("Minimum", typeof(double), typeof(ColorChannelEditor), new PropertyMetadata(0d, OnMinimumChanged));
 
         /// <summary>
         ///     标识 ColorConverter 依赖属性。
         /// </summary>
         public static readonly DependencyProperty ColorConverterProperty =
-            DependencyProperty.Register("ColorConverter", typeof(IColorConverter), typeof(ColorValueEditor), new PropertyMetadata(null, OnColorConverterChanged));
+            DependencyProperty.Register("ColorConverter", typeof(IColorConverter), typeof(ColorChannelEditor), new PropertyMetadata(null, OnColorConverterChanged));
 
 
-        public ColorValueEditor()
+        public ColorChannelEditor()
         {
-            DefaultStyleKey = typeof(ColorValueEditor);
+            DefaultStyleKey = typeof(ColorChannelEditor);
         }
 
 
@@ -79,7 +79,7 @@ namespace ColorWheelDemoSilverlight
 
         private static void OnColorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            var target = obj as ColorValueEditor;
+            var target = obj as ColorChannelEditor;
             var oldValue = (Color) args.OldValue;
             var newValue = (Color) args.NewValue;
             if (oldValue != newValue)
@@ -92,7 +92,7 @@ namespace ColorWheelDemoSilverlight
 
         private static void OnMaximumChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            var target = obj as ColorValueEditor;
+            var target = obj as ColorChannelEditor;
             var oldValue = (double) args.OldValue;
             var newValue = (double) args.NewValue;
             if (oldValue != newValue)
@@ -105,7 +105,7 @@ namespace ColorWheelDemoSilverlight
 
         private static void OnMinimumChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            var target = obj as ColorValueEditor;
+            var target = obj as ColorChannelEditor;
             var oldValue = (double) args.OldValue;
             var newValue = (double) args.NewValue;
             if (oldValue != newValue)
@@ -118,7 +118,7 @@ namespace ColorWheelDemoSilverlight
 
         private static void OnColorConverterChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            var target = obj as ColorValueEditor;
+            var target = obj as ColorChannelEditor;
             var oldValue = (IColorConverter) args.OldValue;
             var newValue = (IColorConverter) args.NewValue;
             if (oldValue != newValue)

@@ -9,16 +9,16 @@ using System.Windows.Markup;
 namespace ColorWheelDemoSilverlight
 {
     [ContentProperty(nameof(ColorPoints))]
-    public class ColorPicker : Control
+    public class ColorPalette : Control
     {
         /// <summary>
         ///     标识 ColorPoints 依赖属性。
         /// </summary>
         public static readonly DependencyProperty ColorPointsProperty =
-            DependencyProperty.Register("ColorPoints", typeof(Collection<ColorPoint>), typeof(ColorPicker), new PropertyMetadata(null, OnColorPointsChanged));
+            DependencyProperty.Register("ColorPoints", typeof(Collection<ColorPoint>), typeof(ColorPalette), new PropertyMetadata(null, OnColorPointsChanged));
 
 
-        public ColorPicker()
+        public ColorPalette()
         {
             ColorPoints = new ObservableCollection<ColorPoint>();
             ColorPointVisualDragStartedCommand = new DelegateCommand(ColorPointVisualDragStarted);
@@ -40,7 +40,7 @@ namespace ColorWheelDemoSilverlight
 
         private static void OnColorPointsChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            var target = obj as ColorPicker;
+            var target = obj as ColorPalette;
             var oldValue = (Collection<ColorPoint>)args.OldValue;
             var newValue = (Collection<ColorPoint>)args.NewValue;
             if (oldValue != newValue)

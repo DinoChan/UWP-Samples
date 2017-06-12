@@ -66,6 +66,8 @@
       <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
@@ -77,20 +79,20 @@
     <Compile Include="ArgbConverter.cs" />
     <Compile Include="ColorGradient.cs" />
     <Compile Include="ColorHelper.cs" />
-    <Compile Include="ColorPicker.cs" />
+    <Compile Include="ColorPalette.cs" />
     <Compile Include="ColorPoint.cs" />
     <Compile Include="ColorPointVisualDragDeltaParameter.cs" />
     <Compile Include="ColorPointVisualDragStartedParameter.cs" />
     <Compile Include="ColorPointVisual.cs" />
     <Compile Include="ColorToAngleConverter.cs" />
     <Compile Include="ColorToBrushConverter.cs" />
-    <Compile Include="ColorValueEditor.cs" />
-    <Compile Include="ColorValueTextBox.cs" />
+    <Compile Include="ColorChannelEditor.cs" />
+    <Compile Include="ColorChannelTextBox.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="HslColor.cs" />
     <Compile Include="HsvColor.cs" />
     <Compile Include="HsvWheel.cs" />
-    <Compile Include="HsvWheelColorPicker.cs" />
+    <Compile Include="HsvWheelColorPalette.cs" />
     <Compile Include="IColorConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

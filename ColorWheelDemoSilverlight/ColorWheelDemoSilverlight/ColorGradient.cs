@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace ColorWheelDemoSilverlight
 {
-    public class ColorGradient : ColorValueEditor
+    public class ColorGradient : ColorChannelEditor
     {
         private const string ValueIndicatorElementName = "ValueIndicatorElement";
 
