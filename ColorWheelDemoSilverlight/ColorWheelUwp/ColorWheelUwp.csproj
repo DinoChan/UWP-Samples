@@ -95,11 +95,20 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorPoint.cs" />
+    <Compile Include="ColorPointVisual.cs" />
+    <Compile Include="ColorPalette.cs" />
+    <Compile Include="ColorPointVisualDragDeltaParameter.cs" />
+    <Compile Include="ColorPointVisualDragStartedParameter.cs" />
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="DelegateCommand{T}.cs" />
     <Compile Include="HsvWheel.cs" />
+    <Compile Include="HsvWheelColorPalette.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisualTreeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Graphics.Display;
+using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -62,7 +65,7 @@ namespace ColorWheelUwp
                     var distanceOfX = x - radius;
                     var distanceOfY = y - radius;
 
-                    var theta = Math.Atan2(distanceOfY, distanceOfX);
+                    var theta = Math.Atan2(-distanceOfY, distanceOfX);
 
                     if (theta < 0)
                         theta += 2 * Math.PI;
@@ -84,7 +87,28 @@ namespace ColorWheelUwp
         public async void SaveSource()
         {
             var source = _imageElement.Source as WriteableBitmap;
-            await source.SaveAsync(KnownFolders.PicturesLibrary, "Wheel.png");
+            await source.SaveAsync(KnownFolders.PicturesLibrary, "Wheel2.png");
+        }
+
+        public async void Save()
+        {
+            var bitmap = new RenderTargetBitmap();
+            var file = await KnownFolders.PicturesLibrary.CreateFileAsync("Wheel.png", CreationCollisionOption.GenerateUniqueName);
+            await bitmap.RenderAsync(this);
+            var buffer = await bitmap.GetPixelsAsync();
+            using (var stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+            {
+                var encod = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
+                encod.SetPixelData(BitmapPixelFormat.Bgra8,
+                    BitmapAlphaMode.Ignore,
+                    (uint) bitmap.PixelWidth,
+                    (uint) bitmap.PixelHeight,
+                    DisplayInformation.GetForCurrentView().LogicalDpi,
+                    DisplayInformation.GetForCurrentView().LogicalDpi,
+                    buffer.ToArray()
+                );
+                await encod.FlushAsync();
+            }
         }
     }
 }

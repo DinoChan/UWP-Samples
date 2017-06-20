@@ -87,7 +87,7 @@ namespace ColorWheelDemoSilverlight
                     int cx = x - radius;
                     int cy = y - radius;
 
-                    double theta = Math.Atan2(cy, cx);
+                    double theta = Math.Atan2(-cy, cx);
 
                     if (theta < 0)
                     {
