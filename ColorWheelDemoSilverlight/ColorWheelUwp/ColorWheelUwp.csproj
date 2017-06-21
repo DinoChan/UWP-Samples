@@ -95,11 +95,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorAndRadiusToTransformXBridge.cs" />
     <Compile Include="ColorPoint.cs" />
     <Compile Include="ColorPointVisual.cs" />
     <Compile Include="ColorPalette.cs" />
-    <Compile Include="ColorPointVisualDragDeltaParameter.cs" />
-    <Compile Include="ColorPointVisualDragStartedParameter.cs" />
+    <Compile Include="ColorToAngleConverter.cs" />
+    <Compile Include="ColorToBrushConverter.cs" />
+    <Compile Include="DragDeltaCommandParameter.cs" />
+    <Compile Include="DragStartedCommandParameter.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="DelegateCommand{T}.cs" />
     <Compile Include="HsvWheel.cs" />
@@ -107,7 +110,10 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManipulationBridge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaturationToRadiusConverter.cs" />
+    <Compile Include="TemplatedParentBridge.cs" />
     <Compile Include="VisualTreeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

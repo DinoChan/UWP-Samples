@@ -69,7 +69,7 @@ namespace ColorWheelUwp
 
         protected virtual void OnColorPointsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-
+            
         }
 
         protected virtual ColorPointVisual CreateColorPointVisual(ColorPoint colorPoint)
@@ -79,14 +79,14 @@ namespace ColorWheelUwp
 
         private void ColorPointVisualDragStarted(object param)
         {
-            var parameter = param as ColorPointVisualDragStartedParameter;
+            var parameter = param as DragStartedCommandParameter;
             if (parameter != null)
                 OnColorPointVisualDragStarted(parameter.ColorPointVisual, parameter.Position);
         }
 
         private void ColorPointVisualDragDelta(object param)
         {
-            var parameter = param as ColorPointVisualDragDeltaParameter;
+            var parameter = param as DragDeltaCommandParameter;
             if (parameter != null)
                 OnColorPointVisualDragDelta(parameter.ColorPointVisual, parameter.Translation);
         }

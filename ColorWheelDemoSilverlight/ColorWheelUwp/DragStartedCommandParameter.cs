@@ -7,13 +7,13 @@ using Windows.Foundation;
 
 namespace ColorWheelUwp
 {
-    public class ColorPointVisualDragStartedParameter
+    public class DragStartedCommandParameter
     {
         public ColorPointVisual ColorPointVisual { get; private set; }
 
         public Point Position { get; private set; }
 
-        public ColorPointVisualDragStartedParameter(ColorPointVisual colorPointVisual, Point position)
+        public DragStartedCommandParameter(ColorPointVisual colorPointVisual, Point position)
         {
             ColorPointVisual = colorPointVisual;
             Position = position;

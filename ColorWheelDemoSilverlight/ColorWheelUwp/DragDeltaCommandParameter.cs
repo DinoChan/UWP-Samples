@@ -7,13 +7,13 @@ using Windows.Foundation;
 
 namespace ColorWheelUwp
 {
-    public class ColorPointVisualDragDeltaParameter
+    public class DragDeltaCommandParameter
     {
         public Point Translation { get; private set; }
 
         public ColorPointVisual ColorPointVisual { get; private set; }
 
-        public ColorPointVisualDragDeltaParameter(ColorPointVisual colorPointVisual, Point translation)
+        public DragDeltaCommandParameter(ColorPointVisual colorPointVisual, Point translation)
         {
             ColorPointVisual = colorPointVisual;
             Translation = translation;
