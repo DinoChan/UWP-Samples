@@ -45,8 +45,8 @@
     </Style>
 
 
-    <Style TargetType="local:HsvWheelColorPalette">
-        <Setter Property="Template">
+    <Style TargetType="local:HsvWheelColorPalette" >
+        <Setter Property="Template" >
             <Setter.Value>
                 <ControlTemplate TargetType="local:HsvWheelColorPalette">
                     <Grid Background="{TemplateBinding Background}">
@@ -57,9 +57,8 @@
                         <local:HsvWheel x:Name="Wheel" />
                         <ItemsControl ItemsSource="{TemplateBinding ColorPoints}">
                             <ItemsControl.ItemTemplate>
-                               
-                                <DataTemplate >
-                                    <Grid x:Name="ItemTemplateRoot">
+                                <DataTemplate x:DataType="local:ColorPoint">
+                                    <Grid x:Name="ItemTemplateRoot" >
                                         <Grid.Resources>
                                             <local:ColorAndRadiusToTransformXBridge x:Key="SaturationAndRadiusToTransformXBridge"
                                                                                     AttachedElement="{Binding ElementName=ItemTemplateRoot}"
