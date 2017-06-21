@@ -11,7 +11,7 @@
         <Grid 
               HorizontalAlignment="Center"
               VerticalAlignment="Center">
-            <TextBlock Text="Button"
+            <Button Content="Button"
                        x:Name="Button"
                        Foreground="White"
                        PointerPressed="Button_PointerPressed"

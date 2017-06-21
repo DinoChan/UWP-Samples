@@ -8,8 +8,13 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:HsvWheel x:Name="Wheel"/>
-        <Button HorizontalAlignment="Center"
+        <local:HsvWheelColorPalette>
+            <local:ColorPoint x:Name="colorPoint"
+                              Color="LightGreen" />
+            <local:ColorPoint Color="Red" />
+        </local:HsvWheelColorPalette>
+        <!--<Button HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="Save" Click="OnSave"/>
+                Content="Save" Click="OnSave"/>-->
     </Grid>
 </Page>

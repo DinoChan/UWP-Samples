@@ -26,7 +26,7 @@ namespace ColorWheelUwp
         /// </summary>
         /// <param name="obj">The element on which to set the property value.</param>
         /// <param name="value">The property value to set.</param>
-        public static void SetDragStartedCommand(ColorPoint obj, ICommand value)
+        public static void SetDragStartedCommand(ColorPointVisual obj, ICommand value)
         {
             obj.SetValue(DragStartedCommandProperty, value);
         }

@@ -60,9 +60,14 @@
                                 <DataTemplate x:DataType="local:ColorPoint">
                                     <Grid x:Name="ItemTemplateRoot" >
                                         <Grid.Resources>
+                                            <local:ColorPoint x:Name="c"/>
                                             <local:ColorAndRadiusToTransformXBridge x:Key="SaturationAndRadiusToTransformXBridge"
                                                                                     AttachedElement="{Binding ElementName=ItemTemplateRoot}"
                                                                                     Color="{Binding ElementName=ItemTemplateRoot,Path=DataContext.Color}" />
+
+                                            <local:ColorAndRadiusToTransformXBridge x:Key="SaturationAndRadiusToTransformXBridge2"
+                                                                                    AttachedElement="{Binding ElementName=ItemTemplateRoot}"
+                                                                                    Color="{Binding Color, Source={StaticResource c}}" />
                                         </Grid.Resources>
                                         <local:ColorPointVisual HorizontalAlignment="Center"
                                                                 VerticalAlignment="Center"
