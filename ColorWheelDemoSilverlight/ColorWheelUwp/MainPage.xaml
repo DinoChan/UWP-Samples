@@ -7,12 +7,29 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:HsvWheel x:Name="Wheel"/>
-        <local:HsvWheelColorPalette>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <local:HsvWheelColorPalette x:Name="ColorPalette">
             <local:ColorPoint x:Name="colorPoint"
                               Color="LightGreen" />
             <local:ColorPoint Color="Red" />
         </local:HsvWheelColorPalette>
+        <ItemsControl ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      ItemsSource="{Binding ElementName=ColorPalette,Path=ColorPoints}"
+                      >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <!--<Button HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Content="Save" Click="OnSave"/>-->
