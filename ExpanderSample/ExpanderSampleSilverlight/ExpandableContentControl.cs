@@ -20,9 +20,21 @@ namespace ExpanderSampleSilverlight
             ContentSite = GetTemplateChild(ElementContentSiteName) as ContentPresenter;
         }
 
+        private void UpdateContentSizeMaxHeight()
+        {
+            if (ContentSite == null)
+                return;
+
+            if (Percentage >= 1)
+                ContentSite.MaxHeight = double.MaxValue;
+            else
+                ContentSite.MaxHeight = _contentHeight * Percentage;
+        }
+
         #region TemplateParts
 
         private const string ElementContentSiteName = "ContentSite";
+        private bool _hasSizeChanged;
 
 
         private ContentPresenter _contentSite;
@@ -43,8 +55,13 @@ namespace ExpanderSampleSilverlight
 
         private void OnContentSiteSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (Percentage >= 1)
+            if (Percentage >= 1 || _hasSizeChanged == false)
                 _contentHeight = e.NewSize.Height;
+
+            if (_hasSizeChanged == false && Percentage < 1)
+                UpdateContentSizeMaxHeight();
+
+            _hasSizeChanged = true;
         }
 
         #endregion TemplateParts
@@ -59,7 +76,7 @@ namespace ExpanderSampleSilverlight
         /// </summary>
         public double Percentage
         {
-            get { return (double)GetValue(PercentageProperty); }
+            get { return (double) GetValue(PercentageProperty); }
             set { SetValue(PercentageProperty, value); }
         }
 
@@ -74,19 +91,13 @@ namespace ExpanderSampleSilverlight
 
         private static void OnPercentagePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var source = (ExpandableContentControl)d;
+            var source = (ExpandableContentControl) d;
             source.OnPercentagePropertyChanged();
         }
 
         private void OnPercentagePropertyChanged()
         {
-            if (ContentSite == null)
-                return;
-
-            if (Percentage >= 1)
-                ContentSite.MaxHeight = double.MaxValue;
-            else
-                ContentSite.MaxHeight = _contentHeight * Percentage;
+            UpdateContentSizeMaxHeight();
         }
 
         #endregion public double Percentage

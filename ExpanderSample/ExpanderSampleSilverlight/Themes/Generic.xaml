@@ -17,17 +17,11 @@
                 Value="0" />
         <Setter Property="Padding"
                 Value="0" />
-        <Setter Property="HorizontalContentAlignment"
-                Value="Left" />
-        <Setter Property="VerticalContentAlignment"
-                Value="Top" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ExpandableContentControl">
                     <ContentPresenter x:Name="ContentSite"
                                       Cursor="{TemplateBinding Cursor}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                       Margin="0"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}" />
