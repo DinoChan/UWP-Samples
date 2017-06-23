@@ -4,9 +4,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+             xmlns:local="clr-namespace:ExpanderSampleSilverlight"
     d:DesignHeight="300" d:DesignWidth="400">
 
     <Grid x:Name="LayoutRoot" Background="White">
-
+        <local:ExpandableContentControl Percentage="0.3">
+            <TextBlock Text="TextBlock"/>
+        </local:ExpandableContentControl>
     </Grid>
 </UserControl>
