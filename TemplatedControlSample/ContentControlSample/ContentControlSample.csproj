@@ -98,6 +98,9 @@
     <Compile Include="ContentSamplePage.xaml.cs">
       <DependentUpon>ContentSamplePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentTemplateChangePage.xaml.cs">
+      <DependentUpon>ContentTemplateChangePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContentTemplatePage.xaml.cs">
       <DependentUpon>ContentTemplatePage.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="ContentSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContentTemplateChangePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

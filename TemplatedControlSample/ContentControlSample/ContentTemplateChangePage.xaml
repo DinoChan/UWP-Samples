@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="ContentControlSample.ContentTemplateChangePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ContentControlSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+       
+            <ListView x:Name="Selector">
+                <ListBoxItem Content="Red">
+                    <ListBoxItem.Tag>
+                        <DataTemplate >
+                            <Border Background="Red">
+                                <TextBlock Text="{Binding Score}"
+                                           Foreground="White"
+                                           FontSize="20"
+                                           Margin="20"
+                                           HorizontalAlignment="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </ListBoxItem.Tag>
+                </ListBoxItem>
+                <ListBoxItem Content="Green">
+                    <ListBoxItem.Tag>
+                        <DataTemplate >
+                            <Border Background="Green">
+                                <TextBlock Text="{Binding Score}"
+                                           Foreground="White"
+                                           FontSize="20"
+                                           Margin="20"
+                                           HorizontalAlignment="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </ListBoxItem.Tag>
+                </ListBoxItem>
+            </ListView>
+            <ContentControl x:Name="ContentControl" ContentTemplate="{Binding ElementName=Selector,Path=SelectedItem.Tag}">
+            <ContentControl.ContentTransitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition  />
+                </TransitionCollection>
+            </ContentControl.ContentTransitions>
+        </ContentControl>
+        <Button Content="Change Content"
+                Click="OnChangeContent" />
+        </StackPanel>
+    </Grid>
+</Page>
