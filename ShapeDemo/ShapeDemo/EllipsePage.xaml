@@ -8,11 +8,11 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <control:DropShadowPanel  Height="40"
-                                  Width="40" OffsetX="0" OffsetY="0"
-                                  BlurRadius="10" ShadowOpacity="0.5">
+        <control:DropShadowPanel  Height="80"
+                                  Width="80" OffsetX="0" OffsetY="0"
+                                  BlurRadius="5" ShadowOpacity="0.3">
             <Ellipse
-                     StrokeThickness="3" 
+                     StrokeThickness="5" 
                      Stroke="DarkGoldenrod" />
         </control:DropShadowPanel>
     </Grid>
